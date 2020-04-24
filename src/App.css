@@ -3,28 +3,40 @@
   justify-content: space-around;
   align-items: center;
 }
+.marginLeft {
+  margin-left: 21%;
+}
 .flexColumn {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 3%;
 }
+.padding {
+  padding: 4.2%;
+}
 .loginDiv {
   width: 25%;
   margin: auto;
   margin-top: 10%;
 }
+.profileDiv {
+  position: fixed;
+  left: 0;
+  top: 56px;
+  height: 100%;
+}
 .profileImage {
   padding: 15%;
 }
 .profileButton {
-  margin-bottom: 7%;
+  margin-bottom: 8.85%;
 }
 .bigText:hover {
   text-decoration: none;
 }
 .mediumText {
-  font-size: 12px;
+  font-size: 11px;
 }
 .smallText {
   font-size: 8px;
@@ -34,4 +46,9 @@
 }
 .white:hover {
   color: rgb(230, 230, 230);
+}
+.itemproportion {
+  all: unset;
+  width: 20%;
+  min-height: 100%;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 
-const MyOffers = () => {
+const MyOptions = () => {
   return <h1>Hello World</h1>;
 };
 
-export default MyOffers;
+export default MyOptions;

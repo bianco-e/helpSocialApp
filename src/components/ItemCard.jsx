@@ -13,25 +13,29 @@ const ItemCard = ({
   special = false,
 }) => {
   return (
-    <Card
-      className="m-2"
-      bg={`${special && "info"}`}
-      text={`${special && "white"}`}
-    >
-      <Image variant="top" src={image} alt={title} fluid />
-      <Card.Body>
-        <h6 className={`${special ? "bigText white" : "bigText"}`}>{title}</h6>
-        <Card.Text className="mediumText">{description}</Card.Text>
-      </Card.Body>
-      <Card.Footer>
-        <small className="text-muted smallText">
-          {action}{" "}
-          <Link className={`${special && "white"}`} to="/">
-            {user}
-          </Link>
-        </small>
-      </Card.Footer>
-    </Card>
+    <button className="itemproportion">
+      <Card
+        className="m-2"
+        bg={`${special && "info"}`}
+        text={`${special && "white"}`}
+      >
+        <Image variant="top" src={image} alt={title} fluid />
+        <Card.Body>
+          <h6 className={`${special ? "bigText white" : "bigText"}`}>
+            {title}
+          </h6>
+          <Card.Text className="mediumText">{description}</Card.Text>
+        </Card.Body>
+        <Card.Footer>
+          <small className="text-muted smallText">
+            {action}{" "}
+            <Link className={`${special && "white"}`} to="/">
+              {user}
+            </Link>
+          </small>
+        </Card.Footer>
+      </Card>
+    </button>
   );
 };
 

@@ -1,21 +1,20 @@
 import React, { lazy, Suspense } from "react";
 import TopBar from "./TopBar";
 import Profile from "./Profile";
-const Offers = lazy(() => import("./Offers"));
-const Needed = lazy(() => import("./Needed"));
+const Items = lazy(() => import("./Items"));
 
 const Home = () => {
   return (
     <div>
       <TopBar />
-      <div className="App">
-        <Profile />
+      <Profile />
+      <div className="App marginLeft">
         <div className="flexColumn">
           <Suspense fallback="Cargando...">
-            <Needed topBar={false} profile={false} />
+            <Items forHome={true} needs={true} />
           </Suspense>
           <Suspense fallback="Cargando...">
-            <Offers topBar={false} profile={false} />
+            <Items forHome={true} offers={true} />
           </Suspense>
         </div>
       </div>

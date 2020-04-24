@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 
 const Profile = () => {
   return (
-    <div>
+    <div className="profileDiv">
       <Card style={{ width: "16rem" }} bg="info" variant="position">
         <Image
           variant="top"
@@ -18,9 +18,9 @@ const Profile = () => {
         />
         <Card.Body>
           <div className="flexColumn">
-            <h4>Santi Izaguirre</h4>
-            <h6>Zona sur</h6>
-            <h6>Tiene movilidad</h6>
+            <h4 className="padding">Santi Izaguirre</h4>
+            <h6 className="padding">Zona sur</h6>
+            <h6 className="padding">Tiene movilidad</h6>
             <Dropdown as={ButtonGroup} className="profileButton">
               <Button variant="light">Mis ofertas</Button>
               <Dropdown.Toggle
