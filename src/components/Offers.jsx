@@ -1,10 +1,10 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/Navbar";
 import TopBar from "./TopBar";
 import Profile from "./Profile";
-import ItemCard from "./ItemCard";
 import { offeredItems } from "../data/data.js";
+const ItemCard = lazy(() => import("./ItemCard"));
 
 const Offers = ({ topBar, profile }) => {
   return (
@@ -17,20 +17,22 @@ const Offers = ({ topBar, profile }) => {
             Se ofrece
           </Card.Header>
           <CardColumns>
-            {offeredItems.map((item, idx) => {
-              return (
-                idx < 5 && (
-                  <ItemCard
-                    image={item.image}
-                    title={item.title}
-                    description={item.description}
-                    action={item.action}
-                    user={item.user}
-                    key={item.user + item.title}
-                  />
-                )
-              );
-            })}
+            <Suspense fallback="Cargando...">
+              {offeredItems.map((item, idx) => {
+                return (
+                  idx < 5 && (
+                    <ItemCard
+                      image={item.image}
+                      title={item.title}
+                      description={item.description}
+                      action={item.action}
+                      user={item.user}
+                      key={item.user + item.title}
+                    />
+                  )
+                );
+              })}
+            </Suspense>
           </CardColumns>
         </Card>
       </div>

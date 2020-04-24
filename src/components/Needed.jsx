@@ -1,10 +1,10 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/Navbar";
 import TopBar from "./TopBar";
 import Profile from "./Profile";
-import ItemCard from "./ItemCard";
 import { neededItems } from "../data/data.js";
+const ItemCard = lazy(() => import("./ItemCard"));
 
 const Needed = ({ topBar, profile }) => {
   /* const sortedNeededItems = neededItems.sort(

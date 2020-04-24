@@ -18,13 +18,9 @@ const ItemCard = ({
       bg={`${special && "info"}`}
       text={`${special && "white"}`}
     >
-      <Image variant="top" src={image} fluid />
+      <Image variant="top" src={image} alt={title} fluid />
       <Card.Body>
-        <Link to="/itemcard" component={() => <ItemCard />}>
-          <h6 className={`${special ? "bigText white" : "bigText"}`}>
-            {title}
-          </h6>
-        </Link>
+        <h6 className={`${special ? "bigText white" : "bigText"}`}>{title}</h6>
         <Card.Text className="mediumText">{description}</Card.Text>
       </Card.Body>
       <Card.Footer>

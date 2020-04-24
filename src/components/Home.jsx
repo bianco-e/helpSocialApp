@@ -1,8 +1,8 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import TopBar from "./TopBar";
 import Profile from "./Profile";
-import Offers from "./Offers";
-import Needed from "./Needed";
+const Offers = lazy(() => import("./Offers"));
+const Needed = lazy(() => import("./Needed"));
 
 const Home = () => {
   return (
@@ -11,8 +11,12 @@ const Home = () => {
       <div className="App">
         <Profile />
         <div className="flexColumn">
-          <Needed topBar={false} profile={false} />
-          <Offers topBar={false} profile={false} />
+          <Suspense fallback="Cargando...">
+            <Needed topBar={false} profile={false} />
+          </Suspense>
+          <Suspense fallback="Cargando...">
+            <Offers topBar={false} profile={false} />
+          </Suspense>
         </div>
       </div>
     </div>
