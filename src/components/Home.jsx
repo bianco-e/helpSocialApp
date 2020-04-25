@@ -8,13 +8,13 @@ const Home = () => {
     <div>
       <TopBar />
       <Profile />
-      <div className="App marginLeft">
+      <div className="App margin21-1">
         <div className="flexColumn">
           <Suspense fallback="Cargando...">
-            <Items forHome={true} needs={true} />
+            <Items needs={true} />
           </Suspense>
           <Suspense fallback="Cargando...">
-            <Items forHome={true} offers={true} />
+            <Items offers={true} />
           </Suspense>
         </div>
       </div>

@@ -21,15 +21,16 @@ const ItemCard = ({
       >
         <Image variant="top" src={image} alt={title} fluid />
         <Card.Body>
-          <h6 className={`${special ? "bigText white" : "bigText"}`}>
-            {title}
-          </h6>
+          <h6 className={`${special && "white"}`}>{title}</h6>
           <Card.Text className="mediumText">{description}</Card.Text>
         </Card.Body>
         <Card.Footer>
-          <small className="text-muted smallText">
-            {action}{" "}
-            <Link className={`${special && "white"}`} to="/">
+          <small className="smallText text-muted">
+            {action}
+            <Link
+              className={`${special ? "white textDecoNone" : "smallText"}`}
+              to="/"
+            >
               {user}
             </Link>
           </small>

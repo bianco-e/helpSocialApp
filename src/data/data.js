@@ -175,5 +175,89 @@ const neededItems = [
     special: true,
   },
 ];
+const myNeeds = [
+  {
+    image:
+      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
+    user: "Mis búsquedas",
+    title: "Colchón anti-escaras",
+    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
+    action: "Dona: ",
+  },
+  {
+    image:
+      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
+    user: "Mis búsquedas 1",
+    title: "Colchón anti-escaras",
+    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
+    action: "Dona: ",
+  },
+  {
+    image:
+      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
+    user: "Mis búsquedas 2",
+    title: "Colchón anti-escaras",
+    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
+    action: "Dona: ",
+  },
+  {
+    image:
+      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
+    user: "Mis búsquedas 3",
+    title: "Colchón anti-escaras",
+    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
+    action: "Dona: ",
+  },
+  {
+    image:
+      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
+    user: "Mis búsquedas 4",
+    title: "Colchón anti-escaras",
+    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
+    action: "Dona: ",
+  },
+];
+const myOffers = [
+  {
+    image:
+      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
+    user: "Mis ofertas",
+    title: "Colchón anti-escaras",
+    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
+    action: "Dona: ",
+  },
+  {
+    image:
+      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
+    user: "Mis ofertas 1",
+    title: "Colchón anti-escaras",
+    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
+    action: "Dona: ",
+  },
+  {
+    image:
+      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
+    user: "Mis ofertas 2",
+    title: "Colchón anti-escaras",
+    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
+    action: "Dona: ",
+  },
+  {
+    image:
+      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
+    user: "Mis ofertas 3",
+    title: "Colchón anti-escaras",
+    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
+    action: "Dona: ",
+  },
+  {
+    image:
+      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
+    user: "Mis ofertas 4",
+    title: "Colchón anti-escaras",
+    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
+    action: "Dona: ",
+  },
+];
 
-export { offeredItems, neededItems };
+export { offeredItems, neededItems, myOffers, myNeeds };

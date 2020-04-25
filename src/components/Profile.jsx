@@ -1,8 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import Dropdown from "react-bootstrap/Dropdown";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 
 const Profile = () => {
@@ -18,35 +17,17 @@ const Profile = () => {
         />
         <Card.Body>
           <div className="flexColumn">
-            <h4 className="padding">Santi Izaguirre</h4>
+            <h4 className="padding">Máximo Cozetti</h4>
             <h6 className="padding">Zona sur</h6>
-            <h6 className="padding">Tiene movilidad</h6>
-            <Dropdown as={ButtonGroup} className="profileButton">
-              <Button variant="light">Mis ofertas</Button>
-              <Dropdown.Toggle
-                split
-                variant="light"
-                id="dropdown-split-basic"
-              />
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Agregar oferta</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Editar oferta</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Dropdown as={ButtonGroup}>
-              <Button variant="light">Mis búsquedas</Button>
-              <Dropdown.Toggle
-                split
-                variant="light"
-                id="dropdown-split-basic"
-              />
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">
-                  Agregar búsqueda
-                </Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Editar búsqueda</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <h6 className="padding">Con movilidad</h6>
+
+            <Link to="/myoffers" className="profileButton">
+              <Button variant="outline-dark">Mis ofertas</Button>
+            </Link>
+
+            <Link to="/myneeds" className="profileButton">
+              <Button variant="outline-dark">Mis búsquedas</Button>
+            </Link>
           </div>
         </Card.Body>
       </Card>
