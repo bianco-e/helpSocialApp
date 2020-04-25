@@ -5,17 +5,21 @@ import Items from "./Items";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-const MyOptions = ({ needs = false, offers = false }) => {
+const MyOptions = ({ arrayToRender, myneeds = false, myoffers = false }) => {
   return (
     <div>
       <TopBar />
       <Profile />
       <div className="App margin21-1">
         <div className="flexColumn">
-          {needs ? <Items myneeds={true} /> : <Items myoffers={true} />}
-          <Link to={`${offers ? "/addoffer" : "/addneed"}`}>
+          {myneeds ? (
+            <Items arrayToRender={arrayToRender} myneeds={true} />
+          ) : (
+            <Items arrayToRender={arrayToRender} myoffers={true} />
+          )}
+          <Link to={`${myoffers ? "/addoffer" : "/addneed"}`}>
             <Button variant="outline-info">
-              Agregar {offers ? "oferta" : "búsqueda"}
+              Agregar {myoffers ? "oferta" : "búsqueda"}
             </Button>
           </Link>
         </div>

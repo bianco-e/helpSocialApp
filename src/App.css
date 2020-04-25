@@ -3,6 +3,9 @@
   justify-content: space-around;
   align-items: center;
 }
+.flexWrap {
+  flex-wrap: wrap;
+}
 .justifyBetween {
   display: flex;
   justify-content: space-between;
@@ -31,7 +34,7 @@
 .profileDiv {
   position: fixed;
   left: 0;
-  top: 56px;
+  top: 50px;
 }
 .profileImage {
   padding: 15%;

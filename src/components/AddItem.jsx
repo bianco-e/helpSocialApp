@@ -48,7 +48,9 @@ const AddItem = ({ offer = false, need = false }) => {
               <br />
               <Form.Check
                 type="checkbox"
-                label="¿Dispone de movilidad para facilitar la entrega?"
+                label={`¿Dispone de movilidad para facilitar ${
+                  offer ? "la entrega" : "el retiro"
+                }?`}
               />
               <br />
               {need && (

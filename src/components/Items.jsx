@@ -2,17 +2,18 @@ import React, { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/Navbar";
-import { offeredItems, neededItems, myOffers, myNeeds } from "../data/data.js";
+import Spinner from "react-bootstrap/Spinner";
 import TopBar from "./TopBar";
 import Profile from "./Profile";
 const ItemCard = lazy(() => import("./ItemCard"));
 
 const Items = ({
   asChild = true,
+  arrayToRender,
+  needed = false,
   offers = false,
-  needs = false,
-  myoffers = false,
   myneeds = false,
+  myoffers = false,
 }) => {
   return (
     <div>
@@ -26,7 +27,7 @@ const Items = ({
               className="textDecoNone"
             >
               <h6 className="margin0">
-                {needs
+                {needed
                   ? "Se busca"
                   : offers
                   ? "Se ofrece"
@@ -37,48 +38,21 @@ const Items = ({
             </Link>
           </Card.Header>
           <CardColumns>
-            <Suspense fallback="Cargando...">
+            <Suspense fallback={<Spinner animation="grow" variant="primary" />}>
               <div className="flexColumn">
-                <div className="App">
-                  {(offers
-                    ? offeredItems
-                    : needs
-                    ? neededItems
-                    : myoffers
-                    ? myOffers
-                    : myneeds && myNeeds
-                  ).map((item, idx) => {
+                <div className="App flexWrap">
+                  {arrayToRender.map((item, idx) => {
                     return (
-                      idx < 5 && (
-                        <ItemCard
-                          image={item.image}
-                          title={item.title}
-                          description={item.description}
-                          action={item.action}
-                          user={item.user}
-                          special={item.special}
-                          key={item.user + item.title}
-                        />
-                      )
-                    );
-                  })}
-                </div>
-                <div className="App">
-                  {(offers ? offeredItems : neededItems).map((item, idx) => {
-                    return (
-                      !asChild &&
-                      idx > 4 &&
-                      idx < 10 && (
-                        <ItemCard
-                          image={item.image}
-                          title={item.title}
-                          description={item.description}
-                          action={item.action}
-                          user={item.user}
-                          special={item.special}
-                          key={item.user + item.title}
-                        />
-                      )
+                      <ItemCard
+                        image={item.image}
+                        title={item.title}
+                        description={item.description}
+                        action={item.action}
+                        user={item.user}
+                        special={item.special}
+                        id={item.id}
+                        key={item.user + item.title}
+                      />
                     );
                   })}
                 </div>

@@ -7,6 +7,8 @@ const offeredItems = [
     description:
       "Acolchonadas en la punta con goma espuma nivel 3. Excelente estado",
     action: "Dona: ",
+    area: "sur",
+    id: 1,
   },
   {
     image:
@@ -16,6 +18,8 @@ const offeredItems = [
     description:
       "Usada con dirección automática y posapies de hierro, con cubiertas de caucho.",
     action: "Dona: ",
+    area: "oeste",
+    id: 2,
   },
   {
     image:
@@ -25,6 +29,8 @@ const offeredItems = [
     description:
       "2 tabletas de Ibupirac 600 que eran tomadas para reducir efectos de la quimio.",
     action: "Dona: ",
+    area: "centro",
+    id: 3,
   },
   {
     image:
@@ -33,6 +39,8 @@ const offeredItems = [
     title: "Colchón anti-escaras",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Dona: ",
+    area: "sur",
+    id: 4,
   },
   {
     image:
@@ -41,6 +49,8 @@ const offeredItems = [
     title: "Manta de temperatura regulable",
     description: "Manta térmica eléctrica ideal para dolores en los lumbares",
     action: "Dona: ",
+    area: "sur",
+    id: 5,
   },
   {
     image:
@@ -50,6 +60,8 @@ const offeredItems = [
     description:
       "Papagayo de plástico suizo con tapa y medidor para no moverse de la cama. Nunca fue utilizado por nadie. Marca Psykos",
     action: "Dona: ",
+    area: "oeste",
+    id: 6,
   },
   {
     image:
@@ -58,6 +70,8 @@ const offeredItems = [
     title: "Andador",
     description: "Caminador de cuatro ruedas con goma en las agarraderas",
     action: "Dona: ",
+    area: "centro",
+    id: 7,
   },
   {
     image:
@@ -66,6 +80,8 @@ const offeredItems = [
     title: "Bastón de madera",
     description: "Bastón de roble oscuro con tope de goma en la punta",
     action: "Dona: ",
+    area: "sur",
+    id: 8,
   },
   {
     image:
@@ -74,6 +90,8 @@ const offeredItems = [
     title: "Trípode de metal",
     description: "Bastón de 3 patas ideal para gente de la tercera edad",
     action: "Dona: ",
+    area: "oeste",
+    id: 9,
   },
   {
     image:
@@ -83,6 +101,8 @@ const offeredItems = [
     description:
       "Material: goma, ideal para personas que tienen que estar sentadas mucho tiempo en reposo.",
     action: "Dona: ",
+    area: "norte",
+    id: 10,
   },
 ];
 
@@ -94,6 +114,8 @@ const neededItems = [
     title: "Audífono",
     description: "Cualquiera de uso interno que permita regular el volumen",
     action: "Busca: ",
+    id: 11,
+    area: "oeste",
   },
   {
     image:
@@ -103,6 +125,8 @@ const neededItems = [
     description:
       "Cualquier medicamento antiséptico de uso externo, para desinfectar llagas crónicas",
     action: "Busca: ",
+    id: 12,
+    area: "oeste",
   },
   {
     image:
@@ -112,6 +136,8 @@ const neededItems = [
     description: "Que sea a vapor, cualquier marca, necesito urgente.",
     action: "Busca: ",
     special: true,
+    id: 13,
+    area: "oeste",
   },
   {
     image: "https://m.media-amazon.com/images/I/51U3GKw-rXL.jpg",
@@ -119,6 +145,8 @@ const neededItems = [
     title: "Pañales para adulto",
     description: "Talle XL hipoalergénicos",
     action: "Busca: ",
+    id: 14,
+    area: "oeste",
   },
   {
     image:
@@ -128,6 +156,8 @@ const neededItems = [
     description:
       "Guantes de latex y paquetes de gasas para tratar heridas de la piel",
     action: "Busca: ",
+    id: 15,
+    area: "oeste",
   },
   {
     image: "https://img.medicalexpo.es/images_me/photo-g/104321-8676583.jpg",
@@ -136,6 +166,8 @@ const neededItems = [
     description: "Cama con posiciones para internación puertas adentro",
     action: "Busca: ",
     special: true,
+    id: 16,
+    area: "oeste",
   },
   {
     image:
@@ -145,6 +177,8 @@ const neededItems = [
     description:
       "Todo tipo de jeringa descartable (no importa si incluye aguja)",
     action: "Busca: ",
+    id: 17,
+    area: "centro",
   },
   {
     image:
@@ -154,6 +188,8 @@ const neededItems = [
     description:
       "Cualquier marca, es para tratar heridas superficiales con desinfectante",
     action: "Busca: ",
+    id: 18,
+    area: "centro",
   },
   {
     image:
@@ -163,6 +199,8 @@ const neededItems = [
     description:
       "Bicicleta fija para tratamiento de recuperación de una lesión en las piernas",
     action: "Busca: ",
+    id: 19,
+    area: "centro",
   },
   {
     image:
@@ -173,91 +211,118 @@ const neededItems = [
       "Palo para sostener el paquete de suero que sea adaptable a cualquier medida",
     action: "Busca: ",
     special: true,
+    id: 20,
+    area: "centro",
   },
 ];
 const myNeeds = [
   {
     image:
       "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Mis búsquedas",
+    user: "Yo",
     title: "Colchón anti-escaras",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dona: ",
+    action: "Busco: ",
+    id: 21,
+    area: "oeste",
   },
   {
     image:
       "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Mis búsquedas 1",
+    user: "Yo 1",
     title: "Colchón anti-escaras",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dona: ",
+    action: "Busco: ",
+    id: 22,
+    area: "oeste",
   },
   {
     image:
       "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Mis búsquedas 2",
+    user: "Yo 2",
     title: "Colchón anti-escaras",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dona: ",
+    action: "Busco: ",
+    id: 23,
+    area: "oeste",
   },
   {
     image:
       "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Mis búsquedas 3",
+    user: "Yo 3",
     title: "Colchón anti-escaras",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dona: ",
+    action: "Busco: ",
+    id: 24,
+    area: "oeste",
   },
   {
     image:
       "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Mis búsquedas 4",
+    user: "Yo 4",
     title: "Colchón anti-escaras",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dona: ",
+    action: "Busco: ",
+    id: 25,
+    area: "oeste",
   },
 ];
 const myOffers = [
   {
     image:
       "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Mis ofertas",
-    title: "Colchón anti-escaras",
+    user: "Yo",
+    title: "Colchonardo",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dona: ",
+    action: "Dono: ",
+    id: 26,
+    area: "oeste",
   },
   {
     image:
       "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Mis ofertas 1",
-    title: "Colchón anti-escaras",
+    user: "Yo 1",
+    title: "Colchonardo",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dona: ",
+    action: "Dono: ",
+    id: 27,
+    area: "sur",
   },
   {
     image:
       "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Mis ofertas 2",
-    title: "Colchón anti-escaras",
+    user: "Yo 2",
+    title: "Colchonardo",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dona: ",
+    action: "Dono: ",
+    id: 28,
+    area: "sur",
   },
   {
     image:
       "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Mis ofertas 3",
-    title: "Colchón anti-escaras",
+    user: "Yo 3",
+    title: "Colchonardo",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dona: ",
+    action: "Dono: ",
+    id: 29,
+    area: "sur",
   },
   {
     image:
       "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Mis ofertas 4",
-    title: "Colchón anti-escaras",
+    user: "Yo 4",
+    title: "Colchonardo",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dona: ",
+    action: "Dono: ",
+    id: 30,
+    area: "oeste",
   },
 ];
 
-export { offeredItems, neededItems, myOffers, myNeeds };
+const allTheArrays = offeredItems
+  .concat(neededItems)
+  .concat(myOffers)
+  .concat(myNeeds);
+
+export { offeredItems, neededItems, myOffers, myNeeds, allTheArrays };

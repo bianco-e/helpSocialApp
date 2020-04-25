@@ -1,23 +1,29 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import Modal from "react-bootstrap/Modal";
+import { allTheArrays } from "../data/data.js";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import ItemDetail from "../components/ItemDetail";
 
-const ItemCard = ({
-  image,
-  title,
-  description,
-  action,
-  user,
-  id,
-  special = false,
-}) => {
-  const [modalShow, setModalShow] = useState(false);
-
+const ItemDetail = ({ modalShow, setModalShow, itemID }) => {
+  const {
+    user,
+    title,
+    image,
+    description,
+    action,
+    special,
+  } = allTheArrays.find((item) => {
+    return item.id === itemID;
+  });
   return (
-    <button className="itemproportion" onClick={() => setModalShow(true)}>
+    <Modal
+      show={modalShow}
+      onHide={() => {
+        setModalShow(false);
+      }}
+      centered
+    >
       <Card
         className="m-2"
         bg={`${special && "info"}`}
@@ -40,13 +46,8 @@ const ItemCard = ({
           </small>
         </Card.Footer>
       </Card>
-      <ItemDetail
-        modalShow={modalShow}
-        setModalShow={setModalShow}
-        itemID={id}
-      />
-    </button>
+    </Modal>
   );
 };
 
-export default ItemCard;
+export default ItemDetail;
