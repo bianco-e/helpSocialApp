@@ -204,7 +204,7 @@ const neededItems = [
   },
   {
     image:
-      "https://http2.mlstatic.com/portasuero-con-4-ganchos-y-5-ruedas-dobles-D_NQ_NP_602605-MLA28721445264_112018-Q.jpg",
+      "https://i.pinimg.com/originals/14/38/96/14389621dfde35374be8a0b669642bdf.jpg",
     user: "Agustín Sosa",
     title: "Sostén de pie para suero",
     description:

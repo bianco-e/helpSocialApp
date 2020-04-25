@@ -1,9 +1,11 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import { allTheArrays } from "../data/data.js";
+import { findItemById } from "../data/apiInteraction.js";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
 
 const ItemDetail = ({ modalShow, setModalShow, itemID }) => {
   const {
@@ -12,10 +14,9 @@ const ItemDetail = ({ modalShow, setModalShow, itemID }) => {
     image,
     description,
     action,
+    area,
     special,
-  } = allTheArrays.find((item) => {
-    return item.id === itemID;
-  });
+  } = findItemById(allTheArrays, itemID);
   return (
     <Modal
       show={modalShow}
@@ -33,17 +34,24 @@ const ItemDetail = ({ modalShow, setModalShow, itemID }) => {
         <Card.Body>
           <h6 className={`${special && "white"}`}>{title}</h6>
           <Card.Text className="mediumText">{description}</Card.Text>
+          <Card.Text className="mediumText">Zona {area}</Card.Text>
         </Card.Body>
         <Card.Footer>
-          <small className="smallText text-muted">
-            {action}
-            <Link
-              className={`${special ? "white textDecoNone" : "smallText"}`}
-              to="/"
-            >
-              {user}
-            </Link>
-          </small>
+          <div className="justifyBetween">
+            <small className="smallText text-muted">
+              {action}
+              <Link
+                className={`${special ? "white textDecoNone" : "smallText"}`}
+                to="/"
+              >
+                {user}
+              </Link>
+            </small>
+            {special && <h6 className="white">URGENTE</h6>}
+            <Button size="sm" variant="outline-dark">
+              Contactar
+            </Button>
+          </div>
         </Card.Footer>
       </Card>
     </Modal>

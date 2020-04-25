@@ -41,7 +41,7 @@ const Items = ({
             <Suspense fallback={<Spinner animation="grow" variant="primary" />}>
               <div className="flexColumn">
                 <div className="App flexWrap">
-                  {arrayToRender.map((item, idx) => {
+                  {arrayToRender.map((item) => {
                     return (
                       <ItemCard
                         image={item.image}
