@@ -1,28 +1,17 @@
 import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import firebase from "../data/firebase.js";
+import { AppCTX } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import { Link } from "react-router-dom";
+import TopBar from "./TopBar";
 
 const Login = () => {
+  const { user, setUser } = React.useContext(AppCTX);
+  console.log(user);
   return (
     <>
-      <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">AppName</Navbar.Brand>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#">¿Qué es AppName?</Nav.Link>
-          </Nav>
-          <Form inline>
-            <Link to="/">
-              <Button variant="outline-success">Crear cuenta</Button>
-            </Link>
-          </Form>
-        </Navbar.Collapse>
-      </Navbar>
-
+      <TopBar forLogin={true} />
       <div className="loginDiv">
         <Form>
           <Form.Group controlId="formBasicEmail">
@@ -38,9 +27,17 @@ const Login = () => {
             <Link to="/myoffers">
               <Button variant="info">Olvidé mi contraseña</Button>
             </Link>
-            <Link to="/home">
-              <Button variant="info">Iniciar sesión</Button>
-            </Link>
+            <Button
+              variant="info"
+              onClick={() =>
+                firebase
+                  .doSignInWithGoogle()
+                  .then((googleUser) => setUser(googleUser))
+                  .catch((error) => console.log(error))
+              }
+            >
+              Iniciar sesión
+            </Button>
           </div>
         </Form>
       </div>

@@ -38,7 +38,13 @@ const Items = ({
             </Link>
           </Card.Header>
           <CardColumns>
-            <Suspense fallback={<Spinner animation="grow" variant="primary" />}>
+            <Suspense
+              fallback={
+                <div className="spinnerDiv">
+                  <Spinner animation="grow" variant="primary" />
+                </div>
+              }
+            >
               <div className="flexColumn">
                 <div className="App flexWrap">
                   {arrayToRender.map((item) => {

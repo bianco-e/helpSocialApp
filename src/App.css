@@ -68,3 +68,7 @@
   all: unset;
   width: 20%;
 }
+.spinnerDiv {
+  width: 100%;
+  text-align: center;
+}
