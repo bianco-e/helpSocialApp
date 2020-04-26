@@ -14,8 +14,8 @@ function App() {
   return (
     <AuthContext>
       <BrowserRouter>
-        <Route exact path="/" render={Login} />
-        <Route exact path="/home" render={Home} />
+        <Route exact path="/" render={() => <Login />} />
+        <Route exact path="/home" render={() => <Home />} />
         <Route
           exact
           path="/myoffers"

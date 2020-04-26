@@ -1,7 +1,7 @@
 import React from "react";
 import firebase from "../data/firebase.js";
 import { AppCTX } from "../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import TopBar from "./TopBar";
@@ -9,6 +9,7 @@ import TopBar from "./TopBar";
 const Login = () => {
   const { user, setUser } = React.useContext(AppCTX);
   console.log(user);
+  const history = useHistory();
   return (
     <>
       <TopBar forLogin={true} />
@@ -32,7 +33,10 @@ const Login = () => {
               onClick={() =>
                 firebase
                   .doSignInWithGoogle()
-                  .then((googleUser) => setUser(googleUser))
+                  .then((googleUser) => {
+                    setUser(googleUser);
+                    history.push("/home");
+                  })
                   .catch((error) => console.log(error))
               }
             >
