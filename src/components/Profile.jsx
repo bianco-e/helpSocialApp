@@ -10,35 +10,32 @@ const Profile = () => {
   if (!user) return null;
   const userName = user.displayName;
   const userPicture = user.photoURL;
+  console.log(user);
 
   return (
-    <div className="profileDiv">
-      <Card style={{ width: "16rem" }} bg="info" variant="position">
-        <Image
-          variant="top"
-          src={userPicture}
-          className="profileImage"
-          alt="Profile picture"
-          roundedCircle
-          fluid
-        />
-        <Card.Body>
-          <div className="flexColumn">
-            <h4 className="padding">{userName}</h4>
-            <h6 className="padding">Zona sur</h6>
-            <h6 className="padding">Con movilidad</h6>
+    <Card bsPrefix="profileDiv" bg="info" variant="position">
+      <Image
+        variant="top"
+        src={userPicture}
+        className="profileImage"
+        alt="Profile picture"
+        roundedCircle
+        fluid
+      />
+      <Card.Body>
+        <div className="flexColumn">
+          <h4 className="padding">{userName}</h4>
 
-            <Link to="/myoffers" className="profileButton">
-              <Button variant="outline-dark">Mis ofertas</Button>
-            </Link>
+          <Link to="/myoffers" className="profileButton">
+            <Button variant="outline-light">Mis ofertas</Button>
+          </Link>
 
-            <Link to="/myneeds" className="profileButton">
-              <Button variant="outline-dark">Mis búsquedas</Button>
-            </Link>
-          </div>
-        </Card.Body>
-      </Card>
-    </div>
+          <Link to="/myneeds" className="profileButton">
+            <Button variant="outline-light">Mis búsquedas</Button>
+          </Link>
+        </div>
+      </Card.Body>
+    </Card>
   );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import {
   firstnOfferedItems,
   firstnNeededItems,

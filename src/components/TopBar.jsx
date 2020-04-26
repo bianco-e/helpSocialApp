@@ -52,7 +52,9 @@ const TopBar = ({ forLogin = false }) => {
           <>
             <InputGroup className="margin0">
               <InputGroup.Prepend>
-                <InputGroup.Text>🔍</InputGroup.Text>
+                <InputGroup.Text>
+                  <span className="margin0">🔍</span>
+                </InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
                 placeholder="Búsqueda"
@@ -66,7 +68,7 @@ const TopBar = ({ forLogin = false }) => {
               />
             </InputGroup>
             &nbsp;
-            <Button variant="info" onClick={() => logOutUsingGoogle()}>
+            <Button variant="danger" onClick={() => logOutUsingGoogle()}>
               Cerrar sesión
             </Button>
           </>
