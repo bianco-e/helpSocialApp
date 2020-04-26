@@ -1,17 +1,45 @@
-const sortBySpecialProp = (array) => {
-  return array.sort((a, b) => {
+import {
+  offeredItems,
+  neededItems,
+  myOffers,
+  myNeeds,
+  allTheArrays,
+} from "./data.js";
+
+const sortBySpecialProp = () => {
+  return neededItems.sort((a, b) => {
     return b.hasOwnProperty("special") - a.hasOwnProperty("special");
   });
 };
 
-const findItemById = (array, itemID) => {
-  return array.find((item) => {
+const findItemGloballyById = (itemID) => {
+  return allTheArrays.find((item) => {
     return item.id === itemID;
   });
 };
 
-const firstnItems = (array, n) => {
-  return array.slice(0, n);
+const firstnOfferedItems = (n) => {
+  return offeredItems.slice(0, n);
+};
+const firstnNeededItems = (n) => {
+  return neededItems.slice(0, n);
+};
+const firstnSortedNeededItems = (n) => {
+  return sortBySpecialProp().slice(0, n);
+};
+const firstnMyOffers = (n) => {
+  return myOffers.slice(0, n);
+};
+const firstnMyNeeds = (n) => {
+  return myNeeds.slice(0, n);
 };
 
-export { firstnItems, findItemById, sortBySpecialProp };
+export {
+  firstnOfferedItems,
+  firstnNeededItems,
+  firstnSortedNeededItems,
+  firstnMyOffers,
+  firstnMyNeeds,
+  findItemGloballyById,
+  sortBySpecialProp,
+};

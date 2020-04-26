@@ -3,8 +3,8 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import addImage from "../images/addImage";
-import TopBar from "./TopBar";
-import Profile from "./Profile";
+import TopBar from "../components/TopBar";
+import Profile from "../components/Profile";
 
 const AddItem = ({ offer = false, need = false }) => {
   return (

@@ -4,11 +4,10 @@ import { AppCTX } from "../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import TopBar from "./TopBar";
+import TopBar from "../components/TopBar";
 
 const Login = () => {
   const { user, setUser } = React.useContext(AppCTX);
-  console.log(user);
   const history = useHistory();
   return (
     <>

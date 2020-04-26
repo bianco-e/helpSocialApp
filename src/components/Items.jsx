@@ -3,12 +3,9 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/Navbar";
 import Spinner from "react-bootstrap/Spinner";
-import TopBar from "./TopBar";
-import Profile from "./Profile";
 const ItemCard = lazy(() => import("./ItemCard"));
 
 const Items = ({
-  asChild = true,
   arrayToRender,
   needed = false,
   offers = false,
@@ -17,9 +14,7 @@ const Items = ({
 }) => {
   return (
     <div>
-      {!asChild && <TopBar />}
-      {!asChild && <Profile />}
-      <div className={`${asChild ? "App" : "App margin21-1"}`}>
+      <div className="App margin21-1">
         <Card border="primary" className="m-2">
           <Card.Header>
             <Link

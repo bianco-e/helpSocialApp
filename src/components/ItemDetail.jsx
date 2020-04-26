@@ -1,7 +1,6 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import { allTheArrays } from "../data/data.js";
-import { findItemById } from "../data/apiInteraction.js";
+import { findItemGloballyById } from "../data/apiInteraction.js";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
@@ -16,7 +15,7 @@ const ItemDetail = ({ modalShow, setModalShow, itemID }) => {
     action,
     area,
     special,
-  } = findItemById(allTheArrays, itemID);
+  } = findItemGloballyById(itemID);
   return (
     <Modal
       show={modalShow}
