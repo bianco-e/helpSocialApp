@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, useParams } from "react-router-dom";
 import {
   firstnOfferedItems,
   firstnNeededItems,
@@ -14,12 +14,15 @@ import Needs from "../views/Needs";
 import Offers from "../views/Offers";
 import MyOptions from "../views/MyOptions";
 import AddItem from "../views/AddItem";
+import PrivateRoute from "./PrivateRoute";
+import SearchResults from "../views/SearchResults";
 
 function App() {
   return (
     <BrowserRouter>
       <Route exact path="/" render={() => <Login />} />
-      <Route exact path="/home" render={() => <Home />} />
+      <PrivateRoute exact path="/home" render={() => <Home />} />
+      <Route exact path="/search/:keyword" render={() => <SearchResults />} />
       <Route
         exact
         path="/myoffers"

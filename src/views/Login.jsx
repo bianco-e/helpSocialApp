@@ -1,49 +1,21 @@
-import React, { useContext } from "react";
-import firebase from "../data/firebase.js";
+import React, { useContext, useEffect } from "react";
 import AuthContext from "../context/AuthContext";
-import { Link, useHistory } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { useHistory } from "react-router-dom";
+import Image from "react-bootstrap/Image";
 import TopBar from "../components/TopBar";
 
 const Login = () => {
-  const { user, setUser } = useContext(AuthContext);
+  const imagenMuestra =
+    "https://media.istockphoto.com/vectors/help-social-concept-vector-id1059943696";
+  const user = useContext(AuthContext);
   const history = useHistory();
+  useEffect(() => {
+    user && history.push("/home");
+  }, [user]);
   return (
     <>
       <TopBar forLogin={true} />
-      <div className="loginDiv">
-        <Form>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Usuario</Form.Label>
-            <Form.Control type="text" placeholder="Usuario" />
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Contraseña</Form.Label>
-            <Form.Control type="password" placeholder="Contraseña" />
-          </Form.Group>
-          <div className="App">
-            <Link to="/myoffers">
-              <Button variant="info">Olvidé mi contraseña</Button>
-            </Link>
-            <Button
-              variant="info"
-              onClick={() =>
-                firebase
-                  .doSignInWithGoogle()
-                  .then((googleUser) => {
-                    setUser(googleUser);
-                    history.push("/home");
-                  })
-                  .catch((error) => console.log(error))
-              }
-            >
-              Iniciar sesión
-            </Button>
-          </div>
-        </Form>
-      </div>
+      <Image src={imagenMuestra} fluid />
     </>
   );
 };

@@ -19,6 +19,7 @@ class Firebase {
     this.googleProvider = new firebase.auth.GoogleAuthProvider();
   }
   doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
+  logOut = () => this.auth.signOut();
 }
 
 export default new Firebase(firebaseConfig);

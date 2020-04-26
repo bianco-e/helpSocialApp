@@ -5,6 +5,30 @@ import {
   myNeeds,
   allTheArrays,
 } from "./data.js";
+import firebase from "../data/firebase.js";
+
+const searchInOffers = (keyword, prop) => {
+  return offeredItems.filter((item) => {
+    return item[prop].toLowerCase().includes(keyword.toLowerCase());
+  });
+};
+const searchInNeeded = (keyword, prop) => {
+  return neededItems.filter((item) => {
+    return item[prop].toLowerCase().includes(keyword.toLowerCase());
+  });
+};
+
+const logInUsingGoogle = () => {
+  return firebase.doSignInWithGoogle().catch((error) => console.log(error));
+};
+const logOutUsingGoogle = () => {
+  return firebase.logOut();
+};
+const changeAuthState = (toDo) => {
+  return firebase.auth.onAuthStateChanged((user) => {
+    user ? toDo(user) : toDo(undefined);
+  });
+};
 
 const sortBySpecialProp = () => {
   return neededItems.sort((a, b) => {
@@ -42,4 +66,9 @@ export {
   firstnMyNeeds,
   findItemGloballyById,
   sortBySpecialProp,
+  logInUsingGoogle,
+  logOutUsingGoogle,
+  changeAuthState,
+  searchInOffers,
+  searchInNeeded,
 };

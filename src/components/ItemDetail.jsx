@@ -46,7 +46,7 @@ const ItemDetail = ({ modalShow, setModalShow, itemID }) => {
                 {user}
               </Link>
             </small>
-            {special && <h6 className="white">URGENTE</h6>}
+            {special && <h6 className="white">🏮</h6>}
             <Button size="sm" variant="outline-dark">
               Contactar
             </Button>

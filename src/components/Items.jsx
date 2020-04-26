@@ -11,6 +11,7 @@ const Items = ({
   offers = false,
   myneeds = false,
   myoffers = false,
+  search = false,
 }) => {
   return (
     <div>
@@ -42,20 +43,22 @@ const Items = ({
             >
               <div className="flexColumn">
                 <div className="App flexWrap">
-                  {arrayToRender.map((item) => {
-                    return (
-                      <ItemCard
-                        image={item.image}
-                        title={item.title}
-                        description={item.description}
-                        action={item.action}
-                        user={item.user}
-                        special={item.special}
-                        id={item.id}
-                        key={item.user + item.title}
-                      />
-                    );
-                  })}
+                  {search && arrayToRender.length === 0
+                    ? "No se encontraron elementos"
+                    : arrayToRender.map((item) => {
+                        return (
+                          <ItemCard
+                            image={item.image}
+                            title={item.title}
+                            description={item.description}
+                            action={item.action}
+                            user={item.user}
+                            special={item.special}
+                            id={item.id}
+                            key={item.user + item.title}
+                          />
+                        );
+                      })}
                 </div>
               </div>
             </Suspense>
