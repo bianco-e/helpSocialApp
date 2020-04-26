@@ -1,15 +1,21 @@
-.App {
+.flex {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+}
+.between {
+  justify-content: space-between;
+}
+.around {
+  justify-content: space-around;
+}
+.center {
+  justify-content: center;
+}
+.left {
+  justify-content: left;
 }
 .flexWrap {
   flex-wrap: wrap;
-}
-.justifyBetween {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 .margin21-1 {
   margin-left: 21%;
@@ -70,4 +76,21 @@
 }
 .navLink:hover {
   text-decoration: none;
+}
+.itemButton {
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  border-radius: 0.25rem;
+  padding: 0;
+  width: 100%;
+  margin: 2px;
+}
+.bgColor {
+  border: 1px solid #007bff;
+  background-color: #007bff;
+}
+.padding8-8 {
+  padding-left: 8px;
+  padding-right: 8px;
 }

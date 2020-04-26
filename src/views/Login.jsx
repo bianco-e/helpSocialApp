@@ -3,6 +3,7 @@ import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import TopBar from "../components/TopBar";
+import SmallItem from "../components/SmallItem";
 
 const Login = () => {
   const imagenMuestra =

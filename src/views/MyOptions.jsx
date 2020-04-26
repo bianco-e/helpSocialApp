@@ -10,7 +10,7 @@ const MyOptions = ({ arrayToRender, myneeds = false, myoffers = false }) => {
     <div>
       <TopBar />
       <Profile />
-      <div className="flexColumn">
+      <div className="flexColumn margin21-1">
         {myneeds ? (
           <Items arrayToRender={arrayToRender} myneeds={true} />
         ) : (

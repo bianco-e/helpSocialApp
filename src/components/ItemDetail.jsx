@@ -26,7 +26,7 @@ const ItemDetail = ({ modalShow, setModalShow, itemID }) => {
     >
       <Card
         className="m-2"
-        bg={`${special && "info"}`}
+        bg={`${special && "primary"}`}
         text={`${special && "white"}`}
       >
         <Image variant="top" src={image} alt={title} fluid />
@@ -36,7 +36,7 @@ const ItemDetail = ({ modalShow, setModalShow, itemID }) => {
           <Card.Text className="mediumText">Zona {area}</Card.Text>
         </Card.Body>
         <Card.Footer>
-          <div className="justifyBetween">
+          <div className="flex between">
             <small className="smallText text-muted">
               {action}
               <Link

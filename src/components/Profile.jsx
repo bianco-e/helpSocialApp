@@ -13,7 +13,7 @@ const Profile = () => {
   console.log(user);
 
   return (
-    <Card bsPrefix="profileDiv" bg="info" variant="position">
+    <Card bsPrefix="profileDiv" bg="primary" variant="position">
       <Image
         variant="top"
         src={userPicture}

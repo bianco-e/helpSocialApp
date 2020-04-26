@@ -14,7 +14,7 @@ const Home = () => {
     <div>
       <TopBar />
       <Profile />
-      <div className="flexColumn">
+      <div className="flex between margin21-1">
         <Items arrayToRender={firstFiveNeeded} needed={true} />
         <Items arrayToRender={firstFiveOffers} offers={true} />
       </div>

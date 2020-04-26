@@ -21,7 +21,7 @@ const TopBar = ({ forLogin = false }) => {
             ¿Qué es AppName?
           </Link>
         ) : (
-          <div className="justifyBetween">
+          <div className="flex between">
             <Link to="/home" className="navLink">
               &nbsp; Inicio &nbsp;
             </Link>

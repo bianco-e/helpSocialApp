@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import CardColumns from "react-bootstrap/Navbar";
 import Spinner from "react-bootstrap/Spinner";
-const ItemCard = lazy(() => import("./ItemCard"));
+const SmallItem = lazy(() => import("./SmallItem"));
 
 const Items = ({
   arrayToRender,
@@ -15,7 +15,7 @@ const Items = ({
 }) => {
   return (
     <div>
-      <div className="App margin21-1">
+      <div className="flex around">
         <Card border="primary" className="m-2">
           <Card.Header>
             <Link
@@ -42,12 +42,12 @@ const Items = ({
               }
             >
               <div className="flexColumn">
-                <div className="App flexWrap">
+                <div className="flex around flexWrap">
                   {search && arrayToRender.length === 0
                     ? "No se encontraron elementos"
                     : arrayToRender.map((item) => {
                         return (
-                          <ItemCard
+                          <SmallItem
                             image={item.image}
                             title={item.title}
                             description={item.description}

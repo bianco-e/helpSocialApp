@@ -23,7 +23,7 @@ const AddItem = ({ offer = false, need = false }) => {
                 Foto{need ? " ilustrativa" : " del objeto"}
               </Form.Label>
               <br />
-              <div className="justifyBetween">
+              <div className="flex between">
                 {addImage}
                 <Button variant="outline-info" size="sm">
                   ✚

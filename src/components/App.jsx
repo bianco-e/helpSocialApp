@@ -22,7 +22,11 @@ function App() {
     <BrowserRouter>
       <Route exact path="/" render={() => <Login />} />
       <PrivateRoute exact path="/home" render={() => <Home />} />
-      <Route exact path="/search/:keyword" render={() => <SearchResults />} />
+      <PrivateRoute
+        exact
+        path="/search/:keyword"
+        render={() => <SearchResults />}
+      />
       <Route
         exact
         path="/myoffers"
