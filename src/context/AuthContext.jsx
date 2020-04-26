@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-export const AppCTX = React.createContext();
-const AuthContext = ({ children }) => {
-  const [user, setUser] = useState();
+const Context = React.createContext({});
+
+export const AuthContextProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+
   return (
-    <AppCTX.Provider value={{ user: user, setUser: setUser }}>
-      {children}
-    </AppCTX.Provider>
+    <Context.Provider value={{ user, setUser }}>{children}</Context.Provider>
   );
 };
 
-export default AuthContext;
+export default Context;

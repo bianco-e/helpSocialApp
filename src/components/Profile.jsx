@@ -1,12 +1,12 @@
-import React from "react";
-import { AppCTX } from "../context/AuthContext";
+import React, { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 
 const Profile = () => {
-  const { user } = React.useContext(AppCTX);
+  const { user } = useContext(AuthContext);
   if (!user) return null;
   const userName = user.additionalUserInfo.profile.name;
   const userPicture = user.additionalUserInfo.profile.picture;

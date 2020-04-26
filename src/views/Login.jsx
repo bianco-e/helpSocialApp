@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import firebase from "../data/firebase.js";
-import { AppCTX } from "../context/AuthContext";
+import AuthContext from "../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import TopBar from "../components/TopBar";
 
 const Login = () => {
-  const { user, setUser } = React.useContext(AppCTX);
+  const { user, setUser } = useContext(AuthContext);
   const history = useHistory();
   return (
     <>
