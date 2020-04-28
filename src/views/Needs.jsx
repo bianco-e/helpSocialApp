@@ -9,7 +9,7 @@ const Needs = ({ arrayToRender }) => {
       <TopBar />
       <Profile />
       <div className="margin21-1">
-        <Items arrayToRender={arrayToRender} needed={true} />
+        <Items arrayToRender={arrayToRender} needed={true} filter={true} />
       </div>
     </>
   );

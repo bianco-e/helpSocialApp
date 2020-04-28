@@ -7,8 +7,9 @@ const offeredItems = [
     description:
       "Acolchonadas en la punta con goma espuma nivel 3. Excelente estado",
     action: "Dona: ",
-    area: "sur",
+    zone: "sur",
     id: 1,
+    category: "Accesorios",
   },
   {
     image:
@@ -18,8 +19,9 @@ const offeredItems = [
     description:
       "Usada con dirección automática y posapies de hierro, con cubiertas de caucho.",
     action: "Dona: ",
-    area: "oeste",
+    zone: "oeste",
     id: 2,
+    category: "Accesorios",
   },
   {
     image:
@@ -29,8 +31,9 @@ const offeredItems = [
     description:
       "2 tabletas de Ibupirac 600 que eran tomadas para reducir efectos de la quimio.",
     action: "Dona: ",
-    area: "centro",
+    zone: "centro",
     id: 3,
+    category: "Tratamiento",
   },
   {
     image:
@@ -39,8 +42,9 @@ const offeredItems = [
     title: "Colchón anti-escaras",
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Dona: ",
-    area: "sur",
+    zone: "sur",
     id: 4,
+    category: "Internación",
   },
   {
     image:
@@ -49,8 +53,9 @@ const offeredItems = [
     title: "Manta de temperatura regulable",
     description: "Manta térmica eléctrica ideal para dolores en los lumbares",
     action: "Dona: ",
-    area: "sur",
+    zone: "sur",
     id: 5,
+    category: "Accesorios",
   },
   {
     image:
@@ -60,8 +65,9 @@ const offeredItems = [
     description:
       "Papagayo de plástico suizo con tapa y medidor para no moverse de la cama. Nunca fue utilizado por nadie. Marca Psykos",
     action: "Dona: ",
-    area: "oeste",
+    zone: "oeste",
     id: 6,
+    category: "Accesorios",
   },
   {
     image:
@@ -70,8 +76,9 @@ const offeredItems = [
     title: "Andador",
     description: "Caminador de cuatro ruedas con goma en las agarraderas",
     action: "Dona: ",
-    area: "centro",
+    zone: "centro",
     id: 7,
+    category: "Accesorios",
   },
   {
     image:
@@ -80,8 +87,9 @@ const offeredItems = [
     title: "Bastón de madera",
     description: "Bastón de roble oscuro con tope de goma en la punta",
     action: "Dona: ",
-    area: "sur",
+    zone: "sur",
     id: 8,
+    category: "Accesorios",
   },
   {
     image:
@@ -90,8 +98,9 @@ const offeredItems = [
     title: "Trípode de metal",
     description: "Bastón de 3 patas ideal para gente de la tercera edad",
     action: "Dona: ",
-    area: "oeste",
+    zone: "oeste",
     id: 9,
+    category: "Accesorios",
   },
   {
     image:
@@ -101,8 +110,9 @@ const offeredItems = [
     description:
       "Material: goma, ideal para personas que tienen que estar sentadas mucho tiempo en reposo.",
     action: "Dona: ",
-    area: "norte",
+    zone: "norte",
     id: 10,
+    category: "Accesorios",
   },
 ];
 
@@ -115,7 +125,8 @@ const neededItems = [
     description: "Cualquiera de uso interno que permita regular el volumen",
     action: "Busca: ",
     id: 11,
-    area: "oeste",
+    zone: "oeste",
+    category: "Accesorios",
   },
   {
     image:
@@ -126,7 +137,8 @@ const neededItems = [
       "Cualquier medicamento antiséptico de uso externo, para desinfectar llagas crónicas",
     action: "Busca: ",
     id: 12,
-    area: "oeste",
+    zone: "oeste",
+    category: "Tratamiento",
   },
   {
     image:
@@ -137,7 +149,8 @@ const neededItems = [
     action: "Busca: ",
     special: true,
     id: 13,
-    area: "oeste",
+    zone: "oeste",
+    category: "Accesorios",
   },
   {
     image: "https://m.media-amazon.com/images/I/51U3GKw-rXL.jpg",
@@ -146,7 +159,8 @@ const neededItems = [
     description: "Talle XL hipoalergénicos",
     action: "Busca: ",
     id: 14,
-    area: "oeste",
+    zone: "oeste",
+    category: "Descartables",
   },
   {
     image:
@@ -157,7 +171,8 @@ const neededItems = [
       "Guantes de latex y paquetes de gasas para tratar heridas de la piel",
     action: "Busca: ",
     id: 15,
-    area: "oeste",
+    zone: "oeste",
+    category: "Descartables",
   },
   {
     image: "https://img.medicalexpo.es/images_me/photo-g/104321-8676583.jpg",
@@ -167,18 +182,20 @@ const neededItems = [
     action: "Busca: ",
     special: true,
     id: 16,
-    area: "oeste",
+    zone: "oeste",
+    category: "Internación",
   },
   {
     image:
-      "data:image/jpeg;base64,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",
+      "data:image/jpeg;base64,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",
     user: "Gastón Oviedo",
     title: "Jeringas descartables",
     description:
       "Todo tipo de jeringa descartable (no importa si incluye aguja)",
     action: "Busca: ",
     id: 17,
-    area: "centro",
+    zone: "centro",
+    category: "Descartables",
   },
   {
     image:
@@ -189,7 +206,8 @@ const neededItems = [
       "Cualquier marca, es para tratar heridas superficiales con desinfectante",
     action: "Busca: ",
     id: 18,
-    area: "centro",
+    zone: "centro",
+    category: "Descartables",
   },
   {
     image:
@@ -200,7 +218,8 @@ const neededItems = [
       "Bicicleta fija para tratamiento de recuperación de una lesión en las piernas",
     action: "Busca: ",
     id: 19,
-    area: "centro",
+    zone: "centro",
+    category: "Rehabilitación",
   },
   {
     image:
@@ -212,7 +231,8 @@ const neededItems = [
     action: "Busca: ",
     special: true,
     id: 20,
-    area: "centro",
+    zone: "centro",
+    category: "Internación",
   },
 ];
 const myNeeds = [
@@ -224,7 +244,7 @@ const myNeeds = [
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Busco: ",
     id: 21,
-    area: "oeste",
+    zone: "oeste",
   },
   {
     image:
@@ -234,7 +254,7 @@ const myNeeds = [
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Busco: ",
     id: 22,
-    area: "oeste",
+    zone: "oeste",
   },
   {
     image:
@@ -244,7 +264,7 @@ const myNeeds = [
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Busco: ",
     id: 23,
-    area: "oeste",
+    zone: "oeste",
   },
   {
     image:
@@ -254,7 +274,7 @@ const myNeeds = [
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Busco: ",
     id: 24,
-    area: "oeste",
+    zone: "oeste",
   },
   {
     image:
@@ -264,7 +284,7 @@ const myNeeds = [
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Busco: ",
     id: 25,
-    area: "oeste",
+    zone: "oeste",
   },
 ];
 const myOffers = [
@@ -276,7 +296,7 @@ const myOffers = [
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Dono: ",
     id: 26,
-    area: "oeste",
+    zone: "oeste",
   },
   {
     image:
@@ -286,7 +306,7 @@ const myOffers = [
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Dono: ",
     id: 27,
-    area: "sur",
+    zone: "sur",
   },
   {
     image:
@@ -296,7 +316,7 @@ const myOffers = [
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Dono: ",
     id: 28,
-    area: "sur",
+    zone: "sur",
   },
   {
     image:
@@ -306,7 +326,7 @@ const myOffers = [
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Dono: ",
     id: 29,
-    area: "sur",
+    zone: "sur",
   },
   {
     image:
@@ -316,7 +336,7 @@ const myOffers = [
     description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
     action: "Dono: ",
     id: 30,
-    area: "oeste",
+    zone: "oeste",
   },
 ];
 

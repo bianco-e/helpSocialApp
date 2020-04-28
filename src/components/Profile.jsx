@@ -24,14 +24,18 @@ const Profile = () => {
       />
       <Card.Body>
         <div className="flexColumn">
-          <h4 className="padding">{userName}</h4>
+          <h4 className="paddingb50">{userName}</h4>
 
           <Link to="/myoffers" className="profileButton">
-            <Button variant="outline-light">Mis ofertas</Button>
+            <Button variant="outline-light" size="sm">
+              Mis ofertas
+            </Button>
           </Link>
 
           <Link to="/myneeds" className="profileButton">
-            <Button variant="outline-light">Mis búsquedas</Button>
+            <Button variant="outline-light" size="sm">
+              Mis búsquedas
+            </Button>
           </Link>
         </div>
       </Card.Body>

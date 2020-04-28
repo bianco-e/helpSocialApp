@@ -1,8 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
-import CardColumns from "react-bootstrap/Navbar";
 import Spinner from "react-bootstrap/Spinner";
+import Filter from "./Filter";
 const SmallItem = lazy(() => import("./SmallItem"));
 
 const Items = ({
@@ -12,6 +12,7 @@ const Items = ({
   myneeds = false,
   myoffers = false,
   search = false,
+  filter = false,
 }) => {
   return (
     <div>
@@ -33,7 +34,12 @@ const Items = ({
               </h6>
             </Link>
           </Card.Header>
-          <CardColumns>
+          <div className="flex left padding2pc">
+            {filter && offers ? (
+              <Filter offers={true} />
+            ) : (
+              needed && <Filter needed={true} />
+            )}
             <Suspense
               fallback={
                 <div className="spinnerDiv">
@@ -62,7 +68,7 @@ const Items = ({
                 </div>
               </div>
             </Suspense>
-          </CardColumns>
+          </div>
         </Card>
       </div>
     </div>

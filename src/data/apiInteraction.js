@@ -58,6 +58,17 @@ const firstnMyNeeds = (n) => {
   return myNeeds.slice(0, n);
 };
 
+const filterOffersByCategory = (string) => {
+  return offeredItems.filter((item) => {
+    return item.category === string;
+  });
+};
+const filterNeededByCategory = (string) => {
+  return neededItems.filter((item) => {
+    return item.category === string;
+  });
+};
+
 export {
   firstnOfferedItems,
   firstnNeededItems,
@@ -71,4 +82,6 @@ export {
   changeAuthState,
   searchInOffers,
   searchInNeeded,
+  filterOffersByCategory,
+  filterNeededByCategory,
 };

@@ -40,10 +40,23 @@ const AddItem = ({ offer = false, need = false }) => {
                 maxlength="240"
               />
               <br />
-              <Form.Label>Zona</Form.Label>
-              <Form.Control as="select">
-                <option>Misma del perfil</option>
-                <option>Otra zona</option>
+              <Form.Label>Categoría</Form.Label>
+              <Form.Control as="select" size="sm">
+                <option>Seleccionar categoría</option>
+                <option>Accesorios</option>
+                <option>Descartables</option>
+                <option>Internación</option>
+                <option>Rehabilitaciones</option>
+                <option>Tratamientos</option>
+              </Form.Control>
+              <br />
+              <Form.Label>Zona de la ciudad</Form.Label>
+              <Form.Control as="select" size="sm">
+                <option>Seleccionar zona</option>
+                <option>Norte</option>
+                <option>Centro</option>
+                <option>Sur</option>
+                <option>Oeste</option>
               </Form.Control>
               <br />
               <Form.Check

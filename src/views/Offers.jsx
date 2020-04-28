@@ -9,7 +9,7 @@ const Offers = ({ arrayToRender }) => {
       <TopBar />
       <Profile />
       <div className="margin21-1">
-        <Items arrayToRender={arrayToRender} offers={true} />
+        <Items arrayToRender={arrayToRender} offers={true} filter={true} />
       </div>
     </>
   );

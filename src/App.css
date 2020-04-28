@@ -29,8 +29,15 @@
   flex-direction: column;
   align-items: center;
 }
-.padding {
+.paddingb50 {
   padding-bottom: 50%;
+}
+.padding2pc {
+  padding: 2%;
+}
+.padding8-8 {
+  padding-left: 8px;
+  padding-right: 8px;
 }
 .profileDiv {
   position: fixed;
@@ -90,7 +97,10 @@
   border: 1px solid #007bff;
   background-color: #007bff;
 }
-.padding8-8 {
-  padding-left: 8px;
-  padding-right: 8px;
+.filterDiv {
+}
+.filterButton {
+  all: unset;
+  font-size: 10px;
+  cursor: pointer;
 }
