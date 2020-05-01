@@ -2,6 +2,11 @@
   display: flex;
   align-items: center;
 }
+.flexStart {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
 .between {
   justify-content: space-between;
 }
@@ -45,6 +50,8 @@
   top: 50px;
   width: 16rem;
   height: 100vh;
+  background-color: rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0px 0px 15px rgba(100, 100, 100, 0.7);
 }
 .profileImage {
   padding: 15%;
@@ -94,13 +101,13 @@
   margin: 2px;
 }
 .bgColor {
-  border: 1px solid #007bff;
-  background-color: #007bff;
+  border: 1px solid #dc3545;
+  background-color: #dc3545;
 }
 .filterDiv {
+  width: 30%;
+  margin: 0.5rem;
 }
-.filterButton {
-  all: unset;
-  font-size: 10px;
-  cursor: pointer;
+.width50pc {
+  width: 50%;
 }

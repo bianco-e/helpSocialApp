@@ -1,53 +1,80 @@
 import React from "react";
-import {
-  filterNeededByCategory,
-  filterOffersByCategory,
-} from "../data/apiInteraction";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
-const Filter = ({ offers = false, needed = false }) => {
+const Filter = ({ filterFn, urgFilter = false }) => {
   return (
-    <div className="padding2pc filterDiv">
-      <h6>Filtrar: </h6>
-      <button
-        className="filterButton"
-        onClick={() => {
-          needed ? filterNeededByCategory() : filterOffersByCategory();
-        }}
-      >
-        Accesorios
-      </button>
-      <button
-        className="filterButton"
-        onClick={() => {
-          needed ? filterNeededByCategory() : filterOffersByCategory();
-        }}
-      >
-        Descartables
-      </button>
-      <button
-        className="filterButton"
-        onClick={() => {
-          needed ? filterNeededByCategory() : filterOffersByCategory();
-        }}
-      >
-        Internación
-      </button>
-      <button
-        className="filterButton"
-        onClick={() => {
-          needed ? filterNeededByCategory() : filterOffersByCategory();
-        }}
-      >
-        Rehabilitación
-      </button>
-      <button
-        className="filterButton"
-        onClick={() => {
-          needed ? filterNeededByCategory() : filterOffersByCategory();
-        }}
-      >
-        Tratamientos
-      </button>
+    <div className="flexColumn filterDiv">
+      <Card>
+        <Card.Header>
+          <h6 className="margin0">Filtrar</h6>
+        </Card.Header>
+        {urgFilter && (
+          <Button
+            size="sm"
+            variant="outline-danger"
+            onClick={() => {
+              filterFn("Urgent");
+            }}
+          >
+            Urgentes
+          </Button>
+        )}
+        <Button
+          size="sm"
+          variant="light"
+          onClick={() => {
+            filterFn("Accesorios");
+          }}
+        >
+          Accesorios
+        </Button>
+        <Button
+          size="sm"
+          variant="light"
+          onClick={() => {
+            filterFn("Descartables");
+          }}
+        >
+          Descartables
+        </Button>
+        <Button
+          size="sm"
+          variant="light"
+          onClick={() => {
+            filterFn("Internación");
+          }}
+        >
+          Internación
+        </Button>
+        <Button
+          size="sm"
+          variant="light"
+          onClick={() => {
+            filterFn("Rehabilitación");
+          }}
+        >
+          Rehabilitación
+        </Button>
+        <Button
+          size="sm"
+          variant="light"
+          onClick={() => {
+            filterFn("Tratamientos");
+          }}
+        >
+          Tratamientos
+        </Button>
+        <Button
+          size="sm"
+          variant="light"
+          onClick={() => {
+            filterFn("ALL");
+          }}
+        >
+          Quitar filtro
+        </Button>
+      </Card>
     </div>
   );
 };

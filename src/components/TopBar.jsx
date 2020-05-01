@@ -25,7 +25,7 @@ const TopBar = ({ forLogin = false }) => {
             <Link to="/home" className="navLink">
               &nbsp; Inicio &nbsp;
             </Link>
-            <Link to="/needed" className="navLink">
+            <Link to="/needs" className="navLink">
               &nbsp; Se busca &nbsp;
             </Link>
             <Link to="/offers" className="navLink">

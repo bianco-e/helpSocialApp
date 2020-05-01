@@ -3,47 +3,36 @@ import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import ItemDetail from "../components/ItemDetail";
 
-const SmallItem = ({
-  image,
-  title,
-  description,
-  action,
-  user,
-  id,
-  special = false,
-}) => {
+const SmallItem = ({ image, title, description, user, urgent = false }) => {
   const [modalShow, setModalShow] = useState(false);
   return (
     <button
       className={`${
-        special ? "itemButton flex left bgColor" : "itemButton flex left"
+        urgent ? "itemButton flex left bgColor" : "itemButton flex left"
       }`}
       onClick={() => setModalShow(true)}
     >
       <Image src={image} alt={title} style={{ width: "20%" }} />
       <div className="padding8-8">
-        <h6 className={`${special && "white"}`}>{title}</h6>
+        <h6 className={`${urgent && "white"}`}>{title}</h6>
         <h6
           className={`${
-            special ? "mediumText white margin0" : "mediumText margin0"
+            urgent ? "mediumText white margin0" : "mediumText margin0"
           }`}
         >
           {description}
         </h6>
-        <small className={`${special ? "smallText white" : "smallText"}`}>
-          {action}
-          <Link
-            className={`${special ? "white textDecoNone" : "smallText"}`}
-            to="/"
-          >
-            {user}
-          </Link>
-        </small>
+        <Link
+          className={`${urgent ? "smallText white textDecoNone" : "smallText"}`}
+          to="/"
+        >
+          {user}
+        </Link>
       </div>
       <ItemDetail
         modalShow={modalShow}
         setModalShow={setModalShow}
-        itemID={id}
+        itemTitle={title}
       />
     </button>
   );

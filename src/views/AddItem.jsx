@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import addImage from "../images/addImage";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
+import { mapZonesIntoOptions } from "../data/apiInteraction";
 
 const AddItem = ({ offer = false, need = false }) => {
   return (
@@ -50,13 +51,10 @@ const AddItem = ({ offer = false, need = false }) => {
                 <option>Tratamientos</option>
               </Form.Control>
               <br />
-              <Form.Label>Zona de la ciudad</Form.Label>
+              <Form.Label>Barrio mas cercano</Form.Label>
               <Form.Control as="select" size="sm">
-                <option>Seleccionar zona</option>
-                <option>Norte</option>
-                <option>Centro</option>
-                <option>Sur</option>
-                <option>Oeste</option>
+                <option>Seleccionar barrio</option>
+                {mapZonesIntoOptions()}
               </Form.Control>
               <br />
               <Form.Check

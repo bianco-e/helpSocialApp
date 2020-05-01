@@ -1,15 +1,32 @@
-import {
-  offeredItems,
-  neededItems,
-  myOffers,
-  myNeeds,
-  allTheArrays,
-} from "./data.js";
+import React from "react";
+import { offeredItems, neededItems, allTheArrays, zones } from "./data.js";
 import firebase from "../data/firebase.js";
 
-const searchInOffers = (keyword, prop) => {
-  return offeredItems.filter((item) => {
-    return item[prop].toLowerCase().includes(keyword.toLowerCase());
+const changeAuthState = (toDo) => {
+  return firebase.auth.onAuthStateChanged((user) => {
+    user ? toDo(user) : toDo(undefined);
+  });
+};
+const findItemGloballyByTitle = (itemTitle) => {
+  return allTheArrays.find((item) => {
+    return item.title === itemTitle;
+  });
+};
+const getAllNeeds = () => {
+  return firebase.getNeeds();
+};
+const getAllOffers = () => {
+  return firebase.getOffers();
+};
+const logInUsingGoogle = () => {
+  return firebase.doSignInWithGoogle().catch((error) => console.log(error));
+};
+const logOutUsingGoogle = () => {
+  return firebase.logOut();
+};
+const mapZonesIntoOptions = () => {
+  return zones.map((zone) => {
+    return <option>{zone}</option>;
   });
 };
 const searchInNeeded = (keyword, prop) => {
@@ -17,71 +34,19 @@ const searchInNeeded = (keyword, prop) => {
     return item[prop].toLowerCase().includes(keyword.toLowerCase());
   });
 };
-
-const logInUsingGoogle = () => {
-  return firebase.doSignInWithGoogle().catch((error) => console.log(error));
-};
-const logOutUsingGoogle = () => {
-  return firebase.logOut();
-};
-const changeAuthState = (toDo) => {
-  return firebase.auth.onAuthStateChanged((user) => {
-    user ? toDo(user) : toDo(undefined);
-  });
-};
-
-const sortBySpecialProp = () => {
-  return neededItems.sort((a, b) => {
-    return b.hasOwnProperty("special") - a.hasOwnProperty("special");
-  });
-};
-
-const findItemGloballyById = (itemID) => {
-  return allTheArrays.find((item) => {
-    return item.id === itemID;
-  });
-};
-
-const firstnOfferedItems = (n) => {
-  return offeredItems.slice(0, n);
-};
-const firstnNeededItems = (n) => {
-  return neededItems.slice(0, n);
-};
-const firstnSortedNeededItems = (n) => {
-  return sortBySpecialProp().slice(0, n);
-};
-const firstnMyOffers = (n) => {
-  return myOffers.slice(0, n);
-};
-const firstnMyNeeds = (n) => {
-  return myNeeds.slice(0, n);
-};
-
-const filterOffersByCategory = (string) => {
+const searchInOffers = (keyword, prop) => {
   return offeredItems.filter((item) => {
-    return item.category === string;
+    return item[prop].toLowerCase().includes(keyword.toLowerCase());
   });
 };
-const filterNeededByCategory = (string) => {
-  return neededItems.filter((item) => {
-    return item.category === string;
-  });
-};
-
 export {
-  firstnOfferedItems,
-  firstnNeededItems,
-  firstnSortedNeededItems,
-  firstnMyOffers,
-  firstnMyNeeds,
-  findItemGloballyById,
-  sortBySpecialProp,
+  changeAuthState,
+  findItemGloballyByTitle,
+  getAllNeeds,
+  getAllOffers,
   logInUsingGoogle,
   logOutUsingGoogle,
-  changeAuthState,
-  searchInOffers,
+  mapZonesIntoOptions,
   searchInNeeded,
-  filterOffersByCategory,
-  filterNeededByCategory,
+  searchInOffers,
 };

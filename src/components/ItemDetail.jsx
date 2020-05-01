@@ -1,21 +1,21 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import { findItemGloballyById } from "../data/apiInteraction.js";
+import { findItemGloballyByTitle } from "../data/apiInteraction.js";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 
-const ItemDetail = ({ modalShow, setModalShow, itemID }) => {
+const ItemDetail = ({ modalShow, setModalShow, itemTitle }) => {
   const {
-    user,
-    title,
-    image,
     description,
-    action,
-    area,
-    special,
-  } = findItemGloballyById(itemID);
+    image,
+    mobility,
+    urgent,
+    title,
+    user,
+    zone,
+  } = findItemGloballyByTitle(itemTitle);
   return (
     <Modal
       show={modalShow}
@@ -26,28 +26,30 @@ const ItemDetail = ({ modalShow, setModalShow, itemID }) => {
     >
       <Card
         className="m-2"
-        bg={`${special && "primary"}`}
-        text={`${special && "white"}`}
+        bg={`${urgent && "danger"}`}
+        text={`${urgent && "white"}`}
       >
         <Image variant="top" src={image} alt={title} fluid />
         <Card.Body>
-          <h6 className={`${special && "white"}`}>{title}</h6>
+          <h6 className={`${urgent && "white"}`}>{title}</h6>
           <Card.Text className="mediumText">{description}</Card.Text>
-          <Card.Text className="mediumText">Zona {area}</Card.Text>
+          <Card.Text className="mediumText">{zone}</Card.Text>
+          <Card.Text className="mediumText">
+            {mobility ? "Tiene movilidad" : "No tiene movilidad"}
+          </Card.Text>
         </Card.Body>
         <Card.Footer>
           <div className="flex between">
             <small className="smallText text-muted">
-              {action}
               <Link
-                className={`${special ? "white textDecoNone" : "smallText"}`}
+                className={`${urgent ? "white textDecoNone" : "smallText"}`}
                 to="/"
               >
                 {user}
               </Link>
             </small>
-            {special && <h6 className="white">URGENTE</h6>}
-            <Button size="sm" variant="outline-dark">
+            {urgent && <h6 className="white">URGENTE</h6>}
+            <Button size="sm" variant="outline-light">
               Contactar
             </Button>
           </div>

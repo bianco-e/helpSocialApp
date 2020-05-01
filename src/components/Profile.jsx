@@ -10,10 +10,9 @@ const Profile = () => {
   if (!user) return null;
   const userName = user.displayName;
   const userPicture = user.photoURL;
-  console.log(user);
 
   return (
-    <Card bsPrefix="profileDiv" bg="primary" variant="position">
+    <Card bsPrefix="profileDiv" variant="position">
       <Image
         variant="top"
         src={userPicture}
@@ -27,13 +26,13 @@ const Profile = () => {
           <h4 className="paddingb50">{userName}</h4>
 
           <Link to="/myoffers" className="profileButton">
-            <Button variant="outline-light" size="sm">
+            <Button variant="outline-dark" size="sm">
               Mis ofertas
             </Button>
           </Link>
 
           <Link to="/myneeds" className="profileButton">
-            <Button variant="outline-light" size="sm">
+            <Button variant="outline-dark" size="sm">
               Mis búsquedas
             </Button>
           </Link>

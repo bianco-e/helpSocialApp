@@ -2,17 +2,12 @@ import React from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route } from "react-router-dom";
-import {
-  firstnOfferedItems,
-  firstnNeededItems,
-  firstnMyOffers,
-  firstnMyNeeds,
-} from "../data/apiInteraction.js";
 import Login from "../views/Login";
 import Home from "../views/Home";
 import Needs from "../views/Needs";
 import Offers from "../views/Offers";
-import MyOptions from "../views/MyOptions";
+import MyOffers from "../views/MyOffers";
+import MyNeeds from "../views/MyNeeds";
 import AddItem from "../views/AddItem";
 import PrivateRoute from "./PrivateRoute";
 import SearchResults from "../views/SearchResults";
@@ -27,32 +22,20 @@ function App() {
         path="/search/:keyword"
         render={() => <SearchResults />}
       />
-      <Route
+      <PrivateRoute exact path="/myoffers" render={() => <MyOffers />} />
+      <PrivateRoute exact path="/myneeds" render={() => <MyNeeds />} />
+      <PrivateRoute
         exact
-        path="/myoffers"
-        render={() => (
-          <MyOptions arrayToRender={firstnMyOffers(10)} myoffers={true} />
-        )}
+        path="/addoffer"
+        render={() => <AddItem offer={true} />}
       />
-      <Route
+      <PrivateRoute
         exact
-        path="/myneeds"
-        render={() => (
-          <MyOptions arrayToRender={firstnMyNeeds(10)} myneeds={true} />
-        )}
+        path="/addneed"
+        render={() => <AddItem need={true} />}
       />
-      <Route exact path="/addoffer" render={() => <AddItem offer={true} />} />
-      <Route exact path="/addneed" render={() => <AddItem need={true} />} />
-      <Route
-        exact
-        path="/offers"
-        render={() => <Offers arrayToRender={firstnOfferedItems(10)} />}
-      />
-      <Route
-        exact
-        path="/needed"
-        render={() => <Needs arrayToRender={firstnNeededItems(10)} />}
-      />
+      <PrivateRoute exact path="/offers" render={() => <Offers />} />
+      <PrivateRoute exact path="/needs" render={() => <Needs />} />
     </BrowserRouter>
   );
 }

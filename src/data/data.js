@@ -1,3 +1,39 @@
+const zones = [
+  "Abasto",
+  "Alvear",
+  "Belgrano",
+  "Centro",
+  "Cerámica",
+  "Cinco Esquinas",
+  "Cristalería",
+  "Echesortu",
+  "Empalme Graneros",
+  "España y Hospitales",
+  "Fisherton",
+  "Godoy",
+  "Grandoli",
+  "Industrial",
+  "La Guardia",
+  "La Sexta",
+  "Las Delicias",
+  "Las Flores",
+  "Las Heras",
+  "Lourdes",
+  "Ludueña",
+  "Luis Agote",
+  "Martin",
+  "Moderno",
+  "Nuevo Alberdi",
+  "Parque",
+  "Pichincha",
+  "Refinería",
+  "Rucci",
+  "Saladillo",
+  "Sorrento",
+  "Tablada",
+  "Tiro Suizo",
+];
+
 const offeredItems = [
   {
     image:
@@ -235,114 +271,7 @@ const neededItems = [
     category: "Internación",
   },
 ];
-const myNeeds = [
-  {
-    image:
-      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Yo",
-    title: "Colchón anti-escaras",
-    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Busco: ",
-    id: 21,
-    zone: "oeste",
-  },
-  {
-    image:
-      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Yo 1",
-    title: "Colchón anti-escaras",
-    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Busco: ",
-    id: 22,
-    zone: "oeste",
-  },
-  {
-    image:
-      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Yo 2",
-    title: "Colchón anti-escaras",
-    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Busco: ",
-    id: 23,
-    zone: "oeste",
-  },
-  {
-    image:
-      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Yo 3",
-    title: "Colchón anti-escaras",
-    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Busco: ",
-    id: 24,
-    zone: "oeste",
-  },
-  {
-    image:
-      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Yo 4",
-    title: "Colchón anti-escaras",
-    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Busco: ",
-    id: 25,
-    zone: "oeste",
-  },
-];
-const myOffers = [
-  {
-    image:
-      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Yo",
-    title: "Colchonardo",
-    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dono: ",
-    id: 26,
-    zone: "oeste",
-  },
-  {
-    image:
-      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Yo 1",
-    title: "Colchonardo",
-    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dono: ",
-    id: 27,
-    zone: "sur",
-  },
-  {
-    image:
-      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Yo 2",
-    title: "Colchonardo",
-    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dono: ",
-    id: 28,
-    zone: "sur",
-  },
-  {
-    image:
-      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Yo 3",
-    title: "Colchonardo",
-    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dono: ",
-    id: 29,
-    zone: "sur",
-  },
-  {
-    image:
-      "https://sanifixsoluciones.com.ar/wp-content/uploads/2017/06/COLCHON-ANTIESCARAS.jpg",
-    user: "Yo 4",
-    title: "Colchonardo",
-    description: "Una plaza, muy poco uso, se encuentra en perfecto estado.",
-    action: "Dono: ",
-    id: 30,
-    zone: "oeste",
-  },
-];
 
-const allTheArrays = offeredItems
-  .concat(neededItems)
-  .concat(myOffers)
-  .concat(myNeeds);
+const allTheArrays = offeredItems.concat(neededItems);
 
-export { offeredItems, neededItems, myOffers, myNeeds, allTheArrays };
+export { zones, offeredItems, neededItems, allTheArrays };
