@@ -8,18 +8,23 @@ import { getAllNeeds } from "../data/apiInteraction";
 
 const Needs = () => {
   const [needsList, setNeedsList] = useState([]);
+  const [allNeeds, setAllNeeds] = useState([]);
 
-  const fetchOffers = async () => {
-    setNeedsList(await getAllNeeds());
+  const fetchNeeds = async () => {
+    setAllNeeds(await getAllNeeds());
   };
+  console.log(allNeeds.map((need) => need.id));
 
   useEffect(() => {
-    fetchOffers();
+    fetchNeeds();
   }, []);
+  useEffect(() => {
+    setNeedsList(allNeeds);
+  }, [allNeeds]);
 
   const filterNeedsByCategory = (string) => {
     if (string === "ALL") {
-      return fetchOffers();
+      return fetchNeeds();
     } else if (string === "Urgent") {
       return setNeedsList(
         needsList.filter((item) => {
@@ -28,7 +33,7 @@ const Needs = () => {
       );
     } else {
       return setNeedsList(
-        needsList.filter((item) => {
+        allNeeds.filter((item) => {
           return item.category === string;
         })
       );
@@ -41,9 +46,11 @@ const Needs = () => {
       <Profile />
       <div className="margin21-1 flexStart left">
         <Filter filterFn={filterNeedsByCategory} urgFilter={true} />
-        <ItemsContainer path="/needs" title="Búsquedas">
-          <Items arrayToRender={needsList} />
-        </ItemsContainer>
+        <div className="width100pc">
+          <ItemsContainer path="/needs" title="Búsquedas">
+            <Items arrayToRender={needsList} />
+          </ItemsContainer>
+        </div>
       </div>
     </>
   );

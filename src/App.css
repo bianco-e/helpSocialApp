@@ -50,8 +50,7 @@
   top: 50px;
   width: 16rem;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.125);
-  box-shadow: inset 0px 0px 15px rgba(100, 100, 100, 0.7);
+  background-color: #f8f9fa;
 }
 .profileImage {
   padding: 15%;
@@ -105,9 +104,11 @@
   background-color: #dc3545;
 }
 .filterDiv {
-  width: 30%;
   margin: 0.5rem;
 }
 .width50pc {
   width: 50%;
+}
+.width100pc {
+  width: 100%;
 }

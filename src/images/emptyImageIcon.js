@@ -1,5 +1,5 @@
 import React from "react";
-const addImage = (
+const emptyImageIcon = (
   <svg
     class="bi bi-card-image"
     width="210px"
@@ -21,4 +21,4 @@ const addImage = (
     />
   </svg>
 );
-export default addImage;
+export default emptyImageIcon;

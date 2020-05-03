@@ -3,6 +3,12 @@ import Spinner from "react-bootstrap/Spinner";
 const SmallItem = lazy(() => import("./SmallItem"));
 
 const Items = ({ arrayToRender }) => {
+  const findItemById = (itemID) => {
+    return arrayToRender.find((item) => {
+      return item.id === itemID;
+    });
+  };
+
   return (
     <Suspense
       fallback={
@@ -16,13 +22,15 @@ const Items = ({ arrayToRender }) => {
           {arrayToRender.map((item) => {
             return (
               <SmallItem
-                image={item.image}
-                title={item.title}
-                description={item.description}
-                user={item.user}
-                urgent={item.urgent}
                 category={item.category}
+                description={item.description}
+                id={item.id}
+                image={item.image}
                 key={item.user + item.title}
+                title={item.title}
+                urgent={item.urgent}
+                user={item.user}
+                findItemById={findItemById}
               />
             );
           })}

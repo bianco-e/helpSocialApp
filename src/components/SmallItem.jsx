@@ -3,7 +3,15 @@ import { Link } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import ItemDetail from "../components/ItemDetail";
 
-const SmallItem = ({ image, title, description, user, urgent = false }) => {
+const SmallItem = ({
+  image,
+  title,
+  description,
+  user,
+  id,
+  urgent = false,
+  findItemById,
+}) => {
   const [modalShow, setModalShow] = useState(false);
   return (
     <button
@@ -12,7 +20,7 @@ const SmallItem = ({ image, title, description, user, urgent = false }) => {
       }`}
       onClick={() => setModalShow(true)}
     >
-      <Image src={image} alt={title} style={{ width: "20%" }} />
+      <Image src={image} alt={title} style={{ width: "10%" }} />
       <div className="padding8-8">
         <h6 className={`${urgent && "white"}`}>{title}</h6>
         <h6
@@ -32,7 +40,8 @@ const SmallItem = ({ image, title, description, user, urgent = false }) => {
       <ItemDetail
         modalShow={modalShow}
         setModalShow={setModalShow}
-        itemTitle={title}
+        itemID={id}
+        findItemById={findItemById}
       />
     </button>
   );

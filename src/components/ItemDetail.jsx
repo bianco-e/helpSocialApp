@@ -1,12 +1,11 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
-import { findItemGloballyByTitle } from "../data/apiInteraction.js";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import Button from "react-bootstrap/Button";
 
-const ItemDetail = ({ modalShow, setModalShow, itemTitle }) => {
+const ItemDetail = ({ modalShow, setModalShow, itemID, findItemById }) => {
   const {
     description,
     image,
@@ -15,7 +14,8 @@ const ItemDetail = ({ modalShow, setModalShow, itemTitle }) => {
     title,
     user,
     zone,
-  } = findItemGloballyByTitle(itemTitle);
+  } = findItemById(itemID);
+
   return (
     <Modal
       show={modalShow}

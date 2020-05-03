@@ -8,21 +8,25 @@ import { getAllOffers } from "../data/apiInteraction.js";
 
 const Offers = () => {
   const [offersList, setOffersList] = useState([]);
+  const [allOffers, setAllOffers] = useState([]);
 
   const fetchOffers = async () => {
-    setOffersList(await getAllOffers());
+    setAllOffers(await getAllOffers());
   };
 
   useEffect(() => {
     fetchOffers();
   }, []);
+  useEffect(() => {
+    setOffersList(allOffers);
+  }, [allOffers]);
 
   const filterOffersByCategory = (string) => {
     if (string === "ALL") {
       return fetchOffers();
     } else {
       return setOffersList(
-        offersList.filter((item) => {
+        allOffers.filter((item) => {
           return item.category === string;
         })
       );
@@ -34,9 +38,11 @@ const Offers = () => {
       <Profile />
       <div className="margin21-1 flexStart left">
         <Filter filterFn={filterOffersByCategory} />
-        <ItemsContainer path="/offers" title="Ofertas">
-          <Items arrayToRender={offersList} />
-        </ItemsContainer>
+        <div className="width100pc">
+          <ItemsContainer path="/offers" title="Ofertas">
+            <Items arrayToRender={offersList} />
+          </ItemsContainer>
+        </div>
       </div>
     </>
   );

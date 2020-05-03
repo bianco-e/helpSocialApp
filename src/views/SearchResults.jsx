@@ -1,5 +1,4 @@
 import React from "react";
-import { searchInOffers, searchInNeeded } from "../data/apiInteraction.js";
 import { useParams } from "react-router-dom";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
@@ -7,9 +6,19 @@ import Items from "../components/Items";
 import ItemsContainer from "../components/ItemsContainer";
 
 const SearchResults = () => {
+  const searchInNeeded = (keyword) => {
+    return [].filter((item) => {
+      return item.title.toLowerCase().includes(keyword.toLowerCase());
+    });
+  };
+  const searchInOffers = (keyword) => {
+    return [].filter((item) => {
+      return item.title.toLowerCase().includes(keyword.toLowerCase());
+    });
+  };
   let { keyword } = useParams();
-  const OffersArrayToRender = searchInOffers(keyword, "title");
-  const NeededArrayToRender = searchInNeeded(keyword, "title");
+  const OffersArrayToRender = searchInOffers(keyword);
+  const NeededArrayToRender = searchInNeeded(keyword);
   return (
     keyword && (
       <div>
