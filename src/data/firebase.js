@@ -1,53 +1,78 @@
 import * as firebase from "firebase";
 import firebaseConfig from "./firebaseConfig";
 
+const getAndMapACollection = (collection) => {
+  return collection.get().then((snapshot) =>
+    snapshot.docs.map((object) => {
+      return { id: object.id, ...object.data() };
+    })
+  );
+};
+const addItem = (collection, item) => {
+  return collection
+    .add({ ...item })
+    .then(function (docRef) {
+      alert("Agregado exitosamente", docRef.id);
+    })
+    .catch(function (error) {
+      console.error("No se pudo agregar correctamente", error);
+    });
+};
 class Firebase {
   constructor(config) {
     const app = firebase.initializeApp(config);
     this.auth = app.auth();
     this.db = app.firestore();
     this.googleProvider = new firebase.auth.GoogleAuthProvider();
+    this.storageRef = app.storage().ref();
+    this.needsRef = this.db.collection("needs");
+    this.offersRef = this.db.collection("offers");
   }
   doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
   logOut = () => this.auth.signOut();
-  getOffers = () =>
-    this.db
-      .collection("offers")
-      .get()
-      .then((snapshot) =>
-        snapshot.docs.map((object) => {
-          return { id: object.id, ...object.data() };
-        })
-      );
-  getNeeds = () =>
-    this.db
-      .collection("needs")
-      .get()
-      .then((snapshot) =>
-        snapshot.docs.map((object) => {
-          return { id: object.id, ...object.data() };
-        })
-      );
-  addNeed = (newNeed) =>
-    this.db
-      .collection("needs")
-      .add({ ...newNeed })
-      .then(function (docRef) {
-        alert("Búsqueda subida exitosamente", docRef.id);
+
+  addNeed = (newNeed) => addItem(this.needsRef, newNeed);
+  addOffer = (newOffer) => addItem(this.offersRef, newOffer);
+
+  getFirstFiveNeeds = () =>
+    getAndMapACollection(this.needsRef.where("urgent", "==", true).limit(5));
+  getFirstFiveOffers = () => getAndMapACollection(this.offersRef.limit(5));
+
+  getNeeds = () => getAndMapACollection(this.needsRef);
+  getOffers = () => getAndMapACollection(this.offersRef);
+
+  getMyNeeds = (userEmail) =>
+    getAndMapACollection(this.needsRef.where("userEmail", "==", userEmail));
+  getMyOffers = (userEmail) =>
+    getAndMapACollection(this.offersRef.where("userEmail", "==", userEmail));
+
+  searchTitleInNeeds = (keyword) =>
+    getAndMapACollection(this.needsRef.where("title", "==", keyword));
+  searchTitleInOffers = (keyword) =>
+    getAndMapACollection(this.offersRef.where("title", "==", keyword));
+
+  uploadImageForNeeds = (file) => {
+    var needsImagesRef = this.storageRef.child(`images/needs/${file.name}`);
+    return needsImagesRef
+      .put(file)
+      .then(function (snapshot) {
+        return snapshot.ref.getDownloadURL().then((object) => {
+          return object;
+        });
       })
-      .catch(function (error) {
-        console.error("Error al agregar búsqueda", error);
-      });
-  addOffer = (newOffer) =>
-    this.db
-      .collection("offers")
-      .add({ ...newOffer })
-      .then(function (docRef) {
-        alert("Oferta subida exitosamente", docRef.id);
+      .catch((error) => console.log(error));
+  };
+  uploadImageForOffers = (file) => {
+    var offersImagesRef = this.storageRef.child(`images/offers/${file.name}`);
+    return offersImagesRef
+      .put(file)
+      .then(function (snapshot) {
+        return snapshot.ref.getDownloadURL().then((object) => {
+          return object;
+        });
       })
-      .catch(function (error) {
-        console.error("Error al agregar oferta", error);
-      });
+      .catch((error) => console.log(error));
+  };
 }
 
 export default new Firebase(firebaseConfig);

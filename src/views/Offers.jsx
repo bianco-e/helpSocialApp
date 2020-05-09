@@ -1,29 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
 import Items from "../components/Items";
 import ItemsContainer from "../components/ItemsContainer";
 import Filter from "../components/Filter";
+import useFetchWithFilter from "../hooks/useFetchWithFilter.js";
 import { getAllOffers } from "../data/apiInteraction.js";
 
 const Offers = () => {
-  const [offersList, setOffersList] = useState([]);
-  const [allOffers, setAllOffers] = useState([]);
-
-  const fetchOffers = async () => {
-    setAllOffers(await getAllOffers());
-  };
-
-  useEffect(() => {
-    fetchOffers();
-  }, []);
-  useEffect(() => {
-    setOffersList(allOffers);
-  }, [allOffers]);
+  const [
+    offersList,
+    setOffersList,
+    allOffers,
+    refetchData,
+  ] = useFetchWithFilter(getAllOffers);
 
   const filterOffersByCategory = (string) => {
     if (string === "ALL") {
-      return fetchOffers();
+      return refetchData();
     } else {
       return setOffersList(
         allOffers.filter((item) => {
@@ -32,6 +26,7 @@ const Offers = () => {
       );
     }
   };
+
   return (
     <>
       <TopBar />

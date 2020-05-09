@@ -1,3 +1,5 @@
+import React from "react";
+
 const zones = [
   "Abasto",
   "Alvear",
@@ -34,4 +36,14 @@ const zones = [
   "Tiro Suizo",
 ];
 
-export { zones };
+const mapZonesIntoOptions = () => {
+  return zones.map((zone) => {
+    return (
+      <option value={zone} key={zone}>
+        {zone}
+      </option>
+    );
+  });
+};
+
+export { mapZonesIntoOptions };

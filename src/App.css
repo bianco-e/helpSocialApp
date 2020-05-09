@@ -58,6 +58,9 @@
 .profileButton {
   padding-bottom: 10%;
 }
+.bigText {
+  font-size: 22px;
+}
 .mediumText {
   font-size: 11px;
 }
@@ -85,10 +88,17 @@
   text-align: center;
 }
 .navLink {
+  all: unset;
   color: rgb(150, 150, 170);
+  cursor: pointer;
 }
 .navLink:hover {
   text-decoration: none;
+  color: rgb(130, 130, 140);
+}
+.navLink:active {
+  text-decoration: none;
+  color: rgb(80, 80, 90);
 }
 .itemButton {
   border: none;
@@ -111,4 +121,15 @@
 }
 .width100pc {
   width: 100%;
+}
+.aboutUsDiv {
+  background-color: transparent;
+  margin: auto;
+  margin-top: 150px;
+  width: 40%;
+}
+.imageBg {
+  background-image: url("https://media.istockphoto.com/vectors/help-social-concept-vector-id1059943696");
+  height: 100vh;
+  background-repeat: no-repeat;
 }

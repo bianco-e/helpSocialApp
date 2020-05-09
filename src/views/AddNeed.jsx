@@ -1,38 +1,38 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useRef, useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import emptyImageIcon from "../images/emptyImageIcon";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
-import { mapZonesIntoOptions, addNewNeed } from "../data/apiInteraction";
+import { mapZonesIntoOptions } from "../data/data";
+import { addNewNeed, addAnImageToNeeds } from "../data/apiInteraction";
 
-const AddNeed = () => {
+const AddItem = () => {
   const user = useContext(AuthContext);
   const userName = user.displayName;
   const userEmail = user.email;
-  const testImage =
-    "https://www.segundamano.com.ar/oc-content/uploads/168/40338.jpg";
 
-  const [newNeed, setNewNeed] = useState({
-    category: "",
-    description: "",
-    image: testImage,
-    mobility: false,
-    title: "",
-    urgent: false,
-    user: "",
-    userEmail: "",
-    zone: "",
-  });
+  const inputFileRef = useRef();
 
+  const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [zone, setZone] = useState("");
   const [mobility, setMobility] = useState(false);
   const [urgent, setUrgent] = useState(false);
+
+  const [fileName, setFileName] = useState("");
+  const [fileLoaded, setFileLoaded] = useState("");
+  const [uploadingFile, setUploadingFile] = useState(false);
+
+  useEffect(() => {
+    if (inputFileRef.current?.files?.length > 0) {
+      setFileLoaded(inputFileRef.current?.files[0]);
+      setFileName(inputFileRef.current?.files[0]["name"]);
+    }
+  }, [uploadingFile]);
 
   return (
     <div>
@@ -46,14 +46,14 @@ const AddNeed = () => {
           <div className="flexColumn">
             <Form.Group>
               <br />
-              <Form.Label>Foto ilustrativa</Form.Label>
-              <br />
-              <div className="flex between">
-                {emptyImageIcon}
-                <Button variant="outline-info" size="sm">
-                  ✚
-                </Button>
-              </div>
+              <Form.File
+                id="custom-file"
+                label={fileName || `Agregar foto`}
+                ref={inputFileRef}
+                data-browse="+"
+                onChange={() => setUploadingFile(!uploadingFile)}
+                custom
+              />
               <Form.Label>Título</Form.Label>
               <Form.Control
                 size="sm"
@@ -101,35 +101,41 @@ const AddNeed = () => {
               <Form.Check
                 type="checkbox"
                 label="¿Tiene movilidad para facilitar el retiro?"
+                checked={mobility}
                 onChange={() => setMobility(!mobility)}
               />
               <br />
               <Form.Check
                 type="checkbox"
                 label="Tildar esta opción si es de necesidad URGENTE"
+                checked={urgent}
                 onChange={() => setUrgent(!urgent)}
               />
               <br />
               <Button
                 variant="outline-info"
                 onClick={() => {
-                  setNewNeed(
-                    (newNeed.title = title),
-                    (newNeed.description = description),
-                    (newNeed.category = category),
-                    (newNeed.mobility = mobility),
-                    (newNeed.urgent = urgent),
-                    (newNeed.zone = zone),
-                    (newNeed.user = userName),
-                    (newNeed.userEmail = userEmail)
-                  );
-                  addNewNeed(newNeed);
-                  setTitle("");
-                  setDescription("");
-                  setCategory("");
-                  setMobility(false);
-                  setUrgent(false);
-                  setZone("");
+                  setLoading(true);
+                  addAnImageToNeeds(fileLoaded).then((url) => {
+                    const newNeed = {
+                      category,
+                      description,
+                      image: url,
+                      mobility,
+                      title,
+                      user: userName,
+                      userEmail,
+                      zone,
+                    };
+                    addNewNeed(newNeed).then(() => {
+                      setTitle("");
+                      setDescription("");
+                      setCategory("");
+                      setMobility(false);
+                      setZone("");
+                      setLoading(false);
+                    });
+                  });
                 }}
               >
                 Subir
@@ -142,4 +148,4 @@ const AddNeed = () => {
   );
 };
 
-export default AddNeed;
+export default AddItem;

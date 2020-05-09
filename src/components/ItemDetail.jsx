@@ -17,44 +17,43 @@ const ItemDetail = ({ modalShow, setModalShow, itemID, findItemById }) => {
   } = findItemById(itemID);
 
   return (
-    <Modal
-      show={modalShow}
-      onHide={() => {
-        setModalShow(false);
-      }}
-      centered
-    >
-      <Card
-        className="m-2"
-        bg={`${urgent && "danger"}`}
-        text={`${urgent && "white"}`}
-      >
-        <Image variant="top" src={image} alt={title} fluid />
-        <Card.Body>
-          <h6 className={`${urgent && "white"}`}>{title}</h6>
-          <Card.Text className="mediumText">{description}</Card.Text>
-          <Card.Text className="mediumText">{zone}</Card.Text>
-          <Card.Text className="mediumText">
-            {mobility ? "Tiene movilidad" : "No tiene movilidad"}
-          </Card.Text>
-        </Card.Body>
-        <Card.Footer>
-          <div className="flex between">
-            <small className="smallText text-muted">
-              <Link
-                className={`${urgent ? "white textDecoNone" : "smallText"}`}
-                to="/"
-              >
-                {user}
-              </Link>
-            </small>
-            {urgent && <h6 className="white">URGENTE</h6>}
-            <Button size="sm" variant="outline-light">
-              Contactar
-            </Button>
-          </div>
-        </Card.Footer>
-      </Card>
+    <Modal show={modalShow} onHide={() => setModalShow(false)} centered>
+      <Modal.Header closeButton></Modal.Header>
+      <Modal.Body>
+        <Card
+          className="m-2"
+          bg={`${urgent && "danger"}`}
+          text={`${urgent && "white"}`}
+        >
+          <Image variant="top" src={image} alt={title} fluid />
+          <Card.Body>
+            <h6 className={`${urgent ? "bigText white" : "bigText"}`}>
+              {title}
+            </h6>
+            <Card.Text>{description}</Card.Text>
+            <Card.Text className="mediumText">Barrio: {zone}</Card.Text>
+            <Card.Text className="mediumText">
+              {mobility ? "Tiene movilidad" : "No tiene movilidad"}
+            </Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <div className="flex between">
+              <small className="mediumText text-muted">
+                <Link
+                  className={`${urgent ? "white textDecoNone" : "mediumText"}`}
+                  to="/"
+                >
+                  {user}
+                </Link>
+              </small>
+              {urgent && <h6 className="white">[URGENTE]</h6>}
+              <Button size="sm" variant="outline-light">
+                Contactar
+              </Button>
+            </div>
+          </Card.Footer>
+        </Card>
+      </Modal.Body>
     </Modal>
   );
 };

@@ -4,21 +4,21 @@ import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
 import Items from "../components/Items";
 import ItemsContainer from "../components/ItemsContainer";
+import useFetchWithFilter from "../hooks/useFetchWithFilter.js";
+import {
+  searchByTitleInOffers,
+  searchByTitleInNeeds,
+} from "../data/apiInteraction.js";
 
 const SearchResults = () => {
-  const searchInNeeded = (keyword) => {
-    return [].filter((item) => {
-      return item.title.toLowerCase().includes(keyword.toLowerCase());
-    });
-  };
-  const searchInOffers = (keyword) => {
-    return [].filter((item) => {
-      return item.title.toLowerCase().includes(keyword.toLowerCase());
-    });
-  };
   let { keyword } = useParams();
-  const OffersArrayToRender = searchInOffers(keyword);
-  const NeededArrayToRender = searchInNeeded(keyword);
+
+  const [needsResults] = useFetchWithFilter(() =>
+    searchByTitleInNeeds(keyword)
+  );
+  const [offersResults] = useFetchWithFilter(() =>
+    searchByTitleInOffers(keyword)
+  );
   return (
     keyword && (
       <div>
@@ -27,12 +27,12 @@ const SearchResults = () => {
         <div className="flex between margin21-1">
           <div className="width50pc">
             <ItemsContainer title="Resultados para Búsquedas">
-              <Items arrayToRender={NeededArrayToRender} />
+              <Items arrayToRender={needsResults} />
             </ItemsContainer>
           </div>
           <div className="width50pc">
             <ItemsContainer title="Resultados para Ofertas">
-              <Items arrayToRender={OffersArrayToRender} />
+              <Items arrayToRender={offersResults} />
             </ItemsContainer>
           </div>
         </div>

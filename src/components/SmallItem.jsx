@@ -20,7 +20,7 @@ const SmallItem = ({
       }`}
       onClick={() => setModalShow(true)}
     >
-      <Image src={image} alt={title} style={{ width: "10%" }} />
+      <Image src={image} alt={title} style={{ width: "15%" }} />
       <div className="padding8-8">
         <h6 className={`${urgent && "white"}`}>{title}</h6>
         <h6

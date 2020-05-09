@@ -1,30 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
 import Items from "../components/Items";
 import Filter from "../components/Filter";
 import ItemsContainer from "../components/ItemsContainer";
+import useFetchWithFilter from "../hooks/useFetchWithFilter.js";
 import { getAllNeeds } from "../data/apiInteraction";
 
 const Needs = () => {
-  const [needsList, setNeedsList] = useState([]);
-  const [allNeeds, setAllNeeds] = useState([]);
-
-  const fetchNeeds = async () => {
-    setAllNeeds(await getAllNeeds());
-  };
-  console.log(allNeeds.map((need) => need.id));
-
-  useEffect(() => {
-    fetchNeeds();
-  }, []);
-  useEffect(() => {
-    setNeedsList(allNeeds);
-  }, [allNeeds]);
+  const [needsList, setNeedsList, allNeeds, refetchData] = useFetchWithFilter(
+    getAllNeeds
+  );
 
   const filterNeedsByCategory = (string) => {
     if (string === "ALL") {
-      return fetchNeeds();
+      return refetchData();
     } else if (string === "Urgent") {
       return setNeedsList(
         needsList.filter((item) => {

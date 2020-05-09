@@ -1,42 +1,50 @@
-import React from "react";
-import { zones } from "./data.js";
 import firebase from "../data/firebase.js";
 
-const addNewNeed = (newNeed) => {
-  return firebase.addNeed(newNeed);
-};
-const addNewOffer = (newOffer) => {
-  return firebase.addOffer(newOffer);
-};
+const addAnImageToNeeds = async (file) =>
+  await firebase.uploadImageForNeeds(file);
+const addAnImageToOffers = async (file) =>
+  await firebase.uploadImageForOffers(file);
+
+const addNewNeed = (newNeed) => firebase.addNeed(newNeed);
+const addNewOffer = (newOffer) => firebase.addOffer(newOffer);
+
 const changeAuthState = (toDo) => {
   return firebase.auth.onAuthStateChanged((user) => {
     user ? toDo(user) : toDo(undefined);
   });
 };
-const getAllNeeds = async () => {
-  return await firebase.getNeeds();
-};
-const getAllOffers = async () => {
-  return await firebase.getOffers();
-};
-const logInUsingGoogle = () => {
-  return firebase.doSignInWithGoogle().catch((error) => console.log(error));
-};
-const logOutUsingGoogle = () => {
-  return firebase.logOut();
-};
-const mapZonesIntoOptions = () => {
-  return zones.map((zone) => {
-    return <option value={zone}>{zone}</option>;
-  });
-};
+
+const getAllMyNeeds = (userEmail) => firebase.getMyNeeds(userEmail);
+const getAllMyOffers = (userEmail) => firebase.getMyOffers(userEmail);
+
+const getAllNeeds = async () => await firebase.getNeeds();
+const getAllOffers = async () => await firebase.getOffers();
+
+const getFiveNeeds = () => firebase.getFirstFiveNeeds();
+const getFiveOffers = () => firebase.getFirstFiveOffers();
+
+const logInUsingGoogle = () =>
+  firebase.doSignInWithGoogle().catch((error) => alert(error));
+const logOutUsingGoogle = () => firebase.logOut();
+
+const searchByTitleInNeeds = (keyword) => firebase.searchTitleInNeeds(keyword);
+const searchByTitleInOffers = (keyword) =>
+  firebase.searchTitleInOffers(keyword);
+
 export {
+  addAnImageToNeeds,
+  addAnImageToOffers,
   addNewNeed,
   addNewOffer,
   changeAuthState,
+  getAllMyNeeds,
+  getAllMyOffers,
   getAllNeeds,
   getAllOffers,
+  getFiveNeeds,
+  getFiveOffers,
   logInUsingGoogle,
   logOutUsingGoogle,
-  mapZonesIntoOptions,
+  searchByTitleInNeeds,
+  searchByTitleInOffers,
 };

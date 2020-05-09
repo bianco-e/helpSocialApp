@@ -7,19 +7,24 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
+import AboutUs from "./AboutUs";
 
 const TopBar = ({ forLogin = false }) => {
   const history = useHistory();
   const [insertedValue, setInsertedValue] = useState("");
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <Navbar bg="light" expand="lg" sticky="top">
       <Navbar.Brand href="/home">AppName</Navbar.Brand>
       <Nav className="mr-auto">
         {forLogin ? (
-          <Link to="/" className="navLink">
-            ¿Qué es AppName?
-          </Link>
+          <>
+            <Button bsPrefix="navLink" onClick={() => setModalShow(true)}>
+              ¿Qué es AppName?
+            </Button>
+            <AboutUs modalShow={modalShow} setModalShow={setModalShow} />
+          </>
         ) : (
           <div className="flex between">
             <Link to="/home" className="navLink">
