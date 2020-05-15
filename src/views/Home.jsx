@@ -21,7 +21,7 @@ const Home = () => {
           </ItemsContainer>
         </div>
         <div className="width50pc">
-          <ItemsContainer title="Ofertas destacadas">
+          <ItemsContainer title="Donaciones destacadas">
             <Items arrayToRender={fiveOffersList} offers={true} />
           </ItemsContainer>
         </div>

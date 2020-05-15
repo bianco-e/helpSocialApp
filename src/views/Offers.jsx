@@ -34,7 +34,7 @@ const Offers = () => {
       <div className="margin21-1 flexStart left">
         <Filter filterFn={filterOffersByCategory} />
         <div className="width100pc">
-          <ItemsContainer path="/offers" title="Ofertas">
+          <ItemsContainer path="/offers" title="Donaciones">
             <Items arrayToRender={offersList} />
           </ItemsContainer>
         </div>

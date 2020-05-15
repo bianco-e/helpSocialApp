@@ -40,14 +40,14 @@ const MyOptions = () => {
       <div className="margin21-1 flexStart left">
         <Filter filterFn={filterOffersByCategory} />
         <div className="width100pc">
-          <ItemsContainer path="/myoffers" title="Mis ofertas">
+          <ItemsContainer path="/myoffers" title="Mis donaciones">
             <Items arrayToRender={myOffersList} />
           </ItemsContainer>
         </div>
       </div>
       <div className="spinnerDiv">
         <Link to="/addoffer">
-          <Button variant="outline-info">Agregar oferta</Button>
+          <Button variant="outline-info">Agregar donación</Button>
         </Link>
       </div>
     </div>

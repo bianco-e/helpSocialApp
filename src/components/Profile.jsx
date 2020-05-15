@@ -27,7 +27,7 @@ const Profile = () => {
 
           <Link to="/myoffers" className="profileButton">
             <Button variant="outline-dark" size="sm">
-              Mis ofertas
+              Mis donaciones
             </Button>
           </Link>
 

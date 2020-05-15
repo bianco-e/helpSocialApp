@@ -41,7 +41,7 @@ const AddOffer = () => {
         <div className="margin21-1">
           <Card border="primary" className="m-2">
             <Card.Header>
-              <h6 className="margin0">Agregar oferta</h6>
+              <h6 className="margin0">Agregar donación</h6>
             </Card.Header>
             <div className="flexColumn">
               <Form.Group>

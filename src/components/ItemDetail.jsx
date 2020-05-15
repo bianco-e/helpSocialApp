@@ -3,7 +3,8 @@ import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
-import Button from "react-bootstrap/Button";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 const ItemDetail = ({ modalShow, setModalShow, itemID, findItemById }) => {
   const {
@@ -15,7 +16,8 @@ const ItemDetail = ({ modalShow, setModalShow, itemID, findItemById }) => {
     user,
     zone,
   } = findItemById(itemID);
-
+  const phoneNumber = 5493464692328;
+  const message = `Hola, me interesa el artículo ${title} de socialapp`;
   return (
     <Modal show={modalShow} onHide={() => setModalShow(false)} centered>
       <Modal.Header closeButton></Modal.Header>
@@ -47,9 +49,36 @@ const ItemDetail = ({ modalShow, setModalShow, itemID, findItemById }) => {
                 </Link>
               </small>
               {urgent && <h6 className="white">[URGENTE]</h6>}
-              <Button size="sm" variant="outline-light">
-                Contactar
-              </Button>
+              <DropdownButton
+                id="dropdown-item-button"
+                variant="outline-dark"
+                title="Contactar"
+                size="sm"
+              >
+                <a
+                  href={`https://wa.me/${phoneNumber}?text=${message}`}
+                  className="wspLink"
+                  target="blank"
+                >
+                  <Dropdown.Item as="button">Enviar Whatsapp</Dropdown.Item>
+                </a>
+                <a
+                  href={`https://gmail.com`}
+                  className="gmailLink"
+                  target="blank"
+                >
+                  <Dropdown.Item as="button">Enviar mail</Dropdown.Item>
+                </a>
+                <a
+                  href={`https://facebook.com`}
+                  className="fbkLink"
+                  target="blank"
+                >
+                  <Dropdown.Item as="button">
+                    Enviar mensaje de Facebook
+                  </Dropdown.Item>
+                </a>
+              </DropdownButton>
             </div>
           </Card.Footer>
         </Card>

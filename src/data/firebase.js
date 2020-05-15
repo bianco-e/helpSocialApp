@@ -18,6 +18,17 @@ const addItem = (collection, item) => {
       console.error("No se pudo agregar correctamente", error);
     });
 };
+const addImage = (storage, file) => {
+  return storage
+    .put(file)
+    .then(function (snapshot) {
+      return snapshot.ref.getDownloadURL().then((object) => {
+        return object;
+      });
+    })
+    .catch((error) => console.log(error));
+};
+
 class Firebase {
   constructor(config) {
     const app = firebase.initializeApp(config);
@@ -47,31 +58,21 @@ class Firebase {
     getAndMapACollection(this.offersRef.where("userEmail", "==", userEmail));
 
   searchTitleInNeeds = (keyword) =>
-    getAndMapACollection(this.needsRef.where("title", "==", keyword));
+    getAndMapACollection(
+      this.needsRef.where("title".toLowerCase(), "==", keyword.toLowerCase())
+    );
   searchTitleInOffers = (keyword) =>
-    getAndMapACollection(this.offersRef.where("title", "==", keyword));
+    getAndMapACollection(
+      this.offersRef.where("title".toLowerCase(), "==", keyword.toLowerCase())
+    );
 
   uploadImageForNeeds = (file) => {
     var needsImagesRef = this.storageRef.child(`images/needs/${file.name}`);
-    return needsImagesRef
-      .put(file)
-      .then(function (snapshot) {
-        return snapshot.ref.getDownloadURL().then((object) => {
-          return object;
-        });
-      })
-      .catch((error) => console.log(error));
+    return addImage(needsImagesRef, file);
   };
   uploadImageForOffers = (file) => {
     var offersImagesRef = this.storageRef.child(`images/offers/${file.name}`);
-    return offersImagesRef
-      .put(file)
-      .then(function (snapshot) {
-        return snapshot.ref.getDownloadURL().then((object) => {
-          return object;
-        });
-      })
-      .catch((error) => console.log(error));
+    return addImage(offersImagesRef, file);
   };
 }
 

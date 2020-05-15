@@ -133,3 +133,15 @@
   height: 100vh;
   background-repeat: no-repeat;
 }
+a {
+  all: unset;
+}
+.wspLink:hover {
+  color: green;
+}
+.gmailLink:hover {
+  color: red;
+}
+.fbkLink:hover {
+  color: rgb(82, 82, 255);
+}

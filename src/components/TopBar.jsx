@@ -34,7 +34,7 @@ const TopBar = ({ forLogin = false }) => {
               &nbsp; Se busca &nbsp;
             </Link>
             <Link to="/offers" className="navLink">
-              &nbsp; Se ofrece &nbsp;
+              &nbsp; Se dona &nbsp;
             </Link>
           </div>
         )}

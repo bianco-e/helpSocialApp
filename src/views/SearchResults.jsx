@@ -31,7 +31,7 @@ const SearchResults = () => {
             </ItemsContainer>
           </div>
           <div className="width50pc">
-            <ItemsContainer title="Resultados para Ofertas">
+            <ItemsContainer title="Resultados para Donaciones">
               <Items arrayToRender={offersResults} />
             </ItemsContainer>
           </div>
