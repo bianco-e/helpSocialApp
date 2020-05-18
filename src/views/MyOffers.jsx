@@ -41,7 +41,7 @@ const MyOptions = () => {
         <Filter filterFn={filterOffersByCategory} />
         <div className="width100pc">
           <ItemsContainer path="/myoffers" title="Mis donaciones">
-            <Items arrayToRender={myOffersList} />
+            <Items arrayToRender={myOffersList} collection={"offers"} />
           </ItemsContainer>
         </div>
       </div>

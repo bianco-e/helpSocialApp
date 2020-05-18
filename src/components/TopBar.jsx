@@ -42,10 +42,7 @@ const TopBar = ({ forLogin = false }) => {
       <Form inline>
         {forLogin ? (
           <>
-            <Button
-              variant="outline-success"
-              onClick={() => logInUsingGoogle()}
-            >
+            <Button variant="outline-danger" onClick={() => logInUsingGoogle()}>
               Ingresar con Google
             </Button>
             &nbsp;

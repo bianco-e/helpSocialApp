@@ -38,7 +38,7 @@ const Needs = () => {
         <Filter filterFn={filterNeedsByCategory} urgFilter={true} />
         <div className="width100pc">
           <ItemsContainer path="/needs" title="Búsquedas">
-            <Items arrayToRender={needsList} />
+            <Items arrayToRender={needsList} collection={"needs"} />
           </ItemsContainer>
         </div>
       </div>

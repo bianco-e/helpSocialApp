@@ -17,12 +17,12 @@ const Home = () => {
       <div className="flex between margin21-1">
         <div className="width50pc">
           <ItemsContainer title="Búsquedas destacadas">
-            <Items arrayToRender={fiveNeedsList} needed={true} />
+            <Items arrayToRender={fiveNeedsList} collection={"needs"} />
           </ItemsContainer>
         </div>
         <div className="width50pc">
           <ItemsContainer title="Donaciones destacadas">
-            <Items arrayToRender={fiveOffersList} offers={true} />
+            <Items arrayToRender={fiveOffersList} collection={"offers"} />
           </ItemsContainer>
         </div>
       </div>

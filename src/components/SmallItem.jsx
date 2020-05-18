@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, useHistory } from "react-router-dom";
 import Image from "react-bootstrap/Image";
-import ItemDetail from "../components/ItemDetail";
 
 const SmallItem = ({
   image,
@@ -10,17 +9,19 @@ const SmallItem = ({
   user,
   id,
   urgent = false,
-  findItemById,
+  collection,
 }) => {
-  const [modalShow, setModalShow] = useState(false);
+  const history = useHistory();
   return (
     <button
       className={`${
         urgent ? "itemButton flex left bgColor" : "itemButton flex left"
       }`}
-      onClick={() => setModalShow(true)}
+      onClick={() => {
+        history.push(`/${collection}/${id}`);
+      }}
     >
-      <Image src={image} alt={title} style={{ width: "15%" }} />
+      <Image src={image} alt={title} style={{ width: "100px" }} />
       <div className="padding8-8">
         <h6 className={`${urgent && "white"}`}>{title}</h6>
         <h6
@@ -37,12 +38,6 @@ const SmallItem = ({
           {user}
         </Link>
       </div>
-      <ItemDetail
-        modalShow={modalShow}
-        setModalShow={setModalShow}
-        itemID={id}
-        findItemById={findItemById}
-      />
     </button>
   );
 };

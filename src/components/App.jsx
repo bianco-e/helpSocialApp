@@ -11,7 +11,9 @@ import MyNeeds from "../views/MyNeeds";
 import AddOffer from "../views/AddOffer";
 import AddNeed from "../views/AddNeed";
 import PrivateRoute from "./PrivateRoute";
+import ItemDetail from "../views/ItemDetail";
 import SearchResults from "../views/SearchResults";
+import { getOfferByID, getNeedByID } from "../data/apiInteraction.js";
 
 function App() {
   return (
@@ -22,6 +24,20 @@ function App() {
         exact
         path="/search/:keyword"
         render={() => <SearchResults />}
+      />
+      <PrivateRoute
+        exact
+        path="/needs/:IDParam"
+        render={() => (
+          <ItemDetail getItemByID={getNeedByID} messageWord={"Tengo"} />
+        )}
+      />
+      <PrivateRoute
+        exact
+        path="/offers/:IDParam"
+        render={() => (
+          <ItemDetail getItemByID={getOfferByID} messageWord={"Necesito"} />
+        )}
       />
       <PrivateRoute exact path="/myoffers" render={() => <MyOffers />} />
       <PrivateRoute exact path="/myneeds" render={() => <MyNeeds />} />

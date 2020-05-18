@@ -123,6 +123,7 @@ const AddItem = () => {
                       image: url,
                       mobility,
                       title,
+                      urgent,
                       user: userName,
                       userEmail,
                       zone,

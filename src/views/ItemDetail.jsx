@@ -1,27 +1,33 @@
-import React from "react";
-import Modal from "react-bootstrap/Modal";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
+import TopBar from "../components/TopBar";
+import Profile from "../components/Profile";
 
-const ItemDetail = ({ modalShow, setModalShow, itemID, findItemById }) => {
-  const {
-    description,
-    image,
-    mobility,
-    urgent,
-    title,
-    user,
-    zone,
-  } = findItemById(itemID);
-  const phoneNumber = 5493464692328;
-  const message = `Hola, me interesa el artículo ${title} de socialapp`;
+const ItemDetail = ({ getItemByID, messageWord }) => {
+  let { IDParam } = useParams();
+  const [itemData, setItemData] = useState("");
+
+  const getItemByIDParam = async (IDParam) => {
+    setItemData(await getItemByID(IDParam));
+  };
+
+  useEffect(() => {
+    getItemByIDParam(IDParam);
+  }, []);
+
+  const { description, image, mobility, urgent, title, user, zone } = itemData;
+
+  const phoneNumber = 549348224;
+  const message = `¡Hola! ${messageWord} el artículo: '${title}' de AppName que subiste a ${window.location.href}`;
   return (
-    <Modal show={modalShow} onHide={() => setModalShow(false)} centered>
-      <Modal.Header closeButton></Modal.Header>
-      <Modal.Body>
+    <>
+      <TopBar />
+      <Profile />
+      <div className="margin21-1 flexStart left">
         <Card
           className="m-2"
           bg={`${urgent && "danger"}`}
@@ -48,7 +54,7 @@ const ItemDetail = ({ modalShow, setModalShow, itemID, findItemById }) => {
                   {user}
                 </Link>
               </small>
-              {urgent && <h6 className="white">[URGENTE]</h6>}
+              {urgent && <h6 className="white">-URGENTE-</h6>}
               <DropdownButton
                 id="dropdown-item-button"
                 variant="outline-dark"
@@ -82,8 +88,8 @@ const ItemDetail = ({ modalShow, setModalShow, itemID, findItemById }) => {
             </div>
           </Card.Footer>
         </Card>
-      </Modal.Body>
-    </Modal>
+      </div>
+    </>
   );
 };
 

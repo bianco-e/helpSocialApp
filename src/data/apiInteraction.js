@@ -23,6 +23,9 @@ const getAllOffers = async () => await firebase.getOffers();
 const getFiveNeeds = () => firebase.getFirstFiveNeeds();
 const getFiveOffers = () => firebase.getFirstFiveOffers();
 
+const getNeedByID = async (docID) => await firebase.getNeedByID(docID);
+const getOfferByID = async (docID) => await firebase.getOfferByID(docID);
+
 const logInUsingGoogle = () =>
   firebase.doSignInWithGoogle().catch((error) => alert(error));
 const logOutUsingGoogle = () => firebase.logOut();
@@ -43,6 +46,8 @@ export {
   getAllOffers,
   getFiveNeeds,
   getFiveOffers,
+  getNeedByID,
+  getOfferByID,
   logInUsingGoogle,
   logOutUsingGoogle,
   searchByTitleInNeeds,

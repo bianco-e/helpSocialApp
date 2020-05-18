@@ -2,13 +2,7 @@ import React, { lazy, Suspense } from "react";
 import Spinner from "react-bootstrap/Spinner";
 const SmallItem = lazy(() => import("./SmallItem"));
 
-const Items = ({ arrayToRender }) => {
-  const findItemById = (itemID) => {
-    return arrayToRender.find((item) => {
-      return item.id === itemID;
-    });
-  };
-
+const Items = ({ arrayToRender, collection }) => {
   return (
     <Suspense
       fallback={
@@ -30,7 +24,7 @@ const Items = ({ arrayToRender }) => {
                 title={item.title}
                 urgent={item.urgent}
                 user={item.user}
-                findItemById={findItemById}
+                collection={collection}
               />
             );
           })}

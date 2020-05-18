@@ -11,22 +11,31 @@ const getAndMapACollection = (collection) => {
 const addItem = (collection, item) => {
   return collection
     .add({ ...item })
-    .then(function (docRef) {
+    .then((docRef) => {
       alert("Agregado exitosamente", docRef.id);
     })
-    .catch(function (error) {
+    .catch((error) => {
       console.error("No se pudo agregar correctamente", error);
     });
 };
 const addImage = (storage, file) => {
   return storage
     .put(file)
-    .then(function (snapshot) {
+    .then((snapshot) => {
       return snapshot.ref.getDownloadURL().then((object) => {
         return object;
       });
     })
     .catch((error) => console.log(error));
+};
+const deleteItem = (collection, docID) => {
+  return collection
+    .doc(docID)
+    .delete()
+    .then(() => {
+      alert("Borrado");
+    })
+    .catch((error) => alert("Error: " + error));
 };
 
 class Firebase {
@@ -45,12 +54,28 @@ class Firebase {
   addNeed = (newNeed) => addItem(this.needsRef, newNeed);
   addOffer = (newOffer) => addItem(this.offersRef, newOffer);
 
+  deleteNeed = (docID) => deleteItem(this.needsRef, docID);
+  deleteOffer = (docID) => deleteItem(this.offersRef, docID);
+
   getFirstFiveNeeds = () =>
     getAndMapACollection(this.needsRef.where("urgent", "==", true).limit(5));
   getFirstFiveOffers = () => getAndMapACollection(this.offersRef.limit(5));
 
   getNeeds = () => getAndMapACollection(this.needsRef);
   getOffers = () => getAndMapACollection(this.offersRef);
+
+  getNeedByID = (docID) => {
+    return this.needsRef
+      .doc(docID)
+      .get()
+      .then((doc) => doc.data());
+  };
+  getOfferByID = (docID) => {
+    return this.offersRef
+      .doc(docID)
+      .get()
+      .then((doc) => doc.data());
+  };
 
   getMyNeeds = (userEmail) =>
     getAndMapACollection(this.needsRef.where("userEmail", "==", userEmail));
