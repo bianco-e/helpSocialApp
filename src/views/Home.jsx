@@ -1,4 +1,8 @@
 import React from "react";
+import {
+  TwoDivsWrapper,
+  DivFiftyPerCentWidth,
+} from "../components/StyledComponents";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
 import Items from "../components/Items";
@@ -14,18 +18,18 @@ const Home = () => {
     <div>
       <TopBar />
       <Profile />
-      <div className="flex between margin21-1">
-        <div className="width50pc">
+      <TwoDivsWrapper>
+        <DivFiftyPerCentWidth>
           <ItemsContainer title="Búsquedas destacadas">
             <Items arrayToRender={fiveNeedsList} collection={"needs"} />
           </ItemsContainer>
-        </div>
-        <div className="width50pc">
+        </DivFiftyPerCentWidth>
+        <DivFiftyPerCentWidth>
           <ItemsContainer title="Donaciones destacadas">
             <Items arrayToRender={fiveOffersList} collection={"offers"} />
           </ItemsContainer>
-        </div>
-      </div>
+        </DivFiftyPerCentWidth>
+      </TwoDivsWrapper>
     </div>
   );
 };

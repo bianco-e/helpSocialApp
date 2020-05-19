@@ -1,4 +1,8 @@
 import React from "react";
+import {
+  TwoDivsWrapper,
+  DivFiftyPerCentWidth,
+} from "../components/StyledComponents";
 import { useParams } from "react-router-dom";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
@@ -24,18 +28,18 @@ const SearchResults = () => {
       <div>
         <TopBar />
         <Profile />
-        <div className="flex between margin21-1">
-          <div className="width50pc">
+        <TwoDivsWrapper>
+          <DivFiftyPerCentWidth>
             <ItemsContainer title="Resultados para Búsquedas">
               <Items arrayToRender={needsResults} />
             </ItemsContainer>
-          </div>
-          <div className="width50pc">
+          </DivFiftyPerCentWidth>
+          <DivFiftyPerCentWidth>
             <ItemsContainer title="Resultados para Donaciones">
               <Items arrayToRender={offersResults} />
             </ItemsContainer>
-          </div>
-        </div>
+          </DivFiftyPerCentWidth>
+        </TwoDivsWrapper>
       </div>
     )
   );

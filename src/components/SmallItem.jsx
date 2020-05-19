@@ -31,12 +31,11 @@ const SmallItem = ({
         >
           {description}
         </h6>
-        <Link
-          className={`${urgent ? "smallText white textDecoNone" : "smallText"}`}
-          to="/"
+        <small
+          className={`${urgent ? "mediumText white" : "mediumText text-muted"}`}
         >
           {user}
-        </Link>
+        </small>
       </div>
     </button>
   );

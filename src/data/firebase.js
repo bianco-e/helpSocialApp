@@ -90,7 +90,6 @@ class Firebase {
     getAndMapACollection(
       this.offersRef.where("title".toLowerCase(), "==", keyword.toLowerCase())
     );
-
   uploadImageForNeeds = (file) => {
     var needsImagesRef = this.storageRef.child(`images/needs/${file.name}`);
     return addImage(needsImagesRef, file);

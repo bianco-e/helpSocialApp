@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import TopBar from "../components/TopBar";
+import { LoginBgImage } from "../components/StyledComponents";
 
 const Login = () => {
   const user = useContext(AuthContext);
@@ -12,9 +13,9 @@ const Login = () => {
   }, [user]);
 
   return (
-    <div className="imageBg">
+    <LoginBgImage>
       <TopBar forLogin={true} />
-    </div>
+    </LoginBgImage>
   );
 };
 

@@ -1,4 +1,8 @@
 import React from "react";
+import {
+  DivFlexStartLeft,
+  DivHundredPerCentWidth,
+} from "../components/StyledComponents";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
 import Items from "../components/Items";
@@ -34,14 +38,14 @@ const Needs = () => {
     <>
       <TopBar />
       <Profile />
-      <div className="margin21-1 flexStart left">
+      <DivFlexStartLeft>
         <Filter filterFn={filterNeedsByCategory} urgFilter={true} />
-        <div className="width100pc">
+        <DivHundredPerCentWidth>
           <ItemsContainer path="/needs" title="Búsquedas">
             <Items arrayToRender={needsList} collection={"needs"} />
           </ItemsContainer>
-        </div>
-      </div>
+        </DivHundredPerCentWidth>
+      </DivFlexStartLeft>
     </>
   );
 };

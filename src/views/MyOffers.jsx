@@ -1,4 +1,9 @@
 import React, { useContext } from "react";
+import {
+  DivFlexStartLeft,
+  DivHundredPerCentWidth,
+  DivSpinner,
+} from "../components/StyledComponents";
 import AuthContext from "../context/AuthContext";
 import Profile from "../components/Profile";
 import TopBar from "../components/TopBar";
@@ -34,23 +39,25 @@ const MyOptions = () => {
   };
 
   return (
-    <div>
+    <>
       <TopBar />
       <Profile />
-      <div className="margin21-1 flexStart left">
+      <DivFlexStartLeft>
         <Filter filterFn={filterOffersByCategory} />
-        <div className="width100pc">
+        <DivHundredPerCentWidth>
           <ItemsContainer path="/myoffers" title="Mis donaciones">
             <Items arrayToRender={myOffersList} collection={"offers"} />
           </ItemsContainer>
-        </div>
-      </div>
-      <div className="spinnerDiv">
-        <Link to="/addoffer">
-          <Button variant="outline-info">Agregar donación</Button>
-        </Link>
-      </div>
-    </div>
+        </DivHundredPerCentWidth>
+      </DivFlexStartLeft>
+      <DivFlexStartLeft>
+        <DivHundredPerCentWidth>
+          <Link to="/addoffer">
+            <Button variant="outline-info">Agregar donación</Button>
+          </Link>
+        </DivHundredPerCentWidth>
+      </DivFlexStartLeft>
+    </>
   );
 };
 

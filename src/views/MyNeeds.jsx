@@ -1,4 +1,9 @@
 import React, { useContext } from "react";
+import {
+  DivFlexStartLeft,
+  DivHundredPerCentWidth,
+  DivSpinner,
+} from "../components/StyledComponents";
 import AuthContext from "../context/AuthContext";
 import Profile from "../components/Profile";
 import TopBar from "../components/TopBar";
@@ -40,23 +45,25 @@ const MyNeeds = () => {
   };
 
   return (
-    <div>
+    <>
       <TopBar />
       <Profile />
-      <div className="margin21-1 flexStart left">
+      <DivFlexStartLeft>
         <Filter filterFn={filterNeedsByCategory} urgFilter={true} />
-        <div className="width100pc">
+        <DivHundredPerCentWidth>
           <ItemsContainer path="/myneeds" title="Mis búsquedas">
             <Items arrayToRender={myNeedsList} collection={"needs"} />
           </ItemsContainer>
-        </div>
-      </div>
-      <div className="spinnerDiv">
-        <Link to="/addneed">
-          <Button variant="outline-info">Agregar búsqueda</Button>
-        </Link>
-      </div>
-    </div>
+        </DivHundredPerCentWidth>
+      </DivFlexStartLeft>
+      <DivFlexStartLeft>
+        <DivHundredPerCentWidth>
+          <Link to="/addneed">
+            <Button variant="outline-info">Agregar búsqueda</Button>
+          </Link>
+        </DivHundredPerCentWidth>
+      </DivFlexStartLeft>
+    </>
   );
 };
 

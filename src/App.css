@@ -73,9 +73,6 @@
 .white {
   color: white;
 }
-.white:hover {
-  color: rgb(230, 230, 230);
-}
 .textDecoNone:hover {
   text-decoration: none;
 }
@@ -138,9 +135,6 @@ a {
 }
 .wspLink:hover {
   color: green;
-}
-.gmailLink:hover {
-  color: red;
 }
 .fbkLink:hover {
   color: rgb(82, 82, 255);

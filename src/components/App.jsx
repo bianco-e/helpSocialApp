@@ -2,18 +2,25 @@ import React from "react";
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route } from "react-router-dom";
+import UrgentCheckBox from "./UrgentCheckBox";
 import Login from "../views/Login";
 import Home from "../views/Home";
 import Needs from "../views/Needs";
 import Offers from "../views/Offers";
 import MyOffers from "../views/MyOffers";
 import MyNeeds from "../views/MyNeeds";
-import AddOffer from "../views/AddOffer";
-import AddNeed from "../views/AddNeed";
+import AddItem from "../views/AddItem";
 import PrivateRoute from "./PrivateRoute";
 import ItemDetail from "../views/ItemDetail";
 import SearchResults from "../views/SearchResults";
-import { getOfferByID, getNeedByID } from "../data/apiInteraction.js";
+import {
+  getOfferByID,
+  getNeedByID,
+  addNewNeed,
+  addNewOffer,
+  addAnImageToNeeds,
+  addAnImageToOffers,
+} from "../data/apiInteraction.js";
 
 function App() {
   return (
@@ -41,8 +48,22 @@ function App() {
       />
       <PrivateRoute exact path="/myoffers" render={() => <MyOffers />} />
       <PrivateRoute exact path="/myneeds" render={() => <MyNeeds />} />
-      <PrivateRoute exact path="/addneed" render={() => <AddNeed />} />
-      <PrivateRoute exact path="/addoffer" render={() => <AddOffer />} />
+      <PrivateRoute
+        exact
+        path="/addneed"
+        render={() => (
+          <AddItem addNewItem={addNewNeed} addAnImage={addAnImageToNeeds}>
+            {(props) => <UrgentCheckBox {...props}></UrgentCheckBox>}
+          </AddItem>
+        )}
+      />
+      <PrivateRoute
+        exact
+        path="/addoffer"
+        render={() => (
+          <AddItem addNewItem={addNewOffer} addAnImage={addAnImageToOffers} />
+        )}
+      />
       <PrivateRoute exact path="/offers" render={() => <Offers />} />
       <PrivateRoute exact path="/needs" render={() => <Needs />} />
     </BrowserRouter>

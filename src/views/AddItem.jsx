@@ -1,4 +1,8 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import {
+  H6NoMargin,
+  DivHundredPerCentWidth,
+} from "../components/StyledComponents";
 import AuthContext from "../context/AuthContext";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
@@ -6,9 +10,8 @@ import Button from "react-bootstrap/Button";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
 import { mapZonesIntoOptions } from "../data/data";
-import { addNewNeed, addAnImageToNeeds } from "../data/apiInteraction";
 
-const AddItem = () => {
+const AddItem = ({ children, addNewItem, addAnImage }) => {
   const user = useContext(AuthContext);
   const userName = user.displayName;
   const userEmail = user.email;
@@ -41,11 +44,12 @@ const AddItem = () => {
       <div className="margin21-1">
         <Card border="primary" className="m-2">
           <Card.Header>
-            <h6 className="margin0">Agregar búsqueda</h6>
+            <H6NoMargin>Agregar búsqueda</H6NoMargin>
           </Card.Header>
           <div className="flexColumn">
             <Form.Group>
               <br />
+              <Form.Label>Foto del objeto</Form.Label>
               <Form.File
                 id="custom-file"
                 label={fileName || `Agregar foto`}
@@ -54,6 +58,8 @@ const AddItem = () => {
                 onChange={() => setUploadingFile(!uploadingFile)}
                 custom
               />
+              <br />
+              <br />
               <Form.Label>Título</Form.Label>
               <Form.Control
                 size="sm"
@@ -105,42 +111,39 @@ const AddItem = () => {
                 onChange={() => setMobility(!mobility)}
               />
               <br />
-              <Form.Check
-                type="checkbox"
-                label="Tildar esta opción si es de necesidad URGENTE"
-                checked={urgent}
-                onChange={() => setUrgent(!urgent)}
-              />
+              {children && children({ urgent, setUrgent })}
               <br />
-              <Button
-                variant="outline-info"
-                onClick={() => {
-                  setLoading(true);
-                  addAnImageToNeeds(fileLoaded).then((url) => {
-                    const newNeed = {
-                      category,
-                      description,
-                      image: url,
-                      mobility,
-                      title,
-                      urgent,
-                      user: userName,
-                      userEmail,
-                      zone,
-                    };
-                    addNewNeed(newNeed).then(() => {
-                      setTitle("");
-                      setDescription("");
-                      setCategory("");
-                      setMobility(false);
-                      setZone("");
-                      setLoading(false);
+              <DivHundredPerCentWidth>
+                <Button
+                  variant="outline-info"
+                  onClick={() => {
+                    setLoading(true);
+                    addAnImage(fileLoaded).then((url) => {
+                      const newItem = {
+                        category,
+                        description,
+                        image: url,
+                        mobility,
+                        title,
+                        urgent,
+                        user: userName,
+                        userEmail,
+                        zone,
+                      };
+                      addNewItem(newItem).then(() => {
+                        setTitle("");
+                        setDescription("");
+                        setCategory("");
+                        setMobility(false);
+                        setZone("");
+                        setLoading(false);
+                      });
                     });
-                  });
-                }}
-              >
-                Subir
-              </Button>
+                  }}
+                >
+                  Subir
+                </Button>
+              </DivHundredPerCentWidth>
             </Form.Group>
           </div>
         </Card>

@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import {
+  DivFlexStartLeft,
+  DivFlexBetween,
+} from "../components/StyledComponents";
 import { Link, useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
@@ -27,7 +31,7 @@ const ItemDetail = ({ getItemByID, messageWord }) => {
     <>
       <TopBar />
       <Profile />
-      <div className="margin21-1 flexStart left">
+      <DivFlexStartLeft>
         <Card
           className="m-2"
           bg={`${urgent && "danger"}`}
@@ -45,14 +49,13 @@ const ItemDetail = ({ getItemByID, messageWord }) => {
             </Card.Text>
           </Card.Body>
           <Card.Footer>
-            <div className="flex between">
-              <small className="mediumText text-muted">
-                <Link
-                  className={`${urgent ? "white textDecoNone" : "mediumText"}`}
-                  to="/"
-                >
-                  {user}
-                </Link>
+            <DivFlexBetween>
+              <small
+                className={`${
+                  urgent ? "mediumText white" : "mediumText text-muted"
+                }`}
+              >
+                {user}
               </small>
               {urgent && <h6 className="white">-URGENTE-</h6>}
               <DropdownButton
@@ -69,13 +72,6 @@ const ItemDetail = ({ getItemByID, messageWord }) => {
                   <Dropdown.Item as="button">Enviar Whatsapp</Dropdown.Item>
                 </a>
                 <a
-                  href={`https://gmail.com`}
-                  className="gmailLink"
-                  target="blank"
-                >
-                  <Dropdown.Item as="button">Enviar mail</Dropdown.Item>
-                </a>
-                <a
                   href={`https://facebook.com`}
                   className="fbkLink"
                   target="blank"
@@ -85,10 +81,10 @@ const ItemDetail = ({ getItemByID, messageWord }) => {
                   </Dropdown.Item>
                 </a>
               </DropdownButton>
-            </div>
+            </DivFlexBetween>
           </Card.Footer>
         </Card>
-      </div>
+      </DivFlexStartLeft>
     </>
   );
 };
