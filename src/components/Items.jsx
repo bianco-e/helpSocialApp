@@ -1,8 +1,22 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import Spinner from "react-bootstrap/Spinner";
 const SmallItem = lazy(() => import("./SmallItem"));
 
 const Items = ({ arrayToRender, collection, deleteItemFn }) => {
+  const [arrToRender, setArrToRender] = useState(arrayToRender);
+
+  const deleteItemFromArray = (id) => {
+    setArrToRender(
+      arrToRender.filter((item) => {
+        return item["id"] !== id;
+      })
+    );
+  };
+
+  useEffect(() => {
+    setArrToRender(arrayToRender);
+  }, [arrayToRender]);
+
   return (
     <Suspense
       fallback={
@@ -13,19 +27,20 @@ const Items = ({ arrayToRender, collection, deleteItemFn }) => {
     >
       <div className="flexColumn padding2pc">
         <div className="flex around flexWrap">
-          {arrayToRender.map((item) => {
+          {arrToRender.map((item) => {
             return (
               <SmallItem
                 category={item.category}
+                collection={collection}
+                deleteItemFn={deleteItemFn}
+                deleteItemFromArray={deleteItemFromArray}
                 description={item.description}
                 id={item.id}
                 image={item.image}
-                key={item.user + item.title}
+                key={item.id}
                 title={item.title}
                 urgent={item.urgent}
                 user={item.user}
-                collection={collection}
-                deleteItemFn={deleteItemFn}
               />
             );
           })}

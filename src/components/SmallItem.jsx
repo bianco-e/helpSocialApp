@@ -12,6 +12,7 @@ const SmallItem = ({
   urgent = false,
   collection,
   deleteItemFn,
+  deleteItemFromArray,
 }) => {
   const history = useHistory();
   return (
@@ -46,6 +47,7 @@ const SmallItem = ({
           onClick={(e) => {
             e.stopPropagation();
             deleteItemFn(id);
+            deleteItemFromArray(id);
           }}
         >
           ✖

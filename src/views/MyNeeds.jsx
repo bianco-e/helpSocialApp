@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import {
   DivFlexStartLeft,
   DivHundredPerCentWidth,
-  DivSpinner,
 } from "../components/StyledComponents";
 import AuthContext from "../context/AuthContext";
 import Profile from "../components/Profile";
@@ -43,7 +42,6 @@ const MyNeeds = () => {
       );
     }
   };
-
   return (
     <>
       <TopBar />

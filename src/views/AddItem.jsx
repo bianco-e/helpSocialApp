@@ -136,6 +136,7 @@ const AddItem = ({ children, addNewItem, addAnImage }) => {
                         setCategory("");
                         setMobility(false);
                         setZone("");
+                        setUrgent(false);
                         setLoading(false);
                       });
                     });

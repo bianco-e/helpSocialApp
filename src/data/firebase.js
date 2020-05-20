@@ -43,6 +43,7 @@ class Firebase {
     const app = firebase.initializeApp(config);
     this.auth = app.auth();
     this.db = app.firestore();
+    this.database = app.database();
     this.googleProvider = new firebase.auth.GoogleAuthProvider();
     this.storageRef = app.storage().ref();
     this.needsRef = this.db.collection("needs");
@@ -82,14 +83,16 @@ class Firebase {
   getMyOffers = (userEmail) =>
     getAndMapACollection(this.offersRef.where("userEmail", "==", userEmail));
 
-  searchTitleInNeeds = (keyword) =>
+  searchTitleInNeeds = async (keyword) =>
     getAndMapACollection(
       this.needsRef.where("title".toLowerCase(), "==", keyword.toLowerCase())
     );
-  searchTitleInOffers = (keyword) =>
+
+  searchTitleInOffers = async (keyword) =>
     getAndMapACollection(
       this.offersRef.where("title".toLowerCase(), "==", keyword.toLowerCase())
     );
+
   uploadImageForNeeds = (file) => {
     var needsImagesRef = this.storageRef.child(`images/needs/${file.name}`);
     return addImage(needsImagesRef, file);
