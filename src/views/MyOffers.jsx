@@ -13,7 +13,7 @@ import ItemsContainer from "../components/ItemsContainer";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import useFetchWithFilter from "../hooks/useFetchWithFilter.js";
-import { getAllMyOffers } from "../data/apiInteraction.js";
+import { getAllMyOffers, deleteOffer } from "../data/apiInteraction.js";
 
 const MyOptions = () => {
   const user = useContext(AuthContext);
@@ -46,7 +46,11 @@ const MyOptions = () => {
         <Filter filterFn={filterOffersByCategory} />
         <DivHundredPerCentWidth>
           <ItemsContainer path="/myoffers" title="Mis donaciones">
-            <Items arrayToRender={myOffersList} collection={"offers"} />
+            <Items
+              arrayToRender={myOffersList}
+              collection={"offers"}
+              deleteItemFn={deleteOffer}
+            />
           </ItemsContainer>
         </DivHundredPerCentWidth>
       </DivFlexStartLeft>

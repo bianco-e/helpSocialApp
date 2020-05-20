@@ -14,6 +14,9 @@ const changeAuthState = (toDo) => {
   });
 };
 
+const deleteNeed = (docID) => firebase.deleteNeed(docID);
+const deleteOffer = (docID) => firebase.deleteOffer(docID);
+
 const getAllMyNeeds = (userEmail) => firebase.getMyNeeds(userEmail);
 const getAllMyOffers = (userEmail) => firebase.getMyOffers(userEmail);
 
@@ -40,6 +43,8 @@ export {
   addNewNeed,
   addNewOffer,
   changeAuthState,
+  deleteNeed,
+  deleteOffer,
   getAllMyNeeds,
   getAllMyOffers,
   getAllNeeds,

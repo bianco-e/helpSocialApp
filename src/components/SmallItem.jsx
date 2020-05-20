@@ -1,6 +1,7 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
 
 const SmallItem = ({
   image,
@@ -10,6 +11,7 @@ const SmallItem = ({
   id,
   urgent = false,
   collection,
+  deleteItemFn,
 }) => {
   const history = useHistory();
   return (
@@ -37,6 +39,18 @@ const SmallItem = ({
           {user}
         </small>
       </div>
+      {deleteItemFn && (
+        <Button
+          variant="danger"
+          size="sm"
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteItemFn(id);
+          }}
+        >
+          ✖
+        </Button>
+      )}
     </button>
   );
 };

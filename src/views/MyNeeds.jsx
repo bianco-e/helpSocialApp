@@ -13,7 +13,7 @@ import ItemsContainer from "../components/ItemsContainer";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import useFetchWithFilter from "../hooks/useFetchWithFilter.js";
-import { getAllMyNeeds } from "../data/apiInteraction.js";
+import { getAllMyNeeds, deleteNeed } from "../data/apiInteraction.js";
 
 const MyNeeds = () => {
   const user = useContext(AuthContext);
@@ -52,7 +52,11 @@ const MyNeeds = () => {
         <Filter filterFn={filterNeedsByCategory} urgFilter={true} />
         <DivHundredPerCentWidth>
           <ItemsContainer path="/myneeds" title="Mis búsquedas">
-            <Items arrayToRender={myNeedsList} collection={"needs"} />
+            <Items
+              arrayToRender={myNeedsList}
+              collection={"needs"}
+              deleteItemFn={deleteNeed}
+            />
           </ItemsContainer>
         </DivHundredPerCentWidth>
       </DivFlexStartLeft>
