@@ -7,6 +7,7 @@ import AuthContext from "../context/AuthContext";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Spinner from "react-bootstrap/Spinner";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
 import { mapZonesIntoOptions } from "../data/data";
@@ -114,32 +115,41 @@ const AddItem = ({ children, addNewItem, addAnImage }) => {
               {children && children({ urgent, setUrgent })}
               <br />
               <DivHundredPerCentWidth>
+                {loading && (
+                  <DivHundredPerCentWidth>
+                    <Spinner animation="grow" variant="primary" />
+                  </DivHundredPerCentWidth>
+                )}
                 <Button
                   variant="outline-info"
                   onClick={() => {
-                    setLoading(true);
-                    addAnImage(fileLoaded).then((url) => {
-                      const newItem = {
-                        category,
-                        description,
-                        image: url,
-                        mobility,
-                        title,
-                        urgent,
-                        user: userName,
-                        userEmail,
-                        zone,
-                      };
-                      addNewItem(newItem).then(() => {
-                        setTitle("");
-                        setDescription("");
-                        setCategory("");
-                        setMobility(false);
-                        setZone("");
-                        setUrgent(false);
-                        setLoading(false);
+                    if (title && category && description && zone) {
+                      setLoading(true);
+                      addAnImage(fileLoaded).then((url) => {
+                        const newItem = {
+                          category,
+                          description,
+                          image: url,
+                          mobility,
+                          title,
+                          urgent,
+                          user: userName,
+                          userEmail,
+                          zone,
+                        };
+                        addNewItem(newItem).then(() => {
+                          setCategory("");
+                          setDescription("");
+                          setMobility(false);
+                          setLoading(false);
+                          setTitle("");
+                          setUrgent(false);
+                          setZone("");
+                        });
                       });
-                    });
+                    } else {
+                      alert("Es obligatorio completar algunos campos");
+                    }
                   }}
                 >
                   Subir

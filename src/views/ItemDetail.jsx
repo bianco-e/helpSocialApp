@@ -26,7 +26,7 @@ const ItemDetail = ({ getItemByID, messageWord }) => {
   const { description, image, mobility, urgent, title, user, zone } = itemData;
 
   const phoneNumber = 549348224;
-  const message = `¡Hola! ${messageWord} el artículo: '${title}' de AppName que subiste a ${window.location.href}`;
+  const message = `¡Hola! ${messageWord} el artículo: '${title}' de AppName que vi en ${window.location.href}`;
   return (
     <>
       <TopBar />

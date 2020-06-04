@@ -32,9 +32,6 @@ const deleteItem = (collection, docID) => {
   return collection
     .doc(docID)
     .delete()
-    .then(() => {
-      alert("Borrado");
-    })
     .catch((error) => alert("Error: " + error));
 };
 
