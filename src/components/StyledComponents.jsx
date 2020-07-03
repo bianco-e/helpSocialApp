@@ -1,12 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const StyledComponents = () => {
-  return <></>;
-};
-
 const LoginBgImage = styled.div`
-  background-image: url("https://media.istockphoto.com/vectors/help-social-concept-vector-id1059943696");
+  background-image: url("https://fplogoimages.withfloats.com/actual/5eaffa109e9d0c0001ea459b.png");
   height: 100vh;
   background-repeat: no-repeat;
 `;

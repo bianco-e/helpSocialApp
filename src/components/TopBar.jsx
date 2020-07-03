@@ -41,15 +41,9 @@ const TopBar = ({ forLogin = false }) => {
       </Nav>
       <Form inline>
         {forLogin ? (
-          <>
-            <Button variant="outline-danger" onClick={() => logInUsingGoogle()}>
-              Ingresar con Google
-            </Button>
-            &nbsp;
-            <Button variant="outline-primary" onClick={() => {}}>
-              Ingresar con Facebook
-            </Button>
-          </>
+          <Button variant="outline-danger" onClick={() => logInUsingGoogle()}>
+            Ingresar con Google
+          </Button>
         ) : (
           <>
             <InputGroup className="margin0">
