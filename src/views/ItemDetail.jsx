@@ -71,15 +71,6 @@ const ItemDetail = ({ getItemByID, messageWord }) => {
                 >
                   <Dropdown.Item as="button">Enviar Whatsapp</Dropdown.Item>
                 </a>
-                <a
-                  href={`https://facebook.com`}
-                  className="fbkLink"
-                  target="blank"
-                >
-                  <Dropdown.Item as="button">
-                    Enviar mensaje de Facebook
-                  </Dropdown.Item>
-                </a>
               </DropdownButton>
             </DivFlexBetween>
           </Card.Footer>

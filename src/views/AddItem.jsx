@@ -45,7 +45,9 @@ const AddItem = ({ children, addNewItem, addAnImage }) => {
       <div className="margin21-1">
         <Card border="primary" className="m-2">
           <Card.Header>
-            <H6NoMargin>Agregar búsqueda</H6NoMargin>
+            <H6NoMargin>{`Agregar ${
+              children ? "búsqueda" : "oferta"
+            }`}</H6NoMargin>
           </Card.Header>
           <div className="flexColumn">
             <Form.Group>
@@ -84,6 +86,7 @@ const AddItem = ({ children, addNewItem, addAnImage }) => {
               <Form.Control
                 as="select"
                 size="sm"
+                value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
                 <option>Seleccionar categoría</option>
@@ -94,7 +97,7 @@ const AddItem = ({ children, addNewItem, addAnImage }) => {
                 <option value="Tratamientos">Tratamientos</option>
               </Form.Control>
               <br />
-              <Form.Label>Barrio mas cercano</Form.Label>
+              <Form.Label>Barrio más cercano</Form.Label>
               <Form.Control
                 as="select"
                 size="sm"
@@ -107,7 +110,7 @@ const AddItem = ({ children, addNewItem, addAnImage }) => {
               <br />
               <Form.Check
                 type="checkbox"
-                label="¿Tiene movilidad para facilitar el retiro?"
+                label="¿Tiene movilidad para facilitar la entrega?"
                 checked={mobility}
                 onChange={() => setMobility(!mobility)}
               />
