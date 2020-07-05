@@ -46,7 +46,7 @@ class Firebase {
     this.needsRef = this.db.collection("needs");
     this.offersRef = this.db.collection("offers");
   }
-  doSignInWithGoogle = () => this.auth.signInWithPopup(this.googleProvider);
+  doSignInWithGoogle = () => this.auth.signInWithRedirect(this.googleProvider);
   logOut = () => this.auth.signOut();
 
   addNeed = (newNeed) => addItem(this.needsRef, newNeed);
