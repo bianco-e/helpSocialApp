@@ -1,23 +1,21 @@
 import React from "react";
-import { H6NoMargin } from "./StyledComponents";
-import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { ContainerTitle } from "./StyledComponents";
 import Card from "react-bootstrap/Card";
 
-const ItemsContainer = ({ path = false, title, children }) => {
+export default function ItemsContainer({ children, title, width }) {
   return (
-    <Card border="primary" className="m-2">
-      <Card.Header>
-        {path ? (
-          <Link to={path} className="textDecoNone">
-            <H6NoMargin>{title}</H6NoMargin>
-          </Link>
-        ) : (
-          <H6NoMargin>{title}</H6NoMargin>
-        )}
-      </Card.Header>
-      {children}
-    </Card>
+    <ItemsBox width={width}>
+      <Card border="primary" className="m-2">
+        <Card.Header>
+          <ContainerTitle>{title}</ContainerTitle>
+        </Card.Header>
+        {children}
+      </Card>
+    </ItemsBox>
   );
-};
+}
 
-export default ItemsContainer;
+const ItemsBox = styled.section({
+  width: (props) => props.width || "50%",
+});

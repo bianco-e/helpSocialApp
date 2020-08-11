@@ -1,13 +1,14 @@
 import React from "react";
+import styled from "styled-components";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-const Filter = ({ filterFn, urgFilter = false }) => {
+export default function Filter({ filterFn, urgFilter }) {
   return (
-    <div className="flexColumn filterDiv">
+    <FilterContainer>
       <Card>
         <Card.Header>
-          <h6 className="margin0">Filtrar</h6>
+          <Title>Filtrar</Title>
         </Card.Header>
         {urgFilter && (
           <Button
@@ -75,8 +76,16 @@ const Filter = ({ filterFn, urgFilter = false }) => {
           Quitar filtro
         </Button>
       </Card>
-    </div>
+    </FilterContainer>
   );
-};
+}
 
-export default Filter;
+const FilterContainer = styled.section({
+  display: "flex",
+  flexDirection: "column",
+  margin: ".5rem",
+});
+const Title = styled.h6({
+  color: "rgb(150, 150, 170)",
+  margin: "0",
+});

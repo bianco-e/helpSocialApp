@@ -1,8 +1,9 @@
 import React, { lazy, Suspense, useState, useEffect } from "react";
+import styled from "styled-components";
 import Spinner from "react-bootstrap/Spinner";
 const SmallItem = lazy(() => import("./SmallItem"));
 
-const Items = ({ arrayToRender, collection, deleteItemFn }) => {
+export default function Items({ arrayToRender, collection, deleteItemFn }) {
   const [arrToRender, setArrToRender] = useState(arrayToRender);
 
   const deleteItemFromArray = (id) => {
@@ -20,34 +21,52 @@ const Items = ({ arrayToRender, collection, deleteItemFn }) => {
   return (
     <Suspense
       fallback={
-        <div className="spinnerDiv">
+        <SpinnerDiv>
           <Spinner animation="grow" variant="primary" />
-        </div>
+        </SpinnerDiv>
       }
     >
-      <div className="flexColumn padding2pc">
-        <div className="flex around flexWrap">
-          {arrToRender.map((item) => {
-            return (
-              <SmallItem
-                category={item.category}
-                collection={collection}
-                deleteItemFn={deleteItemFn}
-                deleteItemFromArray={deleteItemFromArray}
-                description={item.description}
-                id={item.id}
-                image={item.image}
-                key={item.id}
-                title={item.title}
-                urgent={item.urgent}
-                user={item.user}
-              />
-            );
-          })}
-        </div>
-      </div>
+      <ItemsWrapper>
+        <ItemContainer>
+          {arrToRender.map(
+            ({ category, description, id, image, title, urgent, user }) => {
+              return (
+                <SmallItem
+                  category={category}
+                  collection={collection}
+                  deleteItemFn={deleteItemFn}
+                  deleteItemFromArray={deleteItemFromArray}
+                  description={description}
+                  id={id}
+                  image={image}
+                  key={id}
+                  title={title}
+                  urgent={urgent}
+                  user={user}
+                />
+              );
+            }
+          )}
+        </ItemContainer>
+      </ItemsWrapper>
     </Suspense>
   );
-};
+}
 
-export default Items;
+const SpinnerDiv = styled.section({
+  width: "100%",
+  textAlign: "center",
+});
+const ItemsWrapper = styled.section({
+  alignItems: "center",
+  display: "flex",
+  flexDirection: "column",
+  padding: "1% 0",
+  width: "100%",
+});
+const ItemContainer = styled.section({
+  alignItems: "center",
+  display: "flex",
+  flexWrap: "wrap",
+  width: "100%",
+});

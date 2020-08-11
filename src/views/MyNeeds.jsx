@@ -49,7 +49,7 @@ const MyNeeds = () => {
       <DivFlexStartLeft>
         <Filter filterFn={filterNeedsByCategory} urgFilter={true} />
         <DivHundredPerCentWidth>
-          <ItemsContainer path="/myneeds" title="Mis búsquedas">
+          <ItemsContainer width="100%" title="Mis búsquedas">
             <Items
               arrayToRender={myNeedsList}
               collection={"needs"}

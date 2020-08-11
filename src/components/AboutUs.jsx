@@ -1,22 +1,27 @@
 import React from "react";
+import styled from "styled-components";
 import Modal from "react-bootstrap/Modal";
 
-const AboutUs = ({ modalShow, setModalShow }) => {
+export default function AboutUs({ modalShow, setModalShow }) {
   return (
     <Modal show={modalShow} onHide={() => setModalShow(false)} centered>
       <Modal.Header closeButton>
         <Modal.Title>AppName</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h6 className="mediumText">
-          AppName es una web para compartir con gente de Rosario elementos que
-          puedan servir a alguien más para tratar enfermedades, rehabilitar,
-          internarse o simplemente ser de ayuda para alguna cuestión de salud.
-          Hay gente que necesita y gente que puede ayudar.
-        </h6>
+        <Text>
+          AppName es una red social de ayuda donde los usuarios pueden compartir
+          con gente de la misma ciudad cosas que necesiten o que pueden donar
+          para alguien más. Especialmente objetos que respondan a una necesidad
+          de cuidado de la salud, ya sea para tratar enfermedades, rehabilitar,
+          internarse o ayudas en general.
+        </Text>
       </Modal.Body>
     </Modal>
   );
-};
+}
 
-export default AboutUs;
+const Text = styled.h5({
+  textAlign: "center",
+  lineHeight: "30px",
+});

@@ -41,7 +41,7 @@ const Needs = () => {
       <DivFlexStartLeft>
         <Filter filterFn={filterNeedsByCategory} urgFilter={true} />
         <DivHundredPerCentWidth>
-          <ItemsContainer path="/needs" title="Búsquedas">
+          <ItemsContainer width="100%" title="Búsquedas">
             <Items arrayToRender={needsList} collection={"needs"} />
           </ItemsContainer>
         </DivHundredPerCentWidth>

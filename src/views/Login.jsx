@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import TopBar from "../components/TopBar";
 import { LoginBgImage } from "../components/StyledComponents";
 
-const Login = () => {
+export default function Login() {
   const user = useContext(AuthContext);
 
   const history = useHistory();
@@ -17,6 +17,4 @@ const Login = () => {
       <TopBar forLogin={true} />
     </LoginBgImage>
   );
-};
-
-export default Login;
+}

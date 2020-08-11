@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {
-  DivFlexStartLeft,
-  DivFlexBetween,
-} from "../components/StyledComponents";
-import { Link, useParams } from "react-router-dom";
+import styled from "styled-components";
+import { useParams } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Image from "react-bootstrap/Image";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -11,7 +8,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
 
-const ItemDetail = ({ getItemByID, messageWord }) => {
+export default function ItemDetail({ getItemByID, messageWord }) {
   let { IDParam } = useParams();
   const [itemData, setItemData] = useState("");
 
@@ -31,7 +28,7 @@ const ItemDetail = ({ getItemByID, messageWord }) => {
     <>
       <TopBar />
       <Profile />
-      <DivFlexStartLeft>
+      <Wrapper>
         <Card
           className="m-2"
           bg={`${urgent && "danger"}`}
@@ -39,45 +36,60 @@ const ItemDetail = ({ getItemByID, messageWord }) => {
         >
           <Image variant="top" src={image} alt={title} fluid />
           <Card.Body>
-            <h6 className={`${urgent ? "bigText white" : "bigText"}`}>
-              {title}
-            </h6>
-            <Card.Text>{description}</Card.Text>
-            <Card.Text className="mediumText">Barrio: {zone}</Card.Text>
-            <Card.Text className="mediumText">
+            <Title color={urgent ? "white" : undefined}>{title}</Title>
+            <Description>{description}</Description>
+            <Details>Barrio: {zone}</Details>
+            <Details>
               {mobility ? "Tiene movilidad" : "No tiene movilidad"}
-            </Card.Text>
+            </Details>
           </Card.Body>
           <Card.Footer>
-            <DivFlexBetween>
-              <small
-                className={`${
-                  urgent ? "mediumText white" : "mediumText text-muted"
-                }`}
-              >
-                {user}
-              </small>
-              {urgent && <h6 className="white">-URGENTE-</h6>}
+            <FooterContainer>
+              <Details color={urgent ? "white" : undefined}>{user}</Details>
+              {urgent && <Details color="white">URGENTE</Details>}
               <DropdownButton
                 id="dropdown-item-button"
                 variant="outline-dark"
                 title="Contactar"
                 size="sm"
               >
-                <a
+                <ContactButton
                   href={`https://wa.me/${phoneNumber}?text=${message}`}
-                  className="wspLink"
                   target="blank"
                 >
                   <Dropdown.Item as="button">Enviar Whatsapp</Dropdown.Item>
-                </a>
+                </ContactButton>
               </DropdownButton>
-            </DivFlexBetween>
+            </FooterContainer>
           </Card.Footer>
         </Card>
-      </DivFlexStartLeft>
+      </Wrapper>
     </>
   );
-};
-
-export default ItemDetail;
+}
+export const Wrapper = styled.div({
+  display: "flex",
+  justifyContent: "center",
+});
+const Title = styled.h6({
+  color: (props) => props.color,
+  fontSize: "22px",
+});
+const Description = styled.h6({
+  color: (props) => props.color,
+  fontSize: "16px",
+});
+const Details = styled.p({
+  color: (props) => props.color,
+  fontSize: "11px",
+});
+const FooterContainer = styled.div({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+});
+const ContactButton = styled.a({
+  ["&:hover"]: {
+    color: "green",
+  },
+});

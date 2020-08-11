@@ -1,6 +1,7 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
+import styled from "styled-components";
 import {
-  H6NoMargin,
+  ContainerTitle,
   DivHundredPerCentWidth,
 } from "../components/StyledComponents";
 import AuthContext from "../context/AuthContext";
@@ -12,7 +13,7 @@ import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
 import { mapZonesIntoOptions } from "../data/data";
 
-const AddItem = ({ children, addNewItem, addAnImage }) => {
+export default function AddItem({ children, addNewItem, addAnImage }) {
   const user = useContext(AuthContext);
   const userName = user.displayName;
   const userEmail = user.email;
@@ -39,17 +40,17 @@ const AddItem = ({ children, addNewItem, addAnImage }) => {
   }, [uploadingFile]);
 
   return (
-    <div>
+    <>
       <TopBar />
       <Profile />
-      <div className="margin21-1">
+      <Wrapper>
         <Card border="primary" className="m-2">
           <Card.Header>
-            <H6NoMargin>{`Agregar ${
+            <ContainerTitle>{`Agregar ${
               children ? "búsqueda" : "oferta"
-            }`}</H6NoMargin>
+            }`}</ContainerTitle>
           </Card.Header>
-          <div className="flexColumn">
+          <FormContainer>
             <Form.Group>
               <br />
               <Form.Label>Foto del objeto</Form.Label>
@@ -159,11 +160,18 @@ const AddItem = ({ children, addNewItem, addAnImage }) => {
                 </Button>
               </DivHundredPerCentWidth>
             </Form.Group>
-          </div>
+          </FormContainer>
         </Card>
-      </div>
-    </div>
+      </Wrapper>
+    </>
   );
-};
+}
 
-export default AddItem;
+const Wrapper = styled.section({
+  margin: "0 1% 0 21%",
+});
+const FormContainer = styled.section({
+  alignItems: "center",
+  display: "flex",
+  flexDirection: "column",
+});

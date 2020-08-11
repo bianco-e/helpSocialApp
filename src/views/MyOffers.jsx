@@ -45,7 +45,7 @@ const MyOptions = () => {
       <DivFlexStartLeft>
         <Filter filterFn={filterOffersByCategory} />
         <DivHundredPerCentWidth>
-          <ItemsContainer path="/myoffers" title="Mis donaciones">
+          <ItemsContainer width="100%" title="Mis donaciones">
             <Items
               arrayToRender={myOffersList}
               collection={"offers"}

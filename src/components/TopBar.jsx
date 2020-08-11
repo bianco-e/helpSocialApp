@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import { logInUsingGoogle, logOutUsingGoogle } from "../data/apiInteraction.js";
 import { Link, useHistory } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
@@ -9,7 +10,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
 import AboutUs from "./AboutUs";
 
-const TopBar = ({ forLogin = false }) => {
+export default function TopBar({ forLogin = false }) {
   const history = useHistory();
   const [insertedValue, setInsertedValue] = useState("");
   const [modalShow, setModalShow] = useState(false);
@@ -20,23 +21,23 @@ const TopBar = ({ forLogin = false }) => {
       <Nav className="mr-auto">
         {forLogin ? (
           <>
-            <Button bsPrefix="navLink" onClick={() => setModalShow(true)}>
+            <NavButton onClick={() => setModalShow(true)}>
               ¿Qué es AppName?
-            </Button>
+            </NavButton>
             <AboutUs modalShow={modalShow} setModalShow={setModalShow} />
           </>
         ) : (
-          <div className="flex between">
-            <Link to="/home" className="navLink">
-              &nbsp; Inicio &nbsp;
+          <Container>
+            <Link to="/home">
+              <NavButton>Inicio</NavButton>
             </Link>
-            <Link to="/needs" className="navLink">
-              &nbsp; Se busca &nbsp;
+            <Link to="/needs">
+              <NavButton>Se busca</NavButton>
             </Link>
-            <Link to="/offers" className="navLink">
-              &nbsp; Se dona &nbsp;
+            <Link to="/offers">
+              <NavButton>Se dona</NavButton>
             </Link>
-          </div>
+          </Container>
         )}
       </Nav>
       <Form inline>
@@ -46,10 +47,10 @@ const TopBar = ({ forLogin = false }) => {
           </Button>
         ) : (
           <>
-            <InputGroup className="margin0">
+            <InputGroup>
               <InputGroup.Prepend>
                 <InputGroup.Text>
-                  <span className="margin0">🔍</span>
+                  <Span>🔍</Span>
                 </InputGroup.Text>
               </InputGroup.Prepend>
               <FormControl
@@ -63,7 +64,6 @@ const TopBar = ({ forLogin = false }) => {
                 }}
               />
             </InputGroup>
-            &nbsp;
             <Button variant="danger" onClick={() => logOutUsingGoogle()}>
               Cerrar sesión
             </Button>
@@ -72,6 +72,26 @@ const TopBar = ({ forLogin = false }) => {
       </Form>
     </Navbar>
   );
-};
-
-export default TopBar;
+}
+const Container = styled.section({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+});
+const NavButton = styled.button({
+  background: "none",
+  border: "0",
+  color: "rgb(150, 150, 170)",
+  cursor: "pointer",
+  ["&:hover"]: {
+    textDecoration: "none",
+    color: "rgb(130, 130, 140)",
+  },
+  ["&:active"]: {
+    textDecoration: "none",
+    color: "rgb(80, 80, 90)",
+  },
+});
+const Span = styled.span({
+  margin: "0",
+});
