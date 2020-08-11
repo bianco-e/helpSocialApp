@@ -1,6 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import styled from "styled-components";
-import { ContainerTitle } from "../components/StyledComponents";
 import AuthContext from "../context/AuthContext";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
@@ -8,7 +7,7 @@ import Button from "react-bootstrap/Button";
 import Spinner from "react-bootstrap/Spinner";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
-import { mapZonesIntoOptions } from "../data/data";
+import { categories, zones } from "../data/data";
 
 export default function AddItem({ children, addNewItem, addAnImage }) {
   const user = useContext(AuthContext);
@@ -36,15 +35,6 @@ export default function AddItem({ children, addNewItem, addAnImage }) {
     }
   }, [uploadingFile]);
 
-  const selectOptions = [
-    "Selecctionar categoría",
-    "Accesorios",
-    "Descartables",
-    "Internación",
-    "Rehabilitaciones",
-    "Tratamientos",
-  ];
-
   return (
     <>
       <TopBar />
@@ -61,42 +51,42 @@ export default function AddItem({ children, addNewItem, addAnImage }) {
               <br />
               <Form.Label>Foto del objeto</Form.Label>
               <Form.File
+                custom
+                data-browse="+"
                 id="custom-file"
                 label={fileName || `Agregar foto`}
-                ref={inputFileRef}
-                data-browse="+"
                 onChange={() => setUploadingFile(!uploadingFile)}
-                custom
+                ref={inputFileRef}
               />
               <br />
               <br />
               <Form.Label>Título</Form.Label>
               <Form.Control
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="Título"
                 size="sm"
                 type="text"
-                placeholder="Título"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
               />
               <br />
               <Form.Label>Descripción</Form.Label>
               <Form.Control
                 as="textarea"
-                placeholder="Descripción"
                 cols="30"
                 maxlength="240"
-                value={description}
                 onChange={(e) => setDescription(e.target.value)}
+                placeholder="Descripción"
+                value={description}
               />
               <br />
               <Form.Label>Categoría</Form.Label>
               <Form.Control
                 as="select"
+                onChange={(e) => setCategory(e.target.value)}
                 size="sm"
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
               >
-                {selectOptions.map((option, idx) => (
+                {categories.map((option, idx) => (
                   <option value={idx === 0 ? "" : option}>{option}</option>
                 ))}
               </Form.Control>
@@ -104,12 +94,17 @@ export default function AddItem({ children, addNewItem, addAnImage }) {
               <Form.Label>Barrio más cercano</Form.Label>
               <Form.Control
                 as="select"
+                onChange={(e) => setZone(e.target.value)}
                 size="sm"
                 value={zone}
-                onChange={(e) => setZone(e.target.value)}
               >
-                <option>Seleccionar barrio</option>
-                {mapZonesIntoOptions()}
+                {zones.map((zone, idx) => {
+                  return (
+                    <option value={idx === 0 ? "" : zone} key={zone}>
+                      {zone}
+                    </option>
+                  );
+                })}
               </Form.Control>
               <br />
               <Form.Check
@@ -171,7 +166,7 @@ export default function AddItem({ children, addNewItem, addAnImage }) {
 }
 
 const Wrapper = styled.section({
-  margin: "0 1% 0 21%",
+  margin: "0 1% 0 16%",
 });
 const FormContainer = styled.section({
   alignItems: "center",
@@ -180,5 +175,10 @@ const FormContainer = styled.section({
 });
 const Container = styled.section({
   width: "100%",
+  textAlign: "center",
+});
+const ContainerTitle = styled.h6({
+  color: "rgb(150, 150, 170)",
+  margin: "0",
   textAlign: "center",
 });

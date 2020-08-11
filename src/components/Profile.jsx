@@ -54,6 +54,6 @@ const ProfileButton = styled.button({
     backgroundColor: "black",
   },
 });
-const UserName = styled.h4({
-  paddingBottom: "50%",
+const UserName = styled.h6({
+  paddingBottom: "80%",
 });

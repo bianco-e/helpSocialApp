@@ -1,10 +1,9 @@
 import React from "react";
-import { NeedsAndOffersWrapper } from "../components/StyledComponents";
 import { useParams } from "react-router-dom";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
-import Items from "../components/Items";
 import ItemsContainer from "../components/ItemsContainer";
+import ContainersWrapper from "../components/ContainersWrapper";
 import useFetchWithFilter from "../hooks/useFetchWithFilter.js";
 import {
   searchByTitleInOffers,
@@ -22,18 +21,20 @@ export default function SearchResults() {
   );
   return (
     keyword && (
-      <div>
+      <>
         <TopBar />
         <Profile />
-        <NeedsAndOffersWrapper>
-          <ItemsContainer title="Resultados para Búsquedas">
-            <Items arrayToRender={needsResults} />
-          </ItemsContainer>
-          <ItemsContainer title="Resultados para Donaciones">
-            <Items arrayToRender={offersResults} />
-          </ItemsContainer>
-        </NeedsAndOffersWrapper>
-      </div>
+        <ContainersWrapper>
+          <ItemsContainer
+            title="Resultados para Búsquedas"
+            itemsToShow={needsResults}
+          />
+          <ItemsContainer
+            title="Resultados para Donaciones"
+            itemsToShow={offersResults}
+          />
+        </ContainersWrapper>
+      </>
     )
   );
 }

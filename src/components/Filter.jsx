@@ -83,7 +83,7 @@ export default function Filter({ filterFn, urgFilter }) {
 const FilterContainer = styled.section({
   display: "flex",
   flexDirection: "column",
-  margin: ".5rem",
+  margin: "8px",
 });
 const Title = styled.h6({
   color: "rgb(150, 150, 170)",

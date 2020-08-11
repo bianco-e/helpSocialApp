@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
+import Media from "react-media";
 import { logInUsingGoogle, logOutUsingGoogle } from "../data/apiInteraction.js";
 import { Link, useHistory } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
 import AboutUs from "./AboutUs";
+import InputWithLabel from "./InputWithLabel";
 
 export default function TopBar({ forLogin = false }) {
   const history = useHistory();
@@ -16,61 +16,83 @@ export default function TopBar({ forLogin = false }) {
   const [modalShow, setModalShow] = useState(false);
 
   return (
-    <Navbar bg="light" expand="lg" sticky="top">
-      <Navbar.Brand href="/home">AppName</Navbar.Brand>
-      <Nav className="mr-auto">
-        {forLogin ? (
-          <>
-            <NavButton onClick={() => setModalShow(true)}>
-              ¿Qué es AppName?
-            </NavButton>
-            <AboutUs modalShow={modalShow} setModalShow={setModalShow} />
-          </>
-        ) : (
-          <Container>
-            <Link to="/home">
-              <NavButton>Inicio</NavButton>
-            </Link>
-            <Link to="/needs">
-              <NavButton>Se busca</NavButton>
-            </Link>
-            <Link to="/offers">
-              <NavButton>Se dona</NavButton>
-            </Link>
-          </Container>
+    <>
+      <Media
+        queries={{
+          s: "(max-width: 599px)",
+          m: "(min-width: 600px) and (max-width: 760px)",
+        }}
+      >
+        {(matches) => (
+          <Fragment>
+            <Navbar bg="light" expand="lg" sticky="top">
+              <Navbar.Brand href="/home">NecesiDar</Navbar.Brand>
+              <Nav className="mr-auto">
+                {forLogin ? (
+                  <>
+                    <NavButton onClick={() => setModalShow(true)}>
+                      ¿Qué es NecesiDar?
+                    </NavButton>
+                    <AboutUs
+                      modalShow={modalShow}
+                      setModalShow={setModalShow}
+                    />
+                  </>
+                ) : (
+                  <Container>
+                    <Link to="/home">
+                      <NavButton>Inicio</NavButton>
+                    </Link>
+                    <Link to="/needs">
+                      <NavButton>Se busca</NavButton>
+                    </Link>
+                    <Link to="/offers">
+                      <NavButton>Se dona</NavButton>
+                    </Link>
+                  </Container>
+                )}
+              </Nav>
+              <Form inline>
+                {forLogin ? (
+                  <Button
+                    variant="outline-danger"
+                    onClick={() => logInUsingGoogle()}
+                  >
+                    Ingresar con Google
+                  </Button>
+                ) : (
+                  <>
+                    <InputWithLabel
+                      label="🔍"
+                      placeholder="Búsqueda"
+                      value={insertedValue}
+                      onChange={(e) => setInsertedValue(e.target.value)}
+                      onKeyDown={(event) => {
+                        if (event.keyCode === 13) {
+                          history.push(`/search/${insertedValue}`);
+                        }
+                      }}
+                      size={
+                        matches.m
+                          ? { h: "31px", w: "120px" }
+                          : { h: "38px", w: undefined }
+                      }
+                    />
+                    <Button
+                      variant="danger"
+                      size={matches.m ? "sm" : undefined}
+                      onClick={() => logOutUsingGoogle()}
+                    >
+                      Cerrar sesión
+                    </Button>
+                  </>
+                )}
+              </Form>
+            </Navbar>
+          </Fragment>
         )}
-      </Nav>
-      <Form inline>
-        {forLogin ? (
-          <Button variant="outline-danger" onClick={() => logInUsingGoogle()}>
-            Ingresar con Google
-          </Button>
-        ) : (
-          <>
-            <InputGroup>
-              <InputGroup.Prepend>
-                <InputGroup.Text>
-                  <Span>🔍</Span>
-                </InputGroup.Text>
-              </InputGroup.Prepend>
-              <FormControl
-                placeholder="Búsqueda"
-                value={insertedValue}
-                onChange={(e) => setInsertedValue(e.target.value)}
-                onKeyDown={(event) => {
-                  if (event.keyCode === 13) {
-                    history.push(`/search/${insertedValue}`);
-                  }
-                }}
-              />
-            </InputGroup>
-            <Button variant="danger" onClick={() => logOutUsingGoogle()}>
-              Cerrar sesión
-            </Button>
-          </>
-        )}
-      </Form>
-    </Navbar>
+      </Media>
+    </>
   );
 }
 const Container = styled.section({

@@ -1,17 +1,14 @@
 import React from "react";
-import {
-  DivFlexStartLeft,
-  DivHundredPerCentWidth,
-} from "../components/StyledComponents";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
-import Items from "../components/Items";
 import ItemsContainer from "../components/ItemsContainer";
 import Filter from "../components/Filter";
+import ContainersWrapper from "../components/ContainersWrapper";
+
 import useFetchWithFilter from "../hooks/useFetchWithFilter.js";
 import { getAllOffers } from "../data/apiInteraction.js";
 
-const Offers = () => {
+export default function Offers() {
   const [
     offersList,
     setOffersList,
@@ -35,16 +32,15 @@ const Offers = () => {
     <>
       <TopBar />
       <Profile />
-      <DivFlexStartLeft>
+      <ContainersWrapper>
         <Filter filterFn={filterOffersByCategory} />
-        <DivHundredPerCentWidth>
-          <ItemsContainer width="100%" title="Donaciones">
-            <Items arrayToRender={offersList} collection={"offers"} />
-          </ItemsContainer>
-        </DivHundredPerCentWidth>
-      </DivFlexStartLeft>
+        <ItemsContainer
+          collection={"offers"}
+          itemsToShow={offersList}
+          title="Donaciones"
+          width="100%"
+        />
+      </ContainersWrapper>
     </>
   );
-};
-
-export default Offers;
+}

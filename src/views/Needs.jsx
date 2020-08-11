@@ -1,17 +1,13 @@
 import React from "react";
-import {
-  DivFlexStartLeft,
-  DivHundredPerCentWidth,
-} from "../components/StyledComponents";
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
-import Items from "../components/Items";
 import Filter from "../components/Filter";
 import ItemsContainer from "../components/ItemsContainer";
+import ContainersWrapper from "../components/ContainersWrapper";
 import useFetchWithFilter from "../hooks/useFetchWithFilter.js";
 import { getAllNeeds } from "../data/apiInteraction";
 
-const Needs = () => {
+export default function Needs() {
   const [needsList, setNeedsList, allNeeds, refetchData] = useFetchWithFilter(
     getAllNeeds
   );
@@ -38,16 +34,15 @@ const Needs = () => {
     <>
       <TopBar />
       <Profile />
-      <DivFlexStartLeft>
+      <ContainersWrapper>
         <Filter filterFn={filterNeedsByCategory} urgFilter={true} />
-        <DivHundredPerCentWidth>
-          <ItemsContainer width="100%" title="Búsquedas">
-            <Items arrayToRender={needsList} collection={"needs"} />
-          </ItemsContainer>
-        </DivHundredPerCentWidth>
-      </DivFlexStartLeft>
+        <ItemsContainer
+          collection={"needs"}
+          itemsToShow={needsList}
+          title="Búsquedas"
+          width="100%"
+        />
+      </ContainersWrapper>
     </>
   );
-};
-
-export default Needs;
+}

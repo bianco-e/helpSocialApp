@@ -1,21 +1,16 @@
 import React, { useContext } from "react";
-import {
-  DivFlexStartLeft,
-  DivHundredPerCentWidth,
-  DivSpinner,
-} from "../components/StyledComponents";
 import AuthContext from "../context/AuthContext";
 import Profile from "../components/Profile";
 import TopBar from "../components/TopBar";
-import Items from "../components/Items";
 import Filter from "../components/Filter";
 import ItemsContainer from "../components/ItemsContainer";
+import ContainersWrapper from "../components/ContainersWrapper";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import useFetchWithFilter from "../hooks/useFetchWithFilter.js";
 import { getAllMyOffers, deleteOffer } from "../data/apiInteraction.js";
 
-const MyOptions = () => {
+export default function MyOptions() {
   const user = useContext(AuthContext);
   const userEmail = user.email || "";
 
@@ -42,27 +37,21 @@ const MyOptions = () => {
     <>
       <TopBar />
       <Profile />
-      <DivFlexStartLeft>
+      <ContainersWrapper>
         <Filter filterFn={filterOffersByCategory} />
-        <DivHundredPerCentWidth>
-          <ItemsContainer width="100%" title="Mis donaciones">
-            <Items
-              arrayToRender={myOffersList}
-              collection={"offers"}
-              deleteItemFn={deleteOffer}
-            />
-          </ItemsContainer>
-        </DivHundredPerCentWidth>
-      </DivFlexStartLeft>
-      <DivFlexStartLeft>
-        <DivHundredPerCentWidth>
-          <Link to="/addoffer">
-            <Button variant="outline-info">Agregar donación</Button>
-          </Link>
-        </DivHundredPerCentWidth>
-      </DivFlexStartLeft>
+        <ItemsContainer
+          collection={"offers"}
+          deleteItemFn={deleteOffer}
+          itemsToShow={myOffersList}
+          title="Mis donaciones"
+          width="100%"
+        />
+      </ContainersWrapper>
+      <ContainersWrapper>
+        <Link to="/addoffer">
+          <Button variant="outline-info">Agregar donación</Button>
+        </Link>
+      </ContainersWrapper>
     </>
   );
-};
-
-export default MyOptions;
+}

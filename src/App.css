@@ -1,8 +1,7 @@
 .profileDiv {
   position: fixed;
   left: 0;
-  top: 50px;
-  width: 16rem;
+  width: 200px;
   height: 100vh;
   background-color: #f8f9fa;
 }

@@ -3,8 +3,8 @@ import styled from "styled-components";
 import Spinner from "react-bootstrap/Spinner";
 const SmallItem = lazy(() => import("./SmallItem"));
 
-export default function Items({ arrayToRender, collection, deleteItemFn }) {
-  const [arrToRender, setArrToRender] = useState(arrayToRender);
+export default function Items({ itemsToShow, collection, deleteItemFn }) {
+  const [arrToRender, setArrToRender] = useState(itemsToShow);
 
   const deleteItemFromArray = (id) => {
     setArrToRender(
@@ -15,8 +15,8 @@ export default function Items({ arrayToRender, collection, deleteItemFn }) {
   };
 
   useEffect(() => {
-    setArrToRender(arrayToRender);
-  }, [arrayToRender]);
+    setArrToRender(itemsToShow);
+  }, [itemsToShow]);
 
   return (
     <Suspense

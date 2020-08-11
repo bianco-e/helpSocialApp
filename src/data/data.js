@@ -1,6 +1,14 @@
-import React from "react";
+export const categories = [
+  "Selecctionar categoría",
+  "Accesorios",
+  "Descartables",
+  "Internación",
+  "Rehabilitaciones",
+  "Tratamientos",
+];
 
-const zones = [
+export const zones = [
+  "Seleccionar barrio",
   "Abasto",
   "Alvear",
   "Belgrano",
@@ -35,15 +43,3 @@ const zones = [
   "Tablada",
   "Tiro Suizo",
 ];
-
-const mapZonesIntoOptions = () => {
-  return zones.map((zone) => {
-    return (
-      <option value={zone} key={zone}>
-        {zone}
-      </option>
-    );
-  });
-};
-
-export { mapZonesIntoOptions };
