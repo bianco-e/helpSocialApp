@@ -1,9 +1,6 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
 import styled from "styled-components";
-import {
-  ContainerTitle,
-  DivHundredPerCentWidth,
-} from "../components/StyledComponents";
+import { ContainerTitle } from "../components/StyledComponents";
 import AuthContext from "../context/AuthContext";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
@@ -38,6 +35,15 @@ export default function AddItem({ children, addNewItem, addAnImage }) {
       setFileName(inputFileRef.current?.files[0]["name"]);
     }
   }, [uploadingFile]);
+
+  const selectOptions = [
+    "Selecctionar categoría",
+    "Accesorios",
+    "Descartables",
+    "Internación",
+    "Rehabilitaciones",
+    "Tratamientos",
+  ];
 
   return (
     <>
@@ -90,12 +96,9 @@ export default function AddItem({ children, addNewItem, addAnImage }) {
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option>Seleccionar categoría</option>
-                <option value="Accesorios">Accesorios</option>
-                <option value="Descartables">Descartables</option>
-                <option value="Internación">Internación</option>
-                <option value="Rehabilitaciones">Rehabilitaciones</option>
-                <option value="Tratamientos">Tratamientos</option>
+                {selectOptions.map((option, idx) => (
+                  <option value={idx === 0 ? "" : option}>{option}</option>
+                ))}
               </Form.Control>
               <br />
               <Form.Label>Barrio más cercano</Form.Label>
@@ -118,11 +121,11 @@ export default function AddItem({ children, addNewItem, addAnImage }) {
               <br />
               {children && children({ urgent, setUrgent })}
               <br />
-              <DivHundredPerCentWidth>
+              <Container>
                 {loading && (
-                  <DivHundredPerCentWidth>
+                  <Container>
                     <Spinner animation="grow" variant="primary" />
-                  </DivHundredPerCentWidth>
+                  </Container>
                 )}
                 <Button
                   variant="outline-info"
@@ -158,7 +161,7 @@ export default function AddItem({ children, addNewItem, addAnImage }) {
                 >
                   Subir
                 </Button>
-              </DivHundredPerCentWidth>
+              </Container>
             </Form.Group>
           </FormContainer>
         </Card>
@@ -174,4 +177,8 @@ const FormContainer = styled.section({
   alignItems: "center",
   display: "flex",
   flexDirection: "column",
+});
+const Container = styled.section({
+  width: "100%",
+  textAlign: "center",
 });
