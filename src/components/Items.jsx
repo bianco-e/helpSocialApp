@@ -6,13 +6,12 @@ const SmallItem = lazy(() => import("./SmallItem"));
 export default function Items({ itemsToShow, collection, deleteItemFn }) {
   const [arrToRender, setArrToRender] = useState(itemsToShow);
 
-  const deleteItemFromArray = (id) => {
+  const deleteItemFromArray = (id) =>
     setArrToRender(
       arrToRender.filter((item) => {
         return item["id"] !== id;
       })
     );
-  };
 
   useEffect(() => {
     setArrToRender(itemsToShow);
@@ -41,7 +40,7 @@ export default function Items({ itemsToShow, collection, deleteItemFn }) {
                   image={image}
                   key={id}
                   title={title}
-                  urgent={urgent}
+                  type={urgent ? "urgent" : "regular"}
                   user={user}
                 />
               );

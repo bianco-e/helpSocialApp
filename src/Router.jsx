@@ -1,18 +1,18 @@
 import React from "react";
-import "../App.css";
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Route } from "react-router-dom";
-import UrgentCheckBox from "./UrgentCheckBox";
-import Login from "../views/Login";
-import Home from "../views/Home";
-import Needs from "../views/Needs";
-import Offers from "../views/Offers";
-import MyOffers from "../views/MyOffers";
-import MyNeeds from "../views/MyNeeds";
-import AddItem from "../views/AddItem";
-import PrivateRoute from "./PrivateRoute";
-import ItemDetail from "../views/ItemDetail";
-import SearchResults from "../views/SearchResults";
+import UrgentCheckBox from "./components/UrgentCheckBox";
+import PrivateRoute from "./components/PrivateRoute";
+import Login from "./views/Login";
+import Home from "./views/Home";
+import Needs from "./views/Needs";
+import Offers from "./views/Offers";
+import MyOffers from "./views/MyOffers";
+import MyNeeds from "./views/MyNeeds";
+import AddItem from "./views/AddItem";
+import ItemDetail from "./views/ItemDetail";
+import SearchResults from "./views/SearchResults";
 import {
   getOfferByID,
   getNeedByID,
@@ -20,9 +20,9 @@ import {
   addNewOffer,
   addAnImageToNeeds,
   addAnImageToOffers,
-} from "../data/apiInteraction.js";
+} from "./data/apiInteraction.js";
 
-function App() {
+export default function Router() {
   return (
     <BrowserRouter>
       <Route exact path="/" render={() => <Login />} />
@@ -35,16 +35,12 @@ function App() {
       <PrivateRoute
         exact
         path="/needs/:IDParam"
-        render={() => (
-          <ItemDetail getItemByID={getNeedByID} messageWord={"Tengo"} />
-        )}
+        render={() => <ItemDetail getItemByID={getNeedByID} />}
       />
       <PrivateRoute
         exact
         path="/offers/:IDParam"
-        render={() => (
-          <ItemDetail getItemByID={getOfferByID} messageWord={"Necesito"} />
-        )}
+        render={() => <ItemDetail getItemByID={getOfferByID} />}
       />
       <PrivateRoute exact path="/myoffers" render={() => <MyOffers />} />
       <PrivateRoute exact path="/myneeds" render={() => <MyNeeds />} />
@@ -69,5 +65,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;

@@ -19,22 +19,29 @@ export default function SearchResults() {
   const [offersResults] = useFetchWithFilter(() =>
     searchByTitleInOffers(keyword)
   );
+
+  const containers = [
+    {
+      title: "Búsquedas",
+      itemsToShow: needsResults,
+    },
+    {
+      title: "Donaciones",
+      itemsToShow: offersResults,
+    },
+  ];
+
   return (
-    keyword && (
-      <>
-        <TopBar />
-        <Profile />
+    <>
+      <TopBar />
+      <Profile />
+      {keyword && (
         <ContainersWrapper>
-          <ItemsContainer
-            title="Resultados para Búsquedas"
-            itemsToShow={needsResults}
-          />
-          <ItemsContainer
-            title="Resultados para Donaciones"
-            itemsToShow={offersResults}
-          />
+          {containers.map(({ title, itemsToShow }) => {
+            return <ItemsContainer title={title} itemsToShow={itemsToShow} />;
+          })}
         </ContainersWrapper>
-      </>
-    )
+      )}
+    </>
   );
 }

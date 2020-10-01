@@ -73,7 +73,7 @@ export default function AddItem({ children, addNewItem, addAnImage }) {
               <Form.Control
                 as="textarea"
                 cols="30"
-                maxlength="240"
+                maxLength="240"
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Descripción"
                 value={description}
@@ -87,7 +87,9 @@ export default function AddItem({ children, addNewItem, addAnImage }) {
                 value={category}
               >
                 {categories.map((option, idx) => (
-                  <option value={idx === 0 ? "" : option}>{option}</option>
+                  <option key={option} value={idx === 0 ? "" : option}>
+                    {option}
+                  </option>
                 ))}
               </Form.Control>
               <br />

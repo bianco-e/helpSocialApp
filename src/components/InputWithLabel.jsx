@@ -14,9 +14,7 @@ export default function InputWithLabel({
   return (
     <>
       <Container height={h}>
-        <Label>
-          <span>{label}</span>
-        </Label>
+        <Label>{label}</Label>
         <Input
           onChange={onChange}
           onKeyDown={onKeyDown}

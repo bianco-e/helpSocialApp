@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Context from "../context/AuthContext";
 import { Route, Redirect } from "react-router-dom";
 
-const PrivateRoute = ({ render, ...otherProps }) => {
+export default function PrivateRoute({ render, ...otherProps }) {
   const user = useContext(Context);
   return (
     <Route
@@ -10,6 +10,4 @@ const PrivateRoute = ({ render, ...otherProps }) => {
       render={() => (user ? render() : <Redirect to="/" />)}
     />
   );
-};
-
-export default PrivateRoute;
+}

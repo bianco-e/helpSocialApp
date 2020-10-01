@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { categories } from "../data/data";
 
 export default function Filter({ filterFn, urgFilter }) {
   return (
@@ -14,65 +15,20 @@ export default function Filter({ filterFn, urgFilter }) {
           <Button
             size="sm"
             variant="outline-danger"
-            onClick={() => {
-              filterFn("Urgent");
-            }}
+            onClick={() => filterFn("Urgent")}
           >
             Urgentes
           </Button>
         )}
-        <Button
-          size="sm"
-          variant="light"
-          onClick={() => {
-            filterFn("Accesorios");
-          }}
-        >
-          Accesorios
-        </Button>
-        <Button
-          size="sm"
-          variant="light"
-          onClick={() => {
-            filterFn("Descartables");
-          }}
-        >
-          Descartables
-        </Button>
-        <Button
-          size="sm"
-          variant="light"
-          onClick={() => {
-            filterFn("Internación");
-          }}
-        >
-          Internación
-        </Button>
-        <Button
-          size="sm"
-          variant="light"
-          onClick={() => {
-            filterFn("Rehabilitación");
-          }}
-        >
-          Rehabilitación
-        </Button>
-        <Button
-          size="sm"
-          variant="light"
-          onClick={() => {
-            filterFn("Tratamientos");
-          }}
-        >
-          Tratamientos
-        </Button>
-        <Button
-          size="sm"
-          variant="light"
-          onClick={() => {
-            filterFn("ALL");
-          }}
-        >
+        {categories.map(
+          (name, idx) =>
+            idx != 0 && (
+              <Button size="sm" variant="light" onClick={() => filterFn(name)}>
+                {name}
+              </Button>
+            )
+        )}
+        <Button size="sm" variant="light" onClick={() => filterFn("ALL")}>
           Quitar filtro
         </Button>
       </Card>

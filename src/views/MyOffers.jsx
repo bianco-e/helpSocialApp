@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import useFetchWithFilter from "../hooks/useFetchWithFilter.js";
 import { getAllMyOffers, deleteOffer } from "../data/apiInteraction.js";
 
-export default function MyOptions() {
+export default function MyOffers() {
   const user = useContext(AuthContext);
   const userEmail = user.email || "";
 

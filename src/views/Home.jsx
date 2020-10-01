@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import TopBar from "../components/TopBar";
 import Profile from "../components/Profile";
@@ -19,12 +18,12 @@ export default function Home() {
       <Profile />
       <ContainersWrapper>
         <ItemsContainer
-          collection={"needs"}
+          collection="needs"
           itemsToShow={fiveNeedsList}
           title="Búsquedas destacadas"
         />
         <ItemsContainer
-          collection={"offers"}
+          collection="offers"
           itemsToShow={fiveOffersList}
           title="Donaciones destacadas"
         />

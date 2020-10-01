@@ -21,7 +21,8 @@ export default function AboutUs({ modalShow, setModalShow }) {
   );
 }
 
-const Text = styled.h5({
-  textAlign: "center",
+const Text = styled.p({
+  fontSize: "16px",
   lineHeight: "30px",
+  textAlign: "center",
 });

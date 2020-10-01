@@ -1,5 +1,8 @@
+export const setMessage = (title) =>
+  `¡Hola! Te contacto por el artículo '${title}' que vi en NecesiDar: ${window.location.href}`;
+
 export const categories = [
-  "Selecctionar categoría",
+  "Seleccionar categoría",
   "Accesorios",
   "Descartables",
   "Internación",

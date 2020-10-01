@@ -1,13 +1,11 @@
 import React from "react";
 import { AuthContextProvider } from "./context/AuthContext";
-import App from "./components/App";
+import Router from "./Router";
 
-const Main = () => {
+export default function Main() {
   return (
     <AuthContextProvider>
-      <App></App>
+      <Router />
     </AuthContextProvider>
   );
-};
-
-export default Main;
+}

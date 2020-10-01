@@ -47,7 +47,8 @@ const ProfileButton = styled.button({
   borderRadius: "0.25rem",
   color: "black",
   marginBottom: "10%",
-  padding: "3px 5px",
+  padding: "3px 8px",
+  width: "100%",
   transition: "background-color .2s ease",
   ["&:hover"]: {
     color: "white",

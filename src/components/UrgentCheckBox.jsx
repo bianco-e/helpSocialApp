@@ -1,7 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 
-const UrgentCheckBox = ({ urgent, setUrgent }) => {
+export default function UrgentCheckBox({ urgent, setUrgent }) {
   return (
     <Form.Check
       type="checkbox"
@@ -10,6 +10,4 @@ const UrgentCheckBox = ({ urgent, setUrgent }) => {
       onChange={() => setUrgent(!urgent)}
     />
   );
-};
-
-export default UrgentCheckBox;
+}

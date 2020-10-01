@@ -10,10 +10,13 @@ import Button from "react-bootstrap/Button";
 import AboutUs from "./AboutUs";
 import InputWithLabel from "./InputWithLabel";
 
-export default function TopBar({ forLogin = false }) {
+export default function TopBar({ forLogin }) {
   const history = useHistory();
   const [insertedValue, setInsertedValue] = useState("");
   const [modalShow, setModalShow] = useState(false);
+
+  const handleSearch = (e) =>
+    e.keyCode === 13 && history.push(`/search/${insertedValue}`);
 
   return (
     <>
@@ -27,9 +30,9 @@ export default function TopBar({ forLogin = false }) {
           <Fragment>
             <Navbar bg="light" expand="lg" sticky="top">
               <Navbar.Brand href="/home">NecesiDar</Navbar.Brand>
-              <Nav className="mr-auto">
-                {forLogin ? (
-                  <>
+              {forLogin ? (
+                <>
+                  <Nav className="mr-auto">
                     <NavButton onClick={() => setModalShow(true)}>
                       ¿Qué es NecesiDar?
                     </NavButton>
@@ -37,41 +40,38 @@ export default function TopBar({ forLogin = false }) {
                       modalShow={modalShow}
                       setModalShow={setModalShow}
                     />
-                  </>
-                ) : (
-                  <Container>
-                    <Link to="/home">
-                      <NavButton>Inicio</NavButton>
-                    </Link>
-                    <Link to="/needs">
-                      <NavButton>Se busca</NavButton>
-                    </Link>
-                    <Link to="/offers">
-                      <NavButton>Se dona</NavButton>
-                    </Link>
-                  </Container>
-                )}
-              </Nav>
-              <Form inline>
-                {forLogin ? (
-                  <Button
-                    variant="outline-danger"
-                    onClick={() => logInUsingGoogle()}
-                  >
-                    Ingresar con Google
-                  </Button>
-                ) : (
-                  <>
+                  </Nav>
+                  <Form inline>
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => logInUsingGoogle()}
+                    >
+                      Ingresar con Google
+                    </Button>
+                  </Form>
+                </>
+              ) : (
+                <>
+                  <Nav className="mr-auto">
+                    <Container>
+                      <Link to="/home">
+                        <NavButton>Inicio</NavButton>
+                      </Link>
+                      <Link to="/needs">
+                        <NavButton>Se busca</NavButton>
+                      </Link>
+                      <Link to="/offers">
+                        <NavButton>Se dona</NavButton>
+                      </Link>
+                    </Container>
+                  </Nav>
+                  <Form inline>
                     <InputWithLabel
                       label="🔍"
                       placeholder="Búsqueda"
                       value={insertedValue}
                       onChange={(e) => setInsertedValue(e.target.value)}
-                      onKeyDown={(event) => {
-                        if (event.keyCode === 13) {
-                          history.push(`/search/${insertedValue}`);
-                        }
-                      }}
+                      onKeyDown={(e) => handleSearch(e)}
                       size={
                         matches.m
                           ? { h: "31px", w: "120px" }
@@ -85,9 +85,9 @@ export default function TopBar({ forLogin = false }) {
                     >
                       Cerrar sesión
                     </Button>
-                  </>
-                )}
-              </Form>
+                  </Form>
+                </>
+              )}
             </Navbar>
           </Fragment>
         )}

@@ -1,7 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
-import Button from "react-bootstrap/Button";
+
+const style = {
+  urgent: {
+    bg: "#dc3545",
+    color: "#FFF",
+    secondaryBg: "#000",
+  },
+  regular: {
+    bg: "transparent",
+    color: "#000",
+    secondaryBg: "#dc3545",
+  },
+};
 
 export default function SmallItem({
   image,
@@ -9,16 +21,15 @@ export default function SmallItem({
   description,
   user,
   id,
-  urgent = false,
+  type,
   collection,
   deleteItemFn,
   deleteItemFromArray,
 }) {
   const history = useHistory();
 
-  const itemClickFn = () => {
-    history.push(`/${collection}/${id}`);
-  };
+  const itemClickFn = () => history.push(`/${collection}/${id}`);
+
   const handleDelete = (e) => {
     e.stopPropagation();
     deleteItemFn(id);
@@ -26,21 +37,16 @@ export default function SmallItem({
   };
 
   return (
-    <ItemButton
-      bgColor={urgent ? "#dc3545" : "transparent"}
-      onClick={() => itemClickFn()}
-    >
+    <ItemButton bgColor={style[type].bg} onClick={() => itemClickFn()}>
       <ItemImage src={image} alt={title} />
       <TextContainer>
-        <Title color={urgent ? "white" : undefined}>{title}</Title>
-        <Description color={urgent ? "white" : undefined}>
-          {description}
-        </Description>
-        <Author color={urgent ? "white" : undefined}>{user}</Author>
+        <Title color={style[type].color}>{title}</Title>
+        <Description color={style[type].color}>{description}</Description>
+        <Author color={style[type].color}>{user}</Author>
       </TextContainer>
       {deleteItemFn && (
         <DeleteButton
-          bgColor={urgent ? "black" : "#dc3545"}
+          bgColor={style[type].secondaryBg}
           onClick={(e) => handleDelete(e)}
         >
           ✖

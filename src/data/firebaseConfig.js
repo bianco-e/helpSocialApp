@@ -1,4 +1,4 @@
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyCVzo0LkFmyAJg3P9_T598J7GherCN4dYY",
   authDomain: "socialapp-bba50.firebaseapp.com",
   databaseURL: "https://socialapp-bba50.firebaseio.com",
