@@ -22,7 +22,6 @@ export default function IngredientsDropdown({ buttons }) {
 
 const Wrapper = styled.div({
   alignItems: "center",
-  borderRadius: "2px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

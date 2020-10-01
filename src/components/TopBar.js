@@ -21,9 +21,14 @@ export default function TopBar() {
   if (!user) return null;
   const { displayName, photoURL } = user;
 
+  const buttons = [
+    { onClick: () => history.push("/home"), title: "Inicio" },
+    { onClick: () => history.push("/needs"), title: "Búsquedas" },
+    { onClick: () => history.push("/offers"), title: "Donaciones" },
+  ];
   const dropdownButtons = [
-    { title: "Mis donaciones", onClick: () => history.push("/myoffers") },
     { title: "Mis búsquedas", onClick: () => history.push("/myneeds") },
+    { title: "Mis donaciones", onClick: () => history.push("/myoffers") },
     {
       color: "#dc3545",
       title: "Cerrar sesión",
@@ -35,12 +40,6 @@ export default function TopBar() {
     e.keyCode === 13 && history.push(`/search/${insertedValue}`);
 
   const handleProfileClick = () => setShowDropdown(!showDropdown);
-
-  const buttons = [
-    { endpoint: "/home", title: "Inicio" },
-    { endpoint: "/needs", title: "Se busca" },
-    { endpoint: "/offers", title: "Se dona" },
-  ];
 
   return (
     <>
@@ -57,29 +56,24 @@ export default function TopBar() {
               <Logo />
               <Nav className="mr-auto">
                 <Wrapper>
-                  {buttons.map(({ endpoint, title }) => (
-                    <NavButton
-                      onClick={() => history.push(endpoint)}
-                      size={small && "sm"}
-                      title={title}
-                    />
-                  ))}
+                  {large &&
+                    buttons.map(({ onClick, title }) => (
+                      <NavButton
+                        onClick={() => onClick()}
+                        size={small && "sm"}
+                        title={title}
+                      />
+                    ))}
                 </Wrapper>
               </Nav>
-              {!small && (
-                <InputWithLabel
-                  label="🔍"
-                  placeholder="Búsqueda"
-                  value={insertedValue}
-                  onChange={(e) => setInsertedValue(e.target.value)}
-                  onKeyDown={(e) => handleSearch(e)}
-                  size={
-                    medium
-                      ? { h: "31px", w: "120px" }
-                      : { h: "38px", w: undefined }
-                  }
-                />
-              )}
+              <InputWithLabel
+                label="🔍"
+                placeholder="Búsqueda"
+                value={insertedValue}
+                onChange={(e) => setInsertedValue(e.target.value)}
+                onKeyDown={(e) => handleSearch(e)}
+                size={{ h: "38px", w: small ? "150px" : "170px" }}
+              />
               {large && (
                 <Button
                   variant="danger"
@@ -97,7 +91,9 @@ export default function TopBar() {
                     onClick={() => handleProfileClick()}
                   />
                   {showDropdown && (
-                    <ProfileDropdown buttons={dropdownButtons} />
+                    <ProfileDropdown
+                      buttons={buttons.concat(dropdownButtons)}
+                    />
                   )}
                 </Container>
               )}
