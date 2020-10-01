@@ -72,7 +72,7 @@ export default function TopBar() {
                 value={insertedValue}
                 onChange={(e) => setInsertedValue(e.target.value)}
                 onKeyDown={(e) => handleSearch(e)}
-                size={{ h: "38px", w: small ? "150px" : "170px" }}
+                size={{ h: "38px", w: small ? "150px" : "180px" }}
               />
               {large && (
                 <Button

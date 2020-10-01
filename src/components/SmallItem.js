@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
+import Media from "react-media";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
 const style = {
   urgent: {
-    bg: "#dc3545",
+    bg: "linear-gradient(90deg, rgba(220,53,69,1) 0%, rgba(255,82,82,1) 100%)",
     color: "#FFF",
     secondaryBg: "#000",
   },
@@ -37,28 +38,45 @@ export default function SmallItem({
   };
 
   return (
-    <ItemButton bgColor={style[type].bg} onClick={() => itemClickFn()}>
-      <ItemImage src={image} alt={title} />
-      <TextContainer>
-        <Title color={style[type].color}>{title}</Title>
-        <Description color={style[type].color}>{description}</Description>
-        <Author color={style[type].color}>{user}</Author>
-      </TextContainer>
-      {deleteItemFn && (
-        <DeleteButton
-          bgColor={style[type].secondaryBg}
-          onClick={(e) => handleDelete(e)}
-        >
-          ✖
-        </DeleteButton>
-      )}
-    </ItemButton>
+    <WrapperButton bgColor={style[type].bg} onClick={() => itemClickFn()}>
+      <Media
+        queries={{
+          small: "(max-width: 550px)",
+          medium: "(min-width: 551px) and (max-width: 760px)",
+          large: "(min-width: 761px)",
+        }}
+      >
+        {({ small, medium, large }) => (
+          <Fragment>
+            <Image
+              height={small ? "40px" : "70px"}
+              width={small ? "45px" : "100px"}
+              src={image}
+              alt={title}
+            />
+            <TextContainer>
+              <Title color={style[type].color}>{title}</Title>
+              <Description color={style[type].color}>{description}</Description>
+              <Author color={style[type].color}>{user}</Author>
+            </TextContainer>
+            {deleteItemFn && (
+              <DeleteButton
+                bgColor={style[type].secondaryBg}
+                onClick={(e) => handleDelete(e)}
+              >
+                ✖
+              </DeleteButton>
+            )}
+          </Fragment>
+        )}
+      </Media>
+    </WrapperButton>
   );
 }
 
-const ItemButton = styled.button({
+const WrapperButton = styled.button({
   alignItems: "center",
-  backgroundColor: (props) => props.bgColor,
+  background: (props) => props.bgColor,
   border: "0",
   borderRadius: "4px",
   display: "flex",
@@ -68,9 +86,9 @@ const ItemButton = styled.button({
   textAlign: "left",
   width: "100%",
 });
-const ItemImage = styled.img({
-  height: "70px",
-  width: "100px",
+const Image = styled.img({
+  height: ({ height }) => height,
+  width: ({ width }) => width,
 });
 const TextContainer = styled.div({
   padding: "0 8px",
