@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "react-bootstrap/Card";
-import Items from "../components/Items";
+import Items from "./Items";
 
 export default function ItemsContainer({
   collection,

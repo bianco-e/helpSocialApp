@@ -60,10 +60,9 @@ const ItemButton = styled.button({
   alignItems: "center",
   backgroundColor: (props) => props.bgColor,
   border: "0",
-  borderRadius: "0.25rem",
+  borderRadius: "4px",
   display: "flex",
-  justifyContent: "left",
-  margin: " 2px",
+  justifyContent: "flex-start",
   padding: "0",
   position: "relative",
   textAlign: "left",
@@ -73,7 +72,7 @@ const ItemImage = styled.img({
   height: "70px",
   width: "100px",
 });
-const TextContainer = styled.section({
+const TextContainer = styled.div({
   padding: "0 8px",
 });
 const Title = styled.h6({

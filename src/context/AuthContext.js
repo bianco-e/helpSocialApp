@@ -5,11 +5,7 @@ const Context = React.createContext({});
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
-
-  useEffect(() => {
-    changeAuthState(setUser);
-  });
-
+  useEffect(() => changeAuthState(setUser));
   return <Context.Provider value={user}>{children}</Context.Provider>;
 };
 

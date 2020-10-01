@@ -4,7 +4,7 @@ import AuthContext from "../context/AuthContext";
 import { useHistory } from "react-router-dom";
 import loginBg from "../images/loginBg.webp";
 
-import TopBar from "../components/TopBar";
+import LoginTopBar from "../components/LoginTopBar";
 
 export default function Login() {
   const user = useContext(AuthContext);
@@ -15,7 +15,7 @@ export default function Login() {
 
   return (
     <LoginBgImage>
-      <TopBar forLogin />
+      <LoginTopBar />
     </LoginBgImage>
   );
 }
